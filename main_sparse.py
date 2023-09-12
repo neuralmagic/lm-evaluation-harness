@@ -72,8 +72,8 @@ def main():
 
     model = lm_eval.models.get_model("hf-causal")(
         pretrained=model,
-        batch_size=batch_size,
-        max_batch_size=max_batch_size,
+        batch_size=args.batch_size,
+        max_batch_size=args.max_batch_size,
     )
 
     results = evaluator.simple_evaluate(
