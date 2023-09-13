@@ -69,8 +69,8 @@ def main():
         model_type="model",
         trust_remote_code=args.trust_remote_code,
     )
-    if device is not None:
-        model = model.to(device)
+    if args.device is not None:
+        model = model.to(args.device)
 
     model = lm_eval.models.get_model("hf-causal")(
         pretrained=model,
