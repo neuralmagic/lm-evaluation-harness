@@ -7,6 +7,8 @@ from lm_eval import tasks, evaluator, utils
 import lm_eval
 from sparseml.transformers.utils import SparseAutoModel
 from transformers import AutoConfig
+from sparseml.transformers.export import DeviceCPUTrainingArgs
+from sparseml.transformers.sparsification import Trainer
 
 logging.getLogger("openai").setLevel(logging.WARNING)
 
@@ -69,6 +71,22 @@ def main():
         model_type="model",
         trust_remote_code=args.trust_remote_code,
     )
+    model.train()
+
+    args = DeviceCPUTrainingArgs(output_dir=args.model)
+    trainer = Trainer(
+        model=model,
+        args=args,
+        model_state_path=args.model,
+        recipe=None,
+        recipe_args=None,
+        teacher=None,
+    )
+
+    trainer.apply_manager(epoch=math.inf, checkpoint=None)
+    trainer.finalize_manager()
+    model = trainer.model
+
     if args.device is not None:
         model = model.to(args.device)
 
