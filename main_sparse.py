@@ -73,10 +73,10 @@ def main():
     )
     model.train()
 
-    args = DeviceCPUTrainingArgs(output_dir=args.model)
+    trainer_args = DeviceCPUTrainingArgs(output_dir=args.model)
     trainer = Trainer(
         model=model,
-        args=args,
+        args=trainer_args,
         model_state_path=args.model,
         recipe=None,
         recipe_args=None,
