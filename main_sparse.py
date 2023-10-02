@@ -34,6 +34,7 @@ def parse_args():
     parser.add_argument("--check_integrity", action="store_true")
     parser.add_argument("--write_out", action="store_true", default=False)
     parser.add_argument("--output_base_path", type=str, default=None)
+    parser.add_argument("--trust_remote_code", action="store_true")
 
     return parser.parse_args()
 
@@ -60,35 +61,40 @@ def main():
         with open(args.description_dict_path, "r") as f:
             description_dict = json.load(f)
 
-    config = AutoConfig.from_pretrained(
-        args.model,
-        trust_remote_code=args.trust_remote_code,
-    )
+    for model_args in args.model_args.split(","):
+        if model_args.startswith("pretrained="):
+            pretrained_path = model_args.replace("pretrained=", "")
 
-    model = SparseAutoModel.text_generation_from_pretrained(
-        model_name_or_path=args.model,
-        config=config,
-        model_type="model",
-        trust_remote_code=args.trust_remote_code,
-    )
-    model.train()
+            config = AutoConfig.from_pretrained(
+                pretrained_path,
+                trust_remote_code=args.trust_remote_code,
+            )
 
-    trainer_args = DeviceCPUTrainingArgs(output_dir=args.model)
-    trainer = Trainer(
-        model=model,
-        args=trainer_args,
-        model_state_path=args.model,
-        recipe=None,
-        recipe_args=None,
-        teacher=None,
-    )
+            model = SparseAutoModel.text_generation_from_pretrained(
+                model_name_or_path=pretrained_path,
+                config=config,
+                model_type="model",
+                trust_remote_code=args.trust_remote_code,
+            )
+            model.train()
 
-    trainer.apply_manager(epoch=math.inf, checkpoint=None)
-    trainer.finalize_manager()
-    model = trainer.model
+            trainer_args = DeviceCPUTrainingArgs(output_dir=pretrained_path)
+            trainer = Trainer(
+                model=model,
+                args=trainer_args,
+                model_state_path=args.model,
+                recipe=None,
+                recipe_args=None,
+                teacher=None,
+            )
+
+            trainer.apply_manager(epoch=math.inf, checkpoint=None)
+            trainer.finalize_manager()
+            args.model = trainer.model
+            break
 
     results = evaluator.simple_evaluate(
-        model=model,
+        model=args.model,
         model_args=args.model_args,
         tasks=task_names,
         num_fewshot=args.num_fewshot,
