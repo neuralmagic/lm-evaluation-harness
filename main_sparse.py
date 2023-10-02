@@ -2,6 +2,7 @@ import argparse
 import json
 import logging
 import os
+import math.
 
 from lm_eval import tasks, evaluator, utils
 from sparseml.transformers.utils import SparseAutoModel
