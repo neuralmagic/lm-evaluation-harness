@@ -92,6 +92,10 @@ def main():
             trainer.apply_manager(epoch=math.inf, checkpoint=None)
             trainer.finalize_manager()
             args.model = trainer.model
+            if args.device is None:
+                args.model = args.model.to("cuda")
+            else:
+                args.model = args.model.to(args.device)
             break
 
     results = evaluator.simple_evaluate(
