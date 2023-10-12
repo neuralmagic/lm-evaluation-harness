@@ -35,7 +35,6 @@ def parse_args():
     parser.add_argument("--check_integrity", action="store_true")
     parser.add_argument("--write_out", action="store_true", default=False)
     parser.add_argument("--output_base_path", type=str, default=None)
-    parser.add_argument("--trust_remote_code", action="store_true")
 
     return parser.parse_args()
 
@@ -61,42 +60,6 @@ def main():
     if args.description_dict_path:
         with open(args.description_dict_path, "r") as f:
             description_dict = json.load(f)
-
-    for model_args in args.model_args.split(","):
-        if model_args.startswith("pretrained="):
-            pretrained_path = model_args.replace("pretrained=", "")
-
-            config = AutoConfig.from_pretrained(
-                pretrained_path,
-                trust_remote_code=args.trust_remote_code,
-            )
-
-            model = SparseAutoModel.text_generation_from_pretrained(
-                model_name_or_path=pretrained_path,
-                config=config,
-                model_type="model",
-                trust_remote_code=args.trust_remote_code,
-            )
-            model.train()
-
-            trainer_args = DeviceCPUTrainingArgs(output_dir=pretrained_path)
-            trainer = Trainer(
-                model=model,
-                args=trainer_args,
-                model_state_path=args.model,
-                recipe=None,
-                recipe_args=None,
-                teacher=None,
-            )
-
-            trainer.apply_manager(epoch=math.inf, checkpoint=None)
-            trainer.finalize_manager()
-            args.model = trainer.model
-            if args.device is None:
-                args.model = args.model.to("cuda")
-            else:
-                args.model = args.model.to(args.device)
-            break
 
     results = evaluator.simple_evaluate(
         model=args.model,
