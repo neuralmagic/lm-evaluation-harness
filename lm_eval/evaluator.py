@@ -13,6 +13,7 @@ from lm_eval.models.gpt2 import HFLM
 import numpy as np
 import transformers
 
+from sparseml.core.framework import Framework
 import sparseml.core.session as session_manager
 from sparseml.transformers.sparsification.obcq.export import _reload_model_state
 import os
