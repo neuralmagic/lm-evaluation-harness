@@ -13,8 +13,8 @@ from lm_eval.models.gpt2 import HFLM
 import numpy as np
 import transformers
 
-from sparseml.transformers.export import DeviceCPUTrainingArgs
-from sparseml.transformers.sparsification import Trainer
+import sparseml.core.session as session_manager
+from sparseml.transformers.sparsification.obcq.export import _reload_model_state
 import os
 import math
 
@@ -89,19 +89,17 @@ def simple_evaluate(
 
         model_args = simple_parse_args_string(model_args)
         if "pretrained" in model_args and os.path.exists(os.path.join(model_args["pretrained"], "recipe.yaml")):
-            trainer_args = DeviceCPUTrainingArgs(output_dir=model_args["pretrained"])
-            trainer = Trainer(
+            session_manager.create_session()
+            session_manager.pre_initialize_structure(
                 model=lm.model,
-                args=trainer_args,
-                model_state_path=model_args["pretrained"],
-                recipe=None,
-                recipe_args=None,
-                teacher=None,
+                recipe=os.path.join(model_args["pretrained"], "recipe.yaml"),
+                framework=Framework.pytorch,
             )
 
-            trainer.apply_manager(epoch=math.inf, checkpoint=None)
-            trainer.finalize_manager()
-            lm.model = trainer.model.to(lm.model.device)
+            # reload the state dict for the model now that architecture matches expected
+            _reload_model_state(lm.model, model_args["pretrained"], lm.model.state_dict())
+
+            no_cache = True
 
     elif isinstance(model, transformers.PreTrainedModel):
         lm = lm_eval.models.get_model("hf-causal")(
