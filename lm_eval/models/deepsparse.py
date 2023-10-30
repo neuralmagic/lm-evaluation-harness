@@ -146,10 +146,62 @@ class DeepSparseLM(BaseLM):
         return reorder.get_original(results)
 
     def loglikelihood(self, requests):
-        raise NotImplementedError()
+        loglikelihoods = []
+        for context, continuation in requests:
+            tokens = self.tokenizer.encode(context + continuation, add_special_tokens=False)
+            context_tokens = self.tokenizer.encode(context, add_special_tokens=False)
+
+            # Compute the score (logits) for the continuation tokens
+            scores = self.model(
+                sequences=[context],
+                max_new_tokens=len(tokens) - len(context_tokens),
+                output_scores=True,
+                stop=None,
+                do_sample=False,
+            ).generations[0].score
+
+            # Calculate log probabilities from logits
+            log_probs = log_softmax(scores, axis=-1)
+
+            # Sum the log probabilities for the continuation tokens
+            continuation_log_probs = np.sum(
+                [log_probs[i, token] for i, token in enumerate(tokens[len(context_tokens):], start=len(context_tokens))]
+            )
+            # Check if the continuation is greedy
+            is_greedy = np.all(np.argmax(log_probs, axis=-1) == tokens[len(context_tokens):])
+
+            loglikelihoods.append((continuation_log_probs, is_greedy))
+        
+        return loglikelihoods
 
     def loglikelihood_rolling(self, requests):
-        raise NotImplementedError()
+        rolling_loglikelihoods = []
+        for string in requests:
+            tokens = self.tokenizer.encode(string, add_special_tokens=False)
+            log_prob_sum = 0
+            is_greedy = True
+
+            for i in range(1, len(tokens)):
+                # Prepare the context and continuation
+                context = self.tokenizer.decode(tokens[:i])
+                continuation = self.tokenizer.decode(tokens[i:i+1])
+
+                # Compute loglikelihood for each token
+                scores = self.model(
+                    sequences=[context],
+                    max_new_tokens=1,
+                    output_scores=True,
+                    stop=None,
+                    do_sample=False,
+                ).generations[0].score
+
+                log_probs = log_softmax(scores, axis=-1)
+                log_prob_sum += log_probs[0, tokens[i]]
+                is_greedy = is_greedy and (np.argmax(log_probs, axis=-1)[0] == tokens[i])
+
+            rolling_loglikelihoods.append((log_prob_sum, is_greedy))
+        
+        return rolling_loglikelihoods
 
     def _loglikelihood_tokens(self, requests, disable_tqdm=False):
         raise NotImplementedError("No support for logits.")
