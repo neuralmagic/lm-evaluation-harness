@@ -89,18 +89,20 @@ def simple_evaluate(
         )
 
         model_args = simple_parse_args_string(model_args)
-        if "pretrained" in model_args and os.path.exists(os.path.join(model_args["pretrained"], "recipe.yaml")):
+        recipe_file = os.path.join(model_args["pretrained"], "recipe.yaml")
+        if "pretrained" in model_args and os.path.exists(recipe_file):
+            original_state_dict = lm.model.state_dict()
             session_manager.create_session()
             session_manager.pre_initialize_structure(
                 model=lm.model,
-                recipe=os.path.join(model_args["pretrained"], "recipe.yaml"),
+                recipe=recipe_file,
                 framework=Framework.pytorch,
             )
 
             # reload the state dict for the model now that architecture matches expected
-            _reload_model_state(lm.model, model_args["pretrained"], lm.model.state_dict())
+            _reload_model_state(lm.model, model_args["pretrained"], original_state_dict)
 
-            lm.model = lm.model.to(device)
+            lm.model.to(device)
 
             no_cache = True
 
