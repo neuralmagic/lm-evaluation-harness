@@ -95,7 +95,7 @@ def simple_evaluate(
             # reload the state dict for the model now that architecture matches expected
             _reload_model_state(lm.model, model_args["pretrained"], lm.model.state_dict())
 
-            lm.model.to(device)
+            lm.model = lm.model.to(device)
 
             no_cache = True
 
