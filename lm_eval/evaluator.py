@@ -15,7 +15,7 @@ import transformers
 
 from sparseml.core.framework import Framework
 import sparseml.core.session as session_manager
-from sparseml.transformers.sparsification.obcq.export import _reload_model_state
+from sparseml.transformers.sparsification.obcq.export import load_task_model, _reload_model_state
 import os
 import math
 
@@ -86,7 +86,26 @@ def simple_evaluate(
         model_args = simple_parse_args_string(model_args)
         recipe_file = os.path.join(model_args["pretrained"], "recipe.yaml")
         if "pretrained" in model_args and os.path.exists(recipe_file):
+
+            if "trust_remote_code" in model_args:
+                trust_remote_code = model_args["trust_remote_code"]
+            else:
+                trust_remote_code = False
+
+            config = transformers.AutoConfig.from_pretrained(
+                model_args["pretrained"],
+                trust_remote_code=trust_remote_code,
+            )
+
+            tokenizer = transformers.AutoTokenizer.from_pretrained(model_args["pretrained"])
+            tokenizer.pad_token = tokenizer.eos_token
+
+            lm.model = load_task_model("text-generation", model_args["pretrained"], config, trust_remote_code)
+
+            lm.model.train()
+
             original_state_dict = lm.model.state_dict()
+
             session_manager.create_session()
             session_manager.pre_initialize_structure(
                 model=lm.model,
