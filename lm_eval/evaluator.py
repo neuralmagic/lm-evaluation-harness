@@ -16,6 +16,7 @@ import transformers
 from sparseml.core.framework import Framework
 import sparseml.core.session as session_manager
 from sparseml.pytorch.model_load.helpers import apply_recipe_structure_to_model
+from sparseml.transformers.sparsification.obcq.export import load_task_model
 import os
 import math
 
@@ -86,7 +87,21 @@ def simple_evaluate(
         model_args = simple_parse_args_string(model_args)
         recipe_file = os.path.join(model_args["pretrained"], "recipe.yaml")
         if "pretrained" in model_args and os.path.exists(recipe_file):
-            lm.model = apply_recipe_structure_to_model(lm.model, recipe_file, model_args["pretrained"])
+
+            if "trust_remote_code" in model_args:
+                trust_remote_code = model_args["trust_remote_code"]
+            else:
+                trust_remote_code = False
+
+            config = transformers.AutoConfig.from_pretrained(
+                model_args["pretrained"],
+                trust_remote_code=trust_remote_code,
+            )
+
+            lm.model = load_task_model("text-generation", model_args["pretrained"], config, trust_remote_code)
+            lm.model.train()
+
+            apply_recipe_structure_to_model(lm.model, recipe_file, model_args["pretrained"])
             lm.model.to(device)
             no_cache = True
 
