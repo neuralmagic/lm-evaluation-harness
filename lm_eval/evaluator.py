@@ -9,14 +9,13 @@ import lm_eval.base
 from lm_eval.utils import positional_deprecated, run_task_tests, simple_parse_args_string
 from lm_eval.models.gpt2 import HFLM
 
-
+import torch
 import numpy as np
 import transformers
 
 from sparseml.core.framework import Framework
 import sparseml.core.session as session_manager
-from sparseml.pytorch.model_load.helpers import apply_recipe_structure_to_model
-from sparseml.transformers.sparsification.obcq.export import load_task_model
+from sparseml.transformers.utils import SparseAutoModel
 import os
 import math
 
@@ -89,6 +88,8 @@ def simple_evaluate(
             },
         )
 
+
+
         model_args = simple_parse_args_string(model_args)
         recipe_file = os.path.join(model_args["pretrained"], "recipe.yaml")
         if "pretrained" in model_args and os.path.exists(recipe_file):
@@ -103,10 +104,18 @@ def simple_evaluate(
                 trust_remote_code=trust_remote_code,
             )
 
-            lm.model = load_task_model("text-generation", model_args["pretrained"], config, trust_remote_code)
-            lm.model.train()
+            if "dtype" in model_args:
+                torch_dtype = getattr(torch, model_args["dtype"])
+            else:
+                torch_dtype = "auto"
 
-            apply_recipe_structure_to_model(lm.model, recipe_file, model_args["pretrained"])
+            lm.model = SparseAutoModel.text_generation_from_pretrained(
+                model_name_or_path=model_args["pretrained"],
+                config=config,
+                recipe=recipe_file,
+                trust_remote_code=trust_remote_code,
+                torch_dtype=torch_dtype,
+            )
             lm.model.to(device)
             no_cache = True
 
