@@ -4,6 +4,7 @@ from . import anthropic_llms
 from . import huggingface
 from . import textsynth
 from . import dummy
+from . import sparseml
 
 MODEL_REGISTRY = {
     "hf": gpt2.HFLM,
