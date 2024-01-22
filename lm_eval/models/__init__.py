@@ -5,6 +5,7 @@ from . import huggingface
 from . import textsynth
 from . import deepsparse
 from . import dummy
+from . import sparseml
 from . import gguf
 
 MODEL_REGISTRY = {
