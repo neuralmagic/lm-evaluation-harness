@@ -219,6 +219,11 @@ class BaseLM(LM):
             else:
                 context_enc, continuation_enc = self._encode_pair(context, continuation)
 
+            if hasattr(self.tokenizer, "add_bos_token") and self.tokenizer.add_bos_token:
+                context_enc.insert(0, self.tokenizer.bos_token_id)
+            if hasattr(self.tokenizer, "add_eos_token") and self.tokenizer.add_eos_token:
+                continuation_enc.append(self.tokenizer.eos_token_id)
+
             new_reqs.append(((context, continuation), context_enc, continuation_enc))
 
         return self._loglikelihood_tokens(new_reqs)
