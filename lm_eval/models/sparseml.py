@@ -1,5 +1,6 @@
 from lm_eval.models.huggingface import AutoCausalLM
 from typing import Optional, Union
+import os
 import torch
 import transformers
 from sparseml.transformers.utils.sparse_model import SparseAutoModel
