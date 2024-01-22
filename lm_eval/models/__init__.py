@@ -18,6 +18,7 @@ MODEL_REGISTRY = {
     "textsynth": textsynth.TextSynthLM,
     "deepsparse": deepsparse.DeepSparseLM,
     "dummy": dummy.DummyLM,
+    "sparseml": sparseml.SparseML
     "gguf": gguf.GGUFLM,
     "optimum-causal": gpt2.OPTIMUMLM,
 }
