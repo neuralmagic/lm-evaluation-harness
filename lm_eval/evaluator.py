@@ -87,38 +87,6 @@ def simple_evaluate(
                 "device": device,
             },
         )
-
-
-
-        model_args = simple_parse_args_string(model_args)
-        recipe_file = os.path.join(model_args["pretrained"], "recipe.yaml")
-        if "pretrained" in model_args and os.path.exists(recipe_file):
-
-            if "trust_remote_code" in model_args:
-                trust_remote_code = model_args["trust_remote_code"]
-            else:
-                trust_remote_code = False
-
-            config = transformers.AutoConfig.from_pretrained(
-                model_args["pretrained"],
-                trust_remote_code=trust_remote_code,
-            )
-
-            if "dtype" in model_args:
-                torch_dtype = getattr(torch, model_args["dtype"])
-            else:
-                torch_dtype = "auto"
-
-            lm.model = SparseAutoModel.text_generation_from_pretrained(
-                model_name_or_path=model_args["pretrained"],
-                config=config,
-                recipe=recipe_file,
-                trust_remote_code=trust_remote_code,
-                torch_dtype=torch_dtype,
-            )
-            lm.model.to(device)
-            no_cache = True
-
     elif isinstance(model, transformers.PreTrainedModel):
         lm = lm_eval.models.get_model("hf-causal")(
             pretrained=model,
