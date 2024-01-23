@@ -7,6 +7,7 @@ from . import deepsparse
 from . import dummy
 from . import sparseml
 from . import gguf
+from . import sparseml
 
 MODEL_REGISTRY = {
     "hf": gpt2.HFLM,
@@ -22,6 +23,7 @@ MODEL_REGISTRY = {
     "sparseml": sparseml.SparseML
     "gguf": gguf.GGUFLM,
     "optimum-causal": gpt2.OPTIMUMLM,
+    "sparseml": sparseml.SparseML
 }
 
 

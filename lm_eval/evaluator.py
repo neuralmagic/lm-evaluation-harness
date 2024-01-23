@@ -7,11 +7,10 @@ import lm_eval.models
 import lm_eval.tasks
 import lm_eval.base
 from lm_eval.utils import positional_deprecated, run_task_tests
-from lm_eval.models.gpt2 import HFLM
 
+import torch
 import numpy as np
 import transformers
-
 
 @positional_deprecated
 def simple_evaluate(
