@@ -3,8 +3,6 @@ from typing import Optional, Union
 import os
 import torch
 import transformers
-from sparseml.transformers.utils.sparse_model import SparseAutoModel
-
 
 class SparseML(AutoCausalLM):
     def _create_auto_model(
@@ -16,8 +14,19 @@ class SparseML(AutoCausalLM):
         **kwargs,
     ) -> transformers.AutoModel:
 
-        recipe_file = os.path.join(pretrained, "recipe.yaml")
+        try:
+            import sparseml
+        except ModuleNotFoundError:
+            raise Exception(
+                "package `sparseml` is not installed. "
+                "Please install it via `pip install sparseml[transformers]`"
+            )
 
+        recipe_file = os.path.join(pretrained, "recipe.yaml")
+        if not os.path.isfile(recipe_file):
+            recipe_file = None
+
+        from sparseml.transformers.utils.sparse_model import SparseAutoModel
         model = SparseAutoModel.text_generation_from_pretrained(
             model_name_or_path=pretrained,
             config=self._config,
@@ -25,4 +34,5 @@ class SparseML(AutoCausalLM):
             trust_remote_code=trust_remote_code,
             torch_dtype=torch_dtype,
         )
+
         return model
