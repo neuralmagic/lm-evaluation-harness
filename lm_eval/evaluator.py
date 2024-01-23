@@ -13,12 +13,6 @@ import torch
 import numpy as np
 import transformers
 
-from sparseml.core.framework import Framework
-import sparseml.core.session as session_manager
-from sparseml.transformers.utils import SparseAutoModel
-import os
-import math
-
 @positional_deprecated
 def simple_evaluate(
     model,
