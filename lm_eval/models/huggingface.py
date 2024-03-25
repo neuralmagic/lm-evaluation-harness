@@ -190,6 +190,7 @@ class HuggingFaceAutoLM(BaseLM):
                 not add_special_tokens
             ), "Evaluating causal models with `add_special_tokens=True` is currently not supported."
 
+        use_accelerate=True  # hardcode accelerate usage
         # setup for automatic batch size detection
         if str(batch_size).startswith("auto"):
             batch_size = batch_size.split(":")
