@@ -40,6 +40,8 @@ def parse_args():
     parser.add_argument("--check_integrity", action="store_true")
     parser.add_argument("--write_out", action="store_true", default=False)
     parser.add_argument("--output_base_path", type=str, default=None)
+    parser.add_argument("--clearml_project", type=str, default=None)
+    parser.add_argument("--clearml_task", type=str, default=None)
 
     return parser.parse_args()
 
@@ -92,6 +94,17 @@ def main():
             os.makedirs(dirname, exist_ok=True)
         with open(args.output_path, "w") as f:
             f.write(dumped)
+
+    if args.clearml_project is not None and args.clearml_task is not None:
+        from clearml import Task
+        clearml_task = Task.get_task(project_name=args.clearml_project, task_name=args.clearml_task)
+        clearml_task.upload_artifact(name='lm-evaluation-harness output', artifact_object=results)
+        if "result" in results:
+            for task in results["result"]:
+                for metric in results["result"][task]:
+                    name = task + "_" + metric
+                    task.get_logger().report_single_value(name=name, value=results["result"][task][metric])
+
 
     batch_sizes = ",".join(map(str, results["config"]["batch_sizes"]))
     print(
