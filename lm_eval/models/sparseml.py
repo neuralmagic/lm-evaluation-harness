@@ -26,7 +26,7 @@ class SparseML(AutoCausalLM):
         if not os.path.isfile(recipe_file):
             recipe_file = None
 
-        from sparseml.transformers import SparseAutoModel
+        from sparseml.transformers.utils.sparse_model import SparseAutoModel
         model = SparseAutoModel.text_generation_from_pretrained(
             model_name_or_path=pretrained,
             config=self._config,
