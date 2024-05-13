@@ -97,7 +97,7 @@ def main():
         if "results" in results:
             for task in results["results"]:
                 for metric in results["results"][task]:
-                    name = task + "_" + metric
+                    name = task + "_" + args.num_fewshot + "shot_" + metric
                     clearml_task.get_logger().report_single_value(name=name, value=results["results"][task][metric])
         clearml_task.mark_completed()
 
