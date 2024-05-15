@@ -499,7 +499,8 @@ class HuggingFaceAutoLM(BaseLM):
             else:
                 max_tokens = max_generation_length
 
-            if hasattr(self.tokenizer, "add_bos_token") and self.tokenizer.add_bos_token:
+            # Tuan: always add bos token
+            if True or (hasattr(self.tokenizer, "add_bos_token") and self.tokenizer.add_bos_token):
                 context = [self.tokenizer.bos_token + c for c in context]
             token_context = self.tok_encode_batch(context)
 
