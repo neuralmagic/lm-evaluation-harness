@@ -8,7 +8,7 @@ from typing import Union
 
 from lm_eval import evaluator, utils
 from lm_eval.evaluator import request_caching_arg_to_dict
-from lm_eval.logging import EvaluationTracker, WandbLogger
+from lm_eval.logging import EvaluationTracker, WandbLogger, ClearmlLogger
 from lm_eval.tasks import TaskManager
 from lm_eval.utils import handle_non_serializable, make_table, simple_parse_args_string
 
@@ -199,6 +199,12 @@ def setup_parser() -> argparse.ArgumentParser:
         help="Comma separated string arguments passed to wandb.init, e.g. `project=lm-eval,job_type=eval",
     )
     parser.add_argument(
+        "--clearml_args",
+        type=str,
+        default="",
+        help="Comma separated string arguments passed to clearml.Task.init, e.g. `project_name=lm-eval,task_name=eval",
+    )
+    parser.add_argument(
         "--hf_hub_log_args",
         type=str,
         default="",
@@ -248,6 +254,9 @@ def cli_evaluate(args: Union[argparse.Namespace, None] = None) -> None:
 
     if args.wandb_args:
         wandb_logger = WandbLogger(**simple_parse_args_string(args.wandb_args))
+
+    if args.clearml_args:
+        clearml_logger = ClearmlLogger(**simple_parse_args_string(args.clearml_args))
 
     eval_logger = utils.eval_logger
     eval_logger.setLevel(getattr(logging, f"{args.verbosity}"))
@@ -365,6 +374,7 @@ def cli_evaluate(args: Union[argparse.Namespace, None] = None) -> None:
         numpy_random_seed=args.seed[1],
         torch_random_seed=args.seed[2],
         fewshot_random_seed=args.seed[3],
+        clearml_project=args.
         **request_caching_args,
     )
 
@@ -389,6 +399,15 @@ def cli_evaluate(args: Union[argparse.Namespace, None] = None) -> None:
             except Exception as e:
                 eval_logger.info(f"Logging to Weights and Biases failed due to {e}")
 
+        if args.clearml_args:
+            try:
+                clearml_logger.post_init(results)
+                clearml_logger.log_eval_result()
+                if args.log_samples:
+                    clearml_logger.log_eval_samples(samples)
+            except Exception as e:
+                eval_logger.info(f"Logging to Weights and Biases failed due to {e}")
+
         evaluation_tracker.save_results_aggregated(
             results=results, samples=samples if args.log_samples else None
         )
@@ -410,6 +429,10 @@ def cli_evaluate(args: Union[argparse.Namespace, None] = None) -> None:
         if args.wandb_args:
             # Tear down wandb run once all the logging is done.
             wandb_logger.run.finish()
+
+        if args.clearml_args:
+            # Tear down wandb run once all the logging is done.
+            clearml_logger.finish()
 
 
 if __name__ == "__main__":
