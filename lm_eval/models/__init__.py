@@ -8,6 +8,7 @@ from . import dummy
 from . import sparseml
 from . import gguf
 from . import sparseml
+from . import autogptq
 
 MODEL_REGISTRY = {
     "hf": gpt2.HFLM,
@@ -23,6 +24,7 @@ MODEL_REGISTRY = {
     "gguf": gguf.GGUFLM,
     "optimum-causal": gpt2.OPTIMUMLM,
     "sparseml": sparseml.SparseML,
+    "autogptq": autogptq.AutoGPTQLM
 }
 
 
