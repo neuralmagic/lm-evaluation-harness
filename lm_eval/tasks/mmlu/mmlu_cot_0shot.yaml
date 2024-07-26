@@ -1,0 +1,15 @@
+dataset_path: meta-llama/Meta-Llama-3.1-8B-Instruct-evals
+dataset_name: Meta-Llama-3.1-8B-Instruct-evals__mmlu__0_shot__cot__details
+test_split: latest
+output_type: multiple_choice
+doc_to_text: "{{input_final_prompts}}"
+doc_to_choice: ["A", "B", "C", "D"]
+doc_to_target: "{{input_correct_responses}}"
+metric_list:
+  - metric: acc
+    aggregation: mean
+    higher_is_better: true
+metadata:
+  version: 0.0
+dataset_kwargs:
+  trust_remote_code: true
