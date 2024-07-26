@@ -1,6 +1,8 @@
 task: mmlu_cot_0shot_llama_3.1_instruct
-dataset_path: meta-llama/Meta-Llama-3.1-8B-Instruct-evals
-dataset_name: Meta-Llama-3.1-8B-Instruct-evals__mmlu__0_shot__cot__details
+#dataset_path: meta-llama/Meta-Llama-3.1-8B-Instruct-evals
+#dataset_name: Meta-Llama-3.1-8B-Instruct-evals__mmlu__0_shot__cot__details
+#test_split: train
+dataset_path: /network/alexandre/datasets/meta-llama__Meta-Llama-3.1-8B-Instruct-evals/Meta-Llama-3.1-8B-Instruct-evals__mmlu__0_shot__cot__details
 test_split: latest
 output_type: multiple_choice
 doc_to_text: "{{input_final_prompts.0}}"
