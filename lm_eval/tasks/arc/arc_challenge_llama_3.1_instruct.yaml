@@ -1,0 +1,6 @@
+include: arc_easy.yaml
+task: arc_challenge_llama_3.1_instruct
+dataset_name: ARC-Challenge
+doc_to_text: "Given the following question and {{ choices.text | length }} candidate answers (A, B{% if choices.text | length > 2 %}, C{% endif %}{% if choices.text | length > 3 %} and D{% endif %}), choose the best answer.\nQuestion: {{ question }}\nA. {{ choices.text[0] }}\nB. {{ choices.text[1] }}\n{% if choices.text | length > 2 %}C. {{ choices.text[2] }}\n{% endif %}{% if choices.text | length > 3 %}D. {{ choices.text[3] }}\n{% endif %}Your response should end with \"The best answer is [the_answer_letter]\" where the [the_answer_letter] is one of A, B{% if choices.text | length > 2 %}, C{% endif %}{% if choices.text | length > 3 %} and D{% endif %}"
+doc_to_choice: "{{choices.label}}"
+target_delimiter: "The best answer is "
