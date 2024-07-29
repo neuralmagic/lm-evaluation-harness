@@ -1,0 +1,10 @@
+group: llama_3.1_instruct
+group_alias: Llama-3.1-Instruct evals
+task:
+  - task: arc_challenge_llama_3.1_instruct
+    fewshot_split: validation
+    num_fewshot: 0
+  - task: mmlu_cot_0shot_llama_3.1_instruct
+    num_fewshot: 0
+  - task: gsm8k_cot_llama_3.1_instruct
+    num_fewshot: 8
