@@ -1,0 +1,6 @@
+"dataset_name": "high_school_microeconomics"
+"description": ""
+"include": "_mmlu_llama_3.1_instruct_template_yaml"
+"tag": "mmlu_llama_3.1_instruct_social_sciences"
+"task": "mmlu_llama_3.1_instruct_high_school_microeconomics"
+"task_alias": "high school microeconomics"

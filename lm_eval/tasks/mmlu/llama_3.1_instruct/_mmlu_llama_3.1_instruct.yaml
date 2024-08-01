@@ -1,0 +1,6 @@
+group: mmlu_llama_3.1_instruct
+task:
+- mmlu_llama_3.1_instruct_stem
+- mmlu_llama_3.1_instruct_other
+- mmlu_llama_3.1_instruct_social_sciences
+- mmlu_llama_3.1_instruct_humanities
