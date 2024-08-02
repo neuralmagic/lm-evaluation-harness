@@ -4,3 +4,6 @@ task:
 - mmlu_llama_3.1_instruct_other
 - mmlu_llama_3.1_instruct_social_sciences
 - mmlu_llama_3.1_instruct_humanities
+aggregate_metric_list:
+  - metric: acc
+    weight_by_size: True

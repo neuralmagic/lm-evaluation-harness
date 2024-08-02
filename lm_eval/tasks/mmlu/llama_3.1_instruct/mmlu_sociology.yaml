@@ -1,6 +1,6 @@
 "dataset_name": "sociology"
 "description": ""
 "include": "_mmlu_llama_3.1_instruct_template_yaml"
-"tag": "mmlu_llama_3.1_instruct_social_sciences"
+"tag": "mmlu_llama_3.1_instruct_social_sciences_tasks"
 "task": "mmlu_llama_3.1_instruct_sociology"
 "task_alias": "sociology"

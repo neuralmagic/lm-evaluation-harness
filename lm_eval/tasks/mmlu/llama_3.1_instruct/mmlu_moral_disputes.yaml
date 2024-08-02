@@ -1,6 +1,6 @@
 "dataset_name": "moral_disputes"
 "description": ""
 "include": "_mmlu_llama_3.1_instruct_template_yaml"
-"tag": "mmlu_llama_3.1_instruct_humanities"
+"tag": "mmlu_llama_3.1_instruct_humanities_tasks"
 "task": "mmlu_llama_3.1_instruct_moral_disputes"
 "task_alias": "moral disputes"
