@@ -99,12 +99,12 @@ class ContextSampler:
                 chat_history.append(
                     {
                         "role": "assistant",
-                        "content": str(doc_target[0])
+                        "content": self.target_delimiter + str(doc_target[0])
                         if isinstance(doc_target, list)
-                        else doc_target
+                        else self.target_delimiter + doc_target
                         if self.config.doc_to_choice is None
                         or isinstance(doc_target, str)
-                        else str(self.doc_to_choice(doc)[doc_target]),
+                        else self.target_delimiter + str(self.doc_to_choice(doc)[doc_target]),
                     }
                 )
         else:

@@ -1287,11 +1287,11 @@ class ConfigurableTask(Task):
                 # If there are multiple inputs, choices are placed in the ctx
                 cont = self.doc_to_target(doc)
                 arguments = [
-                    (ctx + choice, f"{target_delimiter}{cont}") for choice in choices
+                    (ctx + f"{target_delimiter}{choice}", f"{target_delimiter}{cont}") for choice in choices
                 ]
             else:
                 # Otherwise they are placed in the continuation
-                arguments = [(ctx, f"{target_delimiter}{cont}") for cont in choices]
+                arguments = [(ctx + f"{target_delimiter}", f"{target_delimiter}{cont}") for cont in choices]
 
             request_list = [
                 Instance(
@@ -1326,7 +1326,8 @@ class ConfigurableTask(Task):
             return request_list
 
         elif self.OUTPUT_TYPE == "generate_until":
-            arguments = (ctx, deepcopy(self.config.generation_kwargs))
+            target_delimiter = self.config.target_delimiter
+            arguments = (ctx + f"{target_delimiter}", deepcopy(self.config.generation_kwargs))
 
         return Instance(
             request_type=self.OUTPUT_TYPE, doc=doc, arguments=arguments, idx=0, **kwargs
