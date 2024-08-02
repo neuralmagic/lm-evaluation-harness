@@ -17,12 +17,11 @@ generation_kwargs:
   - <|im_end|>
   - <|eot_id|>
   - <|end_of_text|>
-  - "."
-  - "\n"
 filter_list:
   - filter:
-    - function: remove_whitespace
-    name: remove_leading_whitespace
+    - function: multi_choice_regex
+      regex_pattern: ([ABCD])
+    name: multi_choice
 tag:
   - ai2_arc
 metric_list:

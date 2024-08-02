@@ -1326,8 +1326,7 @@ class ConfigurableTask(Task):
             return request_list
 
         elif self.OUTPUT_TYPE == "generate_until":
-            target_delimiter = self.config.target_delimiter
-            arguments = (ctx + f"{target_delimiter}", deepcopy(self.config.generation_kwargs))
+            arguments = (ctx, deepcopy(self.config.generation_kwargs))
 
         return Instance(
             request_type=self.OUTPUT_TYPE, doc=doc, arguments=arguments, idx=0, **kwargs
