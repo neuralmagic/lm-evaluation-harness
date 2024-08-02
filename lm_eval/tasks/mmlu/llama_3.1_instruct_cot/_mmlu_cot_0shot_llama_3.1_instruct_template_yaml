@@ -1,0 +1,31 @@
+dataset_path: hails/mmlu_no_train # a copy of `cais/mmlu` with no auxiliary_train split
+test_split: test
+fewshot_split: dev
+output_type: generate_until
+doc_to_text: "Given the following question and four candidate answers (A, B, C and D), choose the best answer.\nQuestion: {{question.strip()}}\nA. {{choices[0]}}\nB. {{choices[1]}}\nC. {{choices[2]}}\nD. {{choices[3]}}\nYour response should end with \"The best answer is [the_answer_letter]\" where the [the_answer_letter] is one of A, B, C or D.\n\n- For simple problems:\nDirectly provide the answer with minimal explanation.\n\n- For complex problems:\nUse this step-by-step format:\n## Step 1: [Concise description]\n[Brief explanation]\n## Step 2: [Concise description]\n[Brief explanation]\n\nRegardless of the approach, always conclude with:\nThe best answer is [the_answer_letter].\nwhere the [the_answer_letter] is one of A, B, C or D.\n\nLet's think step by step."
+doc_to_target: "{{['A', 'B', 'C', 'D'][answer]}}"
+generation_kwargs:
+  do_sample: false
+  until:
+    - </s>
+    - <|im_end|>
+    - <|eot_id|>
+    - <|end_of_text|>
+filter_list:
+- filter:
+  - function: regex
+    regex_pattern: The best answer is ([ABCD])
+  - function: take_first
+  name: strict-match
+generation_kwargs:
+  do_sample: false
+  until:
+    - </s>
+    - <|im_end|>
+    - <|eot_id|>
+    - <|end_of_text|>
+metadata:
+  version: 2.0
+dataset_kwargs:
+  trust_remote_code: true
+num_fewshot: 0

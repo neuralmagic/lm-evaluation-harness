@@ -1,4 +1,4 @@
-task: mmlu_cot_0shot_llama_3.1_instruct
+task: mmlu_cot_0shot_llama_3.1_instruct_old
 dataset_path: meta-llama/Meta-Llama-3.1-8B-Instruct-evals
 dataset_name: Meta-Llama-3.1-8B-Instruct-evals__mmlu__0_shot__cot__details
 test_split: latest
