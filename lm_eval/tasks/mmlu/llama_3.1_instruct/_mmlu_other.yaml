@@ -3,7 +3,8 @@ group_alias: other
 task:
   - mmlu_llama_3.1_instruct_other_tasks
 aggregate_metric_list:
-  - metric: acc
+  - metric: exact_match
     weight_by_size: True
+    filter_list: multi_choice
 metadata:
   version: 1
