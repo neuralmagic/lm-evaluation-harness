@@ -3,7 +3,8 @@ group_alias: social sciences
 task:
   - mmlu_cot_0shot_llama_3.1_instruct_social_sciences_tasks
 aggregate_metric_list:
-  - metric: acc
+  - metric: exact_match
     weight_by_size: True
+    filter_list: strict-match
 metadata:
   version: 1
