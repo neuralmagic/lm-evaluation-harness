@@ -416,7 +416,7 @@ class HFLM(TemplateLM):
 
     @property
     def max_gen_toks(self) -> int:
-        return 256
+        return 1024
 
     @property
     def batch_size(self):
