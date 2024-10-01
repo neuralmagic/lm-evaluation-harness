@@ -666,7 +666,8 @@ class HFMultimodalLM(HFLM):
                 max_gen_toks = kwargs.pop("max_gen_toks")
             else:
                 max_gen_toks = self.max_gen_toks
-
+            
+            print(f"changed max_gen_toks: ", max_gen_toks) 
             ### end stuff that's entirely copied verbatim from HFLM ###
 
             max_ctx_len = self.max_length - max_gen_toks
