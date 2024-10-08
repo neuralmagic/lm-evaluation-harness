@@ -639,6 +639,18 @@ def configure_pad_token(
     Raises:
         AssertionError: If the tokenizer is of type RWKVWorldTokenizer or Rwkv5Tokenizer and the padding token id is not 0.
     """
+
+    # Check if the tokenizer can have a padding token
+    if not hasattr(tokenizer, 'pad_token') or tokenizer.pad_token is None:
+        # Handle cases where pad_token is not available in the tokenizer
+        if hasattr(tokenizer, 'add_special_tokens'):
+            # Add a pad token if the tokenizer allows it
+            tokenizer.add_special_tokens({'pad_token': '[PAD]'})
+            tokenizer.pad_token_id = tokenizer.convert_tokens_to_ids('[PAD]')
+        else:
+            # Skip padding configuration for tokenizers without pad_token
+            return tokenizer
+
     if tokenizer.pad_token:
         pass
     elif tokenizer.unk_token:
