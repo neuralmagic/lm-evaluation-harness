@@ -78,6 +78,7 @@ class VLLM(TemplateLM):
         self._max_length = max_model_len if max_model_len is not None else max_length
         self.tensor_parallel_size = int(tensor_parallel_size)
         self.data_parallel_size = int(data_parallel_size)
+        self.tokenizer_mode = tokenizer_mode
         self.model_args = {
             "model": pretrained,
             "gpu_memory_utilization": float(gpu_memory_utilization),
