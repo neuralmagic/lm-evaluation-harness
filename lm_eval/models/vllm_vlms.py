@@ -48,11 +48,16 @@ class VLLM_VLM(VLLM):
         )
         self.interleave = interleave
         self.max_images = max_images
-        self.processor = transformers.AutoProcessor.from_pretrained(
-            pretrained,
-            revision=revision,
-            trust_remote_code=trust_remote_code,
-        )
+
+        if self.tokenizer_mode == "mistral":
+            self.processor = self.tokenizer
+        else:
+            self.processor = transformers.AutoProcessor.from_pretrained(
+                pretrained,
+                revision=revision,
+                trust_remote_code=trust_remote_code,
+            )
+
         self.chat_applied: bool = False
 
     def tok_batch_multimodal_encode(
