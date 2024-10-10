@@ -154,9 +154,28 @@ class HFMultimodalLM(HFLM):
 
         # encode text+images
         # TODO: why does (Qwen2-VL) processor error when attempting to add special tokens to text?
-        encoding = self.processor(
-            text=string, images=images, return_tensors=None
-        )  # , **special_tokens_kwargs)
+            # Check if the model requires handling chat-based prompts (like Pixtral-12b)
+        if self.model.name_or_path == "mistral-community/pixtral-12b":
+            # Prepare chat history for applying the chat template
+            chat_history = [
+                {
+                    "role": "user",
+                    "content": string + "".join([DEFAULT_IMAGE_PLACEHOLDER] * len(images))  # Text with image placeholders
+                }
+            ]
+                
+            # Apply the chat template specific to the processor of this model
+            prompt = self.processor.apply_chat_template(chat_history)
+
+            # Encode the text + images with interleaving for Pixtral-12b
+            encoding = self.processor(
+                text=prompt, images=images, return_tensors=None
+            )
+        else:
+
+            encoding = self.processor(
+                text=string, images=images, return_tensors=None
+            )  # , **special_tokens_kwargs)
 
         # remove (and store) our tokenized text
         text_encoding = encoding.pop("input_ids")
