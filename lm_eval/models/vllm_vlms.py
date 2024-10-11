@@ -67,15 +67,35 @@ class VLLM_VLM(VLLM):
         left_truncate_len: int = None,
         truncation: bool = False,
     ):
-        images = [img[: self.max_images] for img in images]
 
+        # Limit images to the maximum allowed per message
+        images = [img[: self.max_images] for img in images]
         outputs = []
-        for x, i in zip(strings, images):
-            inputs = {
-                "prompt": x,
-                "multi_modal_data": {"image": i},
-            }
-            outputs.append(inputs)
+        
+        if self.tokenizer_mode == "mistral":
+            for text, img_list in zip(strings, images):
+                # Initialize the message content with the text prompt
+                content = [{"type": "text", "text": text}]
+                
+                # Add each image in the message as an "image_url" entry
+                for img_url in img_list:
+                    content.append({"type": "image_url", "image_url": {"url": img_url}})
+                
+                # Create the message structure
+                message = {
+                    "role": "user",  # You can change the role if needed (e.g., "assistant")
+                    "content": content
+                }
+
+            outputs.append(message)
+        else:
+            for x, i in zip(strings, images):
+                inputs = {
+                    "prompt": x,
+                    "multi_modal_data": {"image": i},
+                }
+                outputs.append(inputs)
+
         return outputs
 
     def _model_generate(
