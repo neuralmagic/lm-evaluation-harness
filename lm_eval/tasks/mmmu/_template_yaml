@@ -10,7 +10,7 @@ generation_kwargs:
     - "<|endoftext|>"
   temperature: 0.0
   do_sample: false
-  max_gen_toks: 512
+  max_gen_toks: 2048
 metric_list:
   - metric: acc
     aggregation: mean
