@@ -156,6 +156,7 @@ class HFMultimodalLM(HFLM):
         # TODO: why does (Qwen2-VL) processor error when attempting to add special tokens to text?
             # Check if the model requires handling chat-based prompts (like Pixtral-12b)
         if self.model.name_or_path == "mistral-community/pixtral-12b":
+            print("Modified chat template")
             # Prepare chat history for applying the chat template
             chat_history = [
                 {
