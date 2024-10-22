@@ -1,4 +1,4 @@
-include: gsm8k-cot.yaml
+include: ../../gsm8k/gsm8k-cot.yaml
 doc_to_text: "Given the following problem, reason and give a final answer to the problem. \nProblem: {{question}}\nYour response should end with \"The final answer is [answer]\" where [answer] is the response to the problem."
 doc_to_target: '{{answer.split(''####'')[-1].strip() if answer is defined else target}}'
 fewshot_config:

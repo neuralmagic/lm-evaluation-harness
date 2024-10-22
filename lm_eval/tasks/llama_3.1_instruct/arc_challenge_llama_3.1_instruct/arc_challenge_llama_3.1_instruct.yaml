@@ -22,8 +22,6 @@ filter_list:
     - function: multi_choice_regex
       regex_pattern: ([ABCD])
     name: multi_choice
-tag:
-  - ai2_arc
 metric_list:
   - metric: exact_match
     aggregation: mean
