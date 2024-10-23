@@ -1,0 +1,6 @@
+"dataset_name": "high_school_mathematics"
+"description": ""
+"include": "_mmlu_hi_llama_3.1_instruct_template_yaml"
+"tag": "mmlu_hi_llama_3.1_instruct_stem_tasks"
+"task": "mmlu_hi_llama_3.1_instruct_high_school_mathematics"
+"task_alias": "high school mathematics"

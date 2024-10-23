@@ -1,0 +1,10 @@
+group: mmlu_hi_llama_3.1_instruct_other
+group_alias: other
+task:
+  - mmlu_hi_llama_3.1_instruct_other_tasks
+aggregate_metric_list:
+  - metric: exact_match
+    weight_by_size: True
+    filter_list: multi_choice
+metadata:
+  version: 1

@@ -1,0 +1,6 @@
+"dataset_name": "college_computer_science"
+"description": ""
+"include": "_mmlu_th_llama_3.1_instruct_template_yaml"
+"tag": "mmlu_th_llama_3.1_instruct_stem_tasks"
+"task": "mmlu_th_llama_3.1_instruct_college_computer_science"
+"task_alias": "college computer science"
