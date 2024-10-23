@@ -1,0 +1,9 @@
+group: math_cot_llama_3.1_instruct
+task:
+  - math_algebra_llama_3.1_instruct
+  - math_counting_and_prob_llama_3.1_instruct
+  - math_geometry_llama_3.1_instruct
+  - math_intermediate_algebra_llama_3.1_instruct
+  - math_num_theory_llama_3.1_instruct
+  - math_prealgebra_llama_3.1_instruct
+  - math_precalculus_llama_3.1_instruct

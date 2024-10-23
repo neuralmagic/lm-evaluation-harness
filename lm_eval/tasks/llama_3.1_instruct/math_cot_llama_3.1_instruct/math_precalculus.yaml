@@ -1,0 +1,3 @@
+include: _math_llama_3.1_instruct_template_yaml
+dataset_name: precalculus
+task: math_precalculus_llama_3.1_instruct
