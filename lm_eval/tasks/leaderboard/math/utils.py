@@ -36,7 +36,7 @@ def process_docs(dataset: datasets.Dataset) -> datasets.Dataset:
             out_doc["few_shot"] = True
         return out_doc
 
-    return dataset.map(_process_doc)
+    return dataset.filter(lambda x: x["level"] == "Level 5").map(_process_doc)
 
 
 def list_fewshot_samples() -> list[dict]:
