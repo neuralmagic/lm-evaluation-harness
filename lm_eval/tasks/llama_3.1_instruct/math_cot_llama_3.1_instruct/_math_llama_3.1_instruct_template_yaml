@@ -12,6 +12,7 @@ generation_kwargs:
     - <|im_end|>
     - <|eot_id|>
     - <|end_of_text|>
+    - <|end▁of▁sentence|>
   do_sample: false
   temperature: 0
   max_gen_toks: 5120
