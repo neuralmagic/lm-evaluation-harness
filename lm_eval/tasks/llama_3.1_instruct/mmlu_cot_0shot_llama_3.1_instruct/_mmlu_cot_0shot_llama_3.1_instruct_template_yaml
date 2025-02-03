@@ -11,6 +11,7 @@ generation_kwargs:
     - <|im_end|>
     - <|eot_id|>
     - <|end_of_text|>
+    - <|end▁of▁sentence|>
 filter_list:
 - filter:
   - function: regex
