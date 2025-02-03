@@ -59,4 +59,5 @@ generation_kwargs:
   - <|im_end|>
   - <|eot_id|>
   - <|end_of_text|>
+  - <|end▁of▁sentence|>
 task: gsm8k_cot_llama_3.1_instruct
