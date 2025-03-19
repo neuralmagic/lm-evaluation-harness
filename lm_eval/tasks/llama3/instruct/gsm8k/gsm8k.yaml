@@ -44,7 +44,7 @@ filter_list:
   - name: strict_match
     filter:
       - function: "regex"
-        regex_pattern: "final answer is (\-?[0-9\.\,]+)"
+        regex_pattern: final answer is (\-?[0-9\.\,]+)
         group_select: -1
       - function: take_first
   - name: flexible_extract
