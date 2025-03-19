@@ -7,4 +7,4 @@ task:
 aggregate_metric_list:
   - metric: exact_match
     weight_by_size: True
-    filter_list: strict-match
+    filter_list: strict_match

@@ -20,6 +20,12 @@ filter_list:
         regex_pattern: "best answer is ([A-Z])"
         group_select: -1
       - function: take_first
+metric_list:
+  - metric: exact_match
+    aggregation: mean
+    higher_is_better: true
+    ignore_case: true
+    ignore_punctuation: true
 metadata:
   version: 1.0
 dataset_kwargs:
