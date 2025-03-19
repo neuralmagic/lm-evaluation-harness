@@ -1,0 +1,3 @@
+include: _math_hard_llama_template_yaml
+dataset_name: counting_and_probability
+task: math_hard_counting_and_prob_llama

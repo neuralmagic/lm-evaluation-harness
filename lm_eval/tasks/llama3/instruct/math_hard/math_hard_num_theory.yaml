@@ -1,0 +1,3 @@
+include: _math_hard_llama_template_yaml
+dataset_name: number_theory
+task: math_hard_num_theory_llama

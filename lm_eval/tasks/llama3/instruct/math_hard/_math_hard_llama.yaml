@@ -1,0 +1,13 @@
+group: math_hard_llama
+task:
+  - math_hard_algebra_llama
+  - math_hard_counting_and_prob_llama
+  - math_hard_geometry_llama
+  - math_hard_intermediate_algebra_llama
+  - math_hard_num_theory_llama
+  - math_hard_prealgebra_llama
+  - math_hard_precalculus_llama
+aggregate_metric_list:
+  - metric: exact_match
+    aggregation: mean
+    weight_by_size: True
