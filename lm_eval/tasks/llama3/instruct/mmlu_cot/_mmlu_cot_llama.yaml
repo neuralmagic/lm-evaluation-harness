@@ -1,7 +1,7 @@
 group: mmlu_cot_llama
 task:
-- mmlu_cot_llama_instruct_stem
-- mmlu_cot_llama_instruct_other
+- mmlu_cot_llama_stem
+- mmlu_cot_llama_other
 - mmlu_cot_llama_social_sciences
 - mmlu_cot_llama_humanities
 aggregate_metric_list:
