@@ -1,12 +1,12 @@
 group: math_llama
 task:
-  - math_algebra
-  - math_counting_and_prob
-  - math_geometry
-  - math_intermediate_algebra
-  - math_num_theory
-  - math_prealgebra
-  - math_precalculus
+  - math_algebra_llama
+  - math_counting_and_prob_llama
+  - math_geometry_llama
+  - math_intermediate_algebra_llama
+  - math_num_theory_llama
+  - math_prealgebra_llama
+  - math_precalculus_llama
 aggregate_metric_list:
   - metric: exact_match
     aggregation: mean
