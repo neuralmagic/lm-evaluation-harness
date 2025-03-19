@@ -4,8 +4,8 @@ from typing import Dict, List, Optional
 
 import datasets
 
-from lm_eval.utils import eval_logger
-
+import logging
+eval_logger = logging.getLogger("lm-eval")
 
 try:
     import sympy
