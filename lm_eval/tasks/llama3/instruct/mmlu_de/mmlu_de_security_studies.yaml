@@ -109,6 +109,7 @@ fewshot_config:
     - C
     input_question: In welchen Analyserahmen wurde Terrorismus betrachtet (Stand 2020)?
 include: _continuation_template_yaml
+process_docs: '!function utils.process_docs_security_studies'
 tag: mmlu_de_llama_social_sciences_tasks
 task: mmlu_de_llama_security_studies
 task_alias: security_studies

@@ -60,6 +60,7 @@ fewshot_config:
       \ des folgenden Satzes? Schildkr\xF6ten haben ein langes Leben und sind gl\xFC\
       ckliche Kreaturen, es sei denn, sie werden verletzt."
 include: _continuation_template_yaml
+process_docs: '!function utils.process_docs_formal_logic'
 tag: mmlu_de_llama_humanities_tasks
 task: mmlu_de_llama_formal_logic
 task_alias: formal_logic

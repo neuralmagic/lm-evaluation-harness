@@ -53,6 +53,7 @@ fewshot_config:
     - A
     input_question: Was ist kein Problem im Zusammenhang mit offiziellen Streikstatistiken?
 include: _continuation_template_yaml
+process_docs: '!function utils.process_docs_sociology'
 tag: mmlu_de_llama_social_sciences_tasks
 task: mmlu_de_llama_sociology
 task_alias: sociology

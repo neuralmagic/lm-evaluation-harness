@@ -57,6 +57,7 @@ fewshot_config:
       \ der nat\xFCrlichen Selektion angef\xFChrt. Alle der folgenden sind Beispiele\
       \ f\xFCr homologe Strukturen AUSSER"
 include: _continuation_template_yaml
+process_docs: '!function utils.process_docs_high_school_biology'
 tag: mmlu_de_llama_stem_tasks
 task: mmlu_de_llama_high_school_biology
 task_alias: high_school_biology

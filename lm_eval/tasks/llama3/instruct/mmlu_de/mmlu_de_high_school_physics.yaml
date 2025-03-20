@@ -55,6 +55,7 @@ fewshot_config:
       \ Arbeit ist erforderlich, um eine Ladung Q = +8 \xB5C vom Punkt (0, 4 Meter)\
       \ zum Punkt (3 Meter, 0) zu bewegen?"
 include: _continuation_template_yaml
+process_docs: '!function utils.process_docs_high_school_physics'
 tag: mmlu_de_llama_stem_tasks
 task: mmlu_de_llama_high_school_physics
 task_alias: high_school_physics

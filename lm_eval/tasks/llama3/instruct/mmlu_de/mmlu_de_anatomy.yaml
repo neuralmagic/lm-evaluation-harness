@@ -43,6 +43,7 @@ fewshot_config:
     - B
     input_question: "Welche der folgenden K\xF6rperh\xF6hlen enth\xE4lt die Hypophyse?"
 include: _continuation_template_yaml
+process_docs: '!function utils.process_docs_anatomy'
 tag: mmlu_de_llama_stem_tasks
 task: mmlu_de_llama_anatomy
 task_alias: anatomy

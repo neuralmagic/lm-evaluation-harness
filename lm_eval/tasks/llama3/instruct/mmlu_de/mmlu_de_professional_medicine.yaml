@@ -86,6 +86,7 @@ fewshot_config:
       \ Muskeln oder Muskelgruppen sind am n\xFCtzlichsten, um diese Dysfunktion mit\
       \ einer direkten Methode zu korrigieren?"
 include: _continuation_template_yaml
+process_docs: '!function utils.process_docs_professional_medicine'
 tag: mmlu_de_llama_other_tasks
 task: mmlu_de_llama_professional_medicine
 task_alias: professional_medicine
