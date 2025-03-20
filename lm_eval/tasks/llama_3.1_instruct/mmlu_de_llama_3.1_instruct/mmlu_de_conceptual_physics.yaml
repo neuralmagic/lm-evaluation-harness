@@ -1,0 +1,6 @@
+"dataset_name": "conceptual_physics"
+"description": ""
+"include": "_mmlu_de_llama_3.1_instruct_template_yaml"
+"tag": "mmlu_de_llama_3.1_instruct_stem_tasks"
+"task": "mmlu_de_llama_3.1_instruct_conceptual_physics"
+"task_alias": "conceptual physics"

@@ -1,0 +1,6 @@
+"dataset_name": "high_school_us_history"
+"description": ""
+"include": "_mmlu_th_llama_3.1_instruct_template_yaml"
+"tag": "mmlu_th_llama_3.1_instruct_humanities_tasks"
+"task": "mmlu_th_llama_3.1_instruct_high_school_us_history"
+"task_alias": "high school us history"

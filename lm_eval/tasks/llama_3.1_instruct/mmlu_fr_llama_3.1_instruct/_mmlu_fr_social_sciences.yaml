@@ -1,0 +1,10 @@
+group: mmlu_fr_llama_3.1_instruct_social_sciences
+group_alias: social sciences
+task:
+  - mmlu_fr_llama_3.1_instruct_social_sciences_tasks
+aggregate_metric_list:
+  - metric: exact_match
+    weight_by_size: True
+    filter_list: multi_choice
+metadata:
+  version: 1

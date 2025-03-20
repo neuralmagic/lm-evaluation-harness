@@ -1,0 +1,6 @@
+"dataset_name": "college_medicine"
+"description": ""
+"include": "_mmlu_it_llama_3.1_instruct_template_yaml"
+"tag": "mmlu_it_llama_3.1_instruct_other_tasks"
+"task": "mmlu_it_llama_3.1_instruct_college_medicine"
+"task_alias": "college medicine"
