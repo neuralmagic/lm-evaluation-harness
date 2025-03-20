@@ -1,6 +1,0 @@
-"dataset_name": "jurisprudence"
-"description": ""
-"include": "_mmlu_th_llama_3.1_instruct_template_yaml"
-"tag": "mmlu_th_llama_3.1_instruct_humanities_tasks"
-"task": "mmlu_th_llama_3.1_instruct_jurisprudence"
-"task_alias": "jurisprudence"

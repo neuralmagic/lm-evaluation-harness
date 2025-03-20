@@ -1,6 +1,0 @@
-"dataset_name": "human_aging"
-"description": ""
-"include": "_mmlu_hi_llama_3.1_instruct_template_yaml"
-"tag": "mmlu_hi_llama_3.1_instruct_other_tasks"
-"task": "mmlu_hi_llama_3.1_instruct_human_aging"
-"task_alias": "human aging"

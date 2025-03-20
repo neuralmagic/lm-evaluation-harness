@@ -1,6 +1,0 @@
-"dataset_name": "world_religions"
-"description": ""
-"include": "_mmlu_fr_llama_3.1_instruct_template_yaml"
-"tag": "mmlu_fr_llama_3.1_instruct_humanities_tasks"
-"task": "mmlu_fr_llama_3.1_instruct_world_religions"
-"task_alias": "world religions"

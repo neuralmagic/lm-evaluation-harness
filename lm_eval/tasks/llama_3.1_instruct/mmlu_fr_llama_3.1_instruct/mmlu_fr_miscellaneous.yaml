@@ -1,6 +1,0 @@
-"dataset_name": "miscellaneous"
-"description": ""
-"include": "_mmlu_fr_llama_3.1_instruct_template_yaml"
-"tag": "mmlu_fr_llama_3.1_instruct_other_tasks"
-"task": "mmlu_fr_llama_3.1_instruct_miscellaneous"
-"task_alias": "miscellaneous"

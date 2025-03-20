@@ -1,6 +1,0 @@
-"dataset_name": "professional_psychology"
-"description": ""
-"include": "_mmlu_de_llama_3.1_instruct_template_yaml"
-"tag": "mmlu_de_llama_3.1_instruct_social_sciences_tasks"
-"task": "mmlu_de_llama_3.1_instruct_professional_psychology"
-"task_alias": "professional psychology"
