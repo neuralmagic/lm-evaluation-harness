@@ -45,7 +45,7 @@ fewshot_config:
     input_question: "Die mittlere \xDCberlebenszeit bis AIDS und Tod wurde wie folgt\
       \ ermittelt:"
 include: _continuation_template_yaml
-process_docs: '!function utils.process_docs_virology'
+process_docs: !function utils.process_docs_virology
 tag: mmlu_de_llama_other_tasks
 task: mmlu_de_llama_virology
 task_alias: virology

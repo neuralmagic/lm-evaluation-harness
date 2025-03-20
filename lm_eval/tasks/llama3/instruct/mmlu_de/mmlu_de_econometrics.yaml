@@ -59,7 +59,7 @@ fewshot_config:
       \ 0,0084 und 0,0062 f\xFCr 1, 2, 3 bzw. 4 Verz\xF6gerungen. Was ist die optimale\
       \ Modellreihenfolge nach dem Informationskriterium von Akaike?"
 include: _continuation_template_yaml
-process_docs: '!function utils.process_docs_econometrics'
+process_docs: !function utils.process_docs_econometrics
 tag: mmlu_de_llama_social_sciences_tasks
 task: mmlu_de_llama_econometrics
 task_alias: econometrics

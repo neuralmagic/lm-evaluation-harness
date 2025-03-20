@@ -56,7 +56,7 @@ fewshot_config:
       \ Dem Myon ist es durch das Erhaltungsgesetz verboten, in ein Elektron und nur\
       \ ein einzelnes Neutrino zu zerfallen"
 include: _continuation_template_yaml
-process_docs: '!function utils.process_docs_college_physics'
+process_docs: !function utils.process_docs_college_physics
 tag: mmlu_de_llama_stem_tasks
 task: mmlu_de_llama_college_physics
 task_alias: college_physics

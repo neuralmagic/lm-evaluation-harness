@@ -54,7 +54,7 @@ fewshot_config:
       nnen hinzugef\xFCgt werden, bevor sich der pH-Wert signifikant zu \xE4ndern\
       \ beginnt?"
 include: _continuation_template_yaml
-process_docs: '!function utils.process_docs_high_school_chemistry'
+process_docs: !function utils.process_docs_high_school_chemistry
 tag: mmlu_de_llama_stem_tasks
 task: mmlu_de_llama_high_school_chemistry
 task_alias: high_school_chemistry

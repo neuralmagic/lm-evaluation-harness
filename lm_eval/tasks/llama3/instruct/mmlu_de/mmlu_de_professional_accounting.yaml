@@ -67,7 +67,7 @@ fewshot_config:
       ten bis zum Nebenbuch eines Nicht-Emittenten. Welche der folgenden Managementaussagen\
       \ wird durch diesen Test gest\xFCtzt?"
 include: _continuation_template_yaml
-process_docs: '!function utils.process_docs_professional_accounting'
+process_docs: !function utils.process_docs_professional_accounting
 tag: mmlu_de_llama_other_tasks
 task: mmlu_de_llama_professional_accounting
 task_alias: professional_accounting

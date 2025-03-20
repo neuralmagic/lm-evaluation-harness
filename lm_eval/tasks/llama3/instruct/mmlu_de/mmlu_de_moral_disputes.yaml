@@ -57,7 +57,7 @@ fewshot_config:
       \ diskutiert, \u201Eerstaunlich dumm\u201C sind, aber sie behauptet, dies sei\
       \ tats\xE4chlich ein Beweis daf\xFCr"
 include: _continuation_template_yaml
-process_docs: '!function utils.process_docs_moral_disputes'
+process_docs: !function utils.process_docs_moral_disputes
 tag: mmlu_de_llama_humanities_tasks
 task: mmlu_de_llama_moral_disputes
 task_alias: moral_disputes

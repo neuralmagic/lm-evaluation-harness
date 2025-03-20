@@ -53,7 +53,7 @@ fewshot_config:
     - C
     input_question: Wie hat Donald Trump im Wahlkampf 2016 die Globalisierung angegriffen?
 include: _continuation_template_yaml
-process_docs: '!function utils.process_docs_us_foreign_policy'
+process_docs: !function utils.process_docs_us_foreign_policy
 tag: mmlu_de_llama_social_sciences_tasks
 task: mmlu_de_llama_us_foreign_policy
 task_alias: us_foreign_policy

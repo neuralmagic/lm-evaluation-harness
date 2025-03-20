@@ -60,7 +60,7 @@ fewshot_config:
       r Vorhersagezwecke ist die optimale Kombination von Ma\xDFen eine, bei der die\
       \ Pr\xE4diktoren"
 include: _continuation_template_yaml
-process_docs: '!function utils.process_docs_professional_psychology'
+process_docs: !function utils.process_docs_professional_psychology
 tag: mmlu_de_llama_social_sciences_tasks
 task: mmlu_de_llama_professional_psychology
 task_alias: professional_psychology

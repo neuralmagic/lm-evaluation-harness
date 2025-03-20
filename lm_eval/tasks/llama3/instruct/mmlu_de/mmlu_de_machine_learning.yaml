@@ -68,7 +68,7 @@ fewshot_config:
       \ des Attributs haben sollten. W\xE4hlen Sie aus der folgenden Liste das gr\xF6\
       \xDFte Einzelproblem mit Pats Vorschlag aus:"
 include: _continuation_template_yaml
-process_docs: '!function utils.process_docs_machine_learning'
+process_docs: !function utils.process_docs_machine_learning
 tag: mmlu_de_llama_stem_tasks
 task: mmlu_de_llama_machine_learning
 task_alias: machine_learning

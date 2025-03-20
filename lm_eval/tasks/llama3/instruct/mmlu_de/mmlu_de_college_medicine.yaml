@@ -51,7 +51,7 @@ fewshot_config:
     - B
     input_question: 'Eine erwartete Nebenwirkung einer Kreatinsupplementierung ist:'
 include: _continuation_template_yaml
-process_docs: '!function utils.process_docs_college_medicine'
+process_docs: !function utils.process_docs_college_medicine
 tag: mmlu_de_llama_other_tasks
 task: mmlu_de_llama_college_medicine
 task_alias: college_medicine

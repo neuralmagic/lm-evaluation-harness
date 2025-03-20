@@ -63,7 +63,7 @@ fewshot_config:
     - A
     input_question: Warum ist der Mars rot?
 include: _continuation_template_yaml
-process_docs: '!function utils.process_docs_astronomy'
+process_docs: !function utils.process_docs_astronomy
 tag: mmlu_de_llama_stem_tasks
 task: mmlu_de_llama_astronomy
 task_alias: astronomy

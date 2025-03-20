@@ -64,7 +64,7 @@ fewshot_config:
     input_question: "Welche der folgenden Mengen hat die kleinste Standardabweichung?\
       \ Welche hat die gr\xF6\xDFte? I: {1,2,3} II: {-10,10} III: {100}"
 include: _continuation_template_yaml
-process_docs: '!function utils.process_docs_high_school_statistics'
+process_docs: !function utils.process_docs_high_school_statistics
 tag: mmlu_de_llama_stem_tasks
 task: mmlu_de_llama_high_school_statistics
 task_alias: high_school_statistics

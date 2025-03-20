@@ -48,7 +48,7 @@ fewshot_config:
     - C
     input_question: "Glykolyse ist der Name f\xFCr den Weg, der die Umwandlung von:"
 include: _continuation_template_yaml
-process_docs: '!function utils.process_docs_clinical_knowledge'
+process_docs: !function utils.process_docs_clinical_knowledge
 tag: mmlu_de_llama_other_tasks
 task: mmlu_de_llama_clinical_knowledge
 task_alias: clinical_knowledge

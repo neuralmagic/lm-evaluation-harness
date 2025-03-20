@@ -54,7 +54,7 @@ fewshot_config:
       \ Punkte: 45, 55, 50, 70, 65, 80, 40, 90, 70, 85. Was ist der Mittelwert der\
       \ Testergebnisse der Sch\xFCler?"
 include: _continuation_template_yaml
-process_docs: '!function utils.process_docs_high_school_mathematics'
+process_docs: !function utils.process_docs_high_school_mathematics
 tag: mmlu_de_llama_stem_tasks
 task: mmlu_de_llama_high_school_mathematics
 task_alias: high_school_mathematics

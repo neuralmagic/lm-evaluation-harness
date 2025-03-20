@@ -54,7 +54,7 @@ fewshot_config:
     input_question: Earth Hour war eine Kampagne, die von welcher Organisation gestartet
       wurde?
 include: _continuation_template_yaml
-process_docs: '!function utils.process_docs_public_relations'
+process_docs: !function utils.process_docs_public_relations
 tag: mmlu_de_llama_social_sciences_tasks
 task: mmlu_de_llama_public_relations
 task_alias: public_relations

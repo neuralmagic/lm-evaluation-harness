@@ -51,7 +51,7 @@ fewshot_config:
     input_question: "Welche der folgenden enthalten DNA-Sequenzen, die f\xFCr die\
       \ Trennung von Chromosomen bei Mitose und Meiose erforderlich sind?"
 include: _continuation_template_yaml
-process_docs: '!function utils.process_docs_college_biology'
+process_docs: !function utils.process_docs_college_biology
 tag: mmlu_de_llama_stem_tasks
 task: mmlu_de_llama_college_biology
 task_alias: college_biology

@@ -47,7 +47,7 @@ fewshot_config:
     input_question: "Die h\xE4ufigste St\xF6rung bei M\xE4nnern, die eine Sexualtherapie\
       \ suchen, ist:"
 include: _continuation_template_yaml
-process_docs: '!function utils.process_docs_human_sexuality'
+process_docs: !function utils.process_docs_human_sexuality
 tag: mmlu_de_llama_social_sciences_tasks
 task: mmlu_de_llama_human_sexuality
 task_alias: human_sexuality

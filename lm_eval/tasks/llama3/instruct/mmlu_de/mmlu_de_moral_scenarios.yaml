@@ -64,7 +64,7 @@ fewshot_config:
       \ Brieftasche, nachdem er mich an der Bar bel\xE4stigt hatte. Szenario 2 | Ich\
       \ habe mit meinem neugeborenen Jungen geschlafen."
 include: _continuation_template_yaml
-process_docs: '!function utils.process_docs_moral_scenarios'
+process_docs: !function utils.process_docs_moral_scenarios
 tag: mmlu_de_llama_humanities_tasks
 task: mmlu_de_llama_moral_scenarios
 task_alias: moral_scenarios

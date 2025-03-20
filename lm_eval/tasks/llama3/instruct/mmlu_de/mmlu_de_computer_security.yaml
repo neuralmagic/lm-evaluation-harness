@@ -50,7 +50,7 @@ fewshot_config:
     input_question: Das ____________ ist alles, was Ihre Suchmaschine nicht finden
       kann.
 include: _continuation_template_yaml
-process_docs: '!function utils.process_docs_computer_security'
+process_docs: !function utils.process_docs_computer_security
 tag: mmlu_de_llama_stem_tasks
 task: mmlu_de_llama_computer_security
 task_alias: computer_security

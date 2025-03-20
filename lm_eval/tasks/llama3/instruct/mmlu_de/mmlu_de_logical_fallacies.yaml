@@ -55,7 +55,7 @@ fewshot_config:
       \ Widerlegung einzulassen, hat dieser Argumentator m\xF6glicherweise den Irrtum\
       \ begangen"
 include: _continuation_template_yaml
-process_docs: '!function utils.process_docs_logical_fallacies'
+process_docs: !function utils.process_docs_logical_fallacies
 tag: mmlu_de_llama_humanities_tasks
 task: mmlu_de_llama_logical_fallacies
 task_alias: logical_fallacies

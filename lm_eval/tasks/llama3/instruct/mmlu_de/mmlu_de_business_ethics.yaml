@@ -59,7 +59,7 @@ fewshot_config:
       \ Verwendung von ___________ gesteigert, die es Kampagnen erm\xF6glichen, das\
       \ Unternehmen bei der Erreichung von _________ zu unterst\xFCtzen."
 include: _continuation_template_yaml
-process_docs: '!function utils.process_docs_business_ethics'
+process_docs: !function utils.process_docs_business_ethics
 tag: mmlu_de_llama_other_tasks
 task: mmlu_de_llama_business_ethics
 task_alias: business_ethics

@@ -132,7 +132,7 @@ fewshot_config:
       \ folgenden Argumente ist das \xFCberzeugendste, dass der Vater gegen\xFCber\
       \ dem Gl\xE4ubiger gem\xE4\xDF den Bedingungen ihrer Vereinbarung haftet?"
 include: _continuation_template_yaml
-process_docs: '!function utils.process_docs_professional_law'
+process_docs: !function utils.process_docs_professional_law
 tag: mmlu_de_llama_humanities_tasks
 task: mmlu_de_llama_professional_law
 task_alias: professional_law

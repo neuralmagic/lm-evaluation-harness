@@ -51,7 +51,7 @@ fewshot_config:
       \ Kraft in Newton auf einen Punktpol von 4\u03C0 * 1,5 * 10^-4 Weber, der in\
       \ einem Abstand von 10 cm davon platziert wird, wird sein"
 include: _continuation_template_yaml
-process_docs: '!function utils.process_docs_electrical_engineering'
+process_docs: !function utils.process_docs_electrical_engineering
 tag: mmlu_de_llama_stem_tasks
 task: mmlu_de_llama_electrical_engineering
 task_alias: electrical_engineering
