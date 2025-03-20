@@ -1,3 +1,4 @@
+import datasets
 from functools import partial
 
 def process_docs(dataset: datasets.Dataset, subtask) -> datasets.Dataset:
