@@ -79,7 +79,7 @@ fewshot_config:
       \ \u0917\u094D\u0930\u0902\u0925\u093F \u0939\u094B\u0924\u0940 \u0939\u0948\
       ?"
 include: _continuation_template_yaml
-process_docs: '!function utils.process_docs_anatomy'
+process_docs: !function utils.process_docs_anatomy
 tag: mmlu_hi_llama_stem_tasks
 task: mmlu_hi_llama_anatomy
 task_alias: anatomy

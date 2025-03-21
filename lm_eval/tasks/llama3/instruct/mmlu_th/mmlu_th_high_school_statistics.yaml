@@ -161,7 +161,7 @@ fewshot_config:
       \u0E02\u0E19\u0E32\u0E14\u0E43\u0E2B\u0E0D\u0E48\u0E17\u0E35\u0E48\u0E2A\u0E38\
       \u0E14? I: {1,2,3} II: {-10,10} III: {100}"
 include: _continuation_template_yaml
-process_docs: '!function utils.process_docs_high_school_statistics'
+process_docs: !function utils.process_docs_high_school_statistics
 tag: mmlu_th_llama_stem_tasks
 task: mmlu_th_llama_high_school_statistics
 task_alias: high_school_statistics

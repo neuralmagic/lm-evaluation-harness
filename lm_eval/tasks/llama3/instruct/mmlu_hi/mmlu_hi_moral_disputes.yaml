@@ -135,7 +135,7 @@ fewshot_config:
       \u0938\u094D\u0924\u0935 \u092E\u0947\u0902 \u0907\u0938\u0915\u093E \u092A\u094D\
       \u0930\u092E\u093E\u0923 \u0939\u0948"
 include: _continuation_template_yaml
-process_docs: '!function utils.process_docs_moral_disputes'
+process_docs: !function utils.process_docs_moral_disputes
 tag: mmlu_hi_llama_humanities_tasks
 task: mmlu_hi_llama_moral_disputes
 task_alias: moral_disputes

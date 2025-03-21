@@ -45,7 +45,7 @@ fewshot_config:
     input_question: "Qual dessas m\xFAsicas foi um hit Top 10 da banda de rock The\
       \ Police?"
 include: _continuation_template_yaml
-process_docs: '!function utils.process_docs_miscellaneous'
+process_docs: !function utils.process_docs_miscellaneous
 tag: mmlu_pt_llama_other_tasks
 task: mmlu_pt_llama_miscellaneous
 task_alias: miscellaneous

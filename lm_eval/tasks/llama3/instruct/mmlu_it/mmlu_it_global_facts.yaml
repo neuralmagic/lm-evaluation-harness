@@ -51,7 +51,7 @@ fewshot_config:
     input_question: Nel 2017, quanti bambini di 1 anno nel mondo sono stati oggi vaccinati
       contro alcune malattie? *
 include: _continuation_template_yaml
-process_docs: '!function utils.process_docs_global_facts'
+process_docs: !function utils.process_docs_global_facts
 tag: mmlu_it_llama_other_tasks
 task: mmlu_it_llama_global_facts
 task_alias: global_facts

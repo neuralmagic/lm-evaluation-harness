@@ -49,7 +49,7 @@ fewshot_config:
     - D
     input_question: "Earth Hour \xE8 stata una campagna lanciata da quale organizzazione?"
 include: _continuation_template_yaml
-process_docs: '!function utils.process_docs_public_relations'
+process_docs: !function utils.process_docs_public_relations
 tag: mmlu_it_llama_social_sciences_tasks
 task: mmlu_it_llama_public_relations
 task_alias: public_relations

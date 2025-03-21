@@ -48,7 +48,7 @@ fewshot_config:
     input_question: "Mantendo todas as outras condi\xE7\xF5es iguais, qual das seguintes\
       \ pessoas tem maior probabilidade de apresentar osteoporose?"
 include: _continuation_template_yaml
-process_docs: '!function utils.process_docs_human_aging'
+process_docs: !function utils.process_docs_human_aging
 tag: mmlu_pt_llama_other_tasks
 task: mmlu_pt_llama_human_aging
 task_alias: human_aging

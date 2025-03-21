@@ -48,7 +48,7 @@ fewshot_config:
       ricevuto un orologio Rolox a carica automatica eccezionalmente raffinato che
       ti venderemo a un prezzo molto favorevole&quot;.'
 include: _continuation_template_yaml
-process_docs: '!function utils.process_docs_jurisprudence'
+process_docs: !function utils.process_docs_jurisprudence
 tag: mmlu_it_llama_humanities_tasks
 task: mmlu_it_llama_jurisprudence
 task_alias: jurisprudence

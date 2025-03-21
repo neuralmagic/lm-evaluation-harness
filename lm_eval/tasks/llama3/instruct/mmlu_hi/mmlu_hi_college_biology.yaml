@@ -119,7 +119,7 @@ fewshot_config:
       \u0928\u0941\u0915\u094D\u0930\u092E \u0939\u094B\u0924\u0947 \u0939\u0948\u0902\
       ?"
 include: _continuation_template_yaml
-process_docs: '!function utils.process_docs_college_biology'
+process_docs: !function utils.process_docs_college_biology
 tag: mmlu_hi_llama_stem_tasks
 task: mmlu_hi_llama_college_biology
 task_alias: college_biology

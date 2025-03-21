@@ -92,7 +92,7 @@ fewshot_config:
       \ \u0907\u0902\u091C\u0928 \u0916\u094B\u091C \u0928\u0939\u0940\u0902 \u0938\
       \u0915\u0924\u093E \u0939\u0948\u0964"
 include: _continuation_template_yaml
-process_docs: '!function utils.process_docs_computer_security'
+process_docs: !function utils.process_docs_computer_security
 tag: mmlu_hi_llama_stem_tasks
 task: mmlu_hi_llama_computer_security
 task_alias: computer_security

@@ -47,7 +47,7 @@ fewshot_config:
     input_question: "A parit\xE0 di condizioni, quale delle seguenti persone ha maggiori\
       \ probabilit\xE0 di soffrire di osteoporosi?"
 include: _continuation_template_yaml
-process_docs: '!function utils.process_docs_human_aging'
+process_docs: !function utils.process_docs_human_aging
 tag: mmlu_it_llama_other_tasks
 task: mmlu_it_llama_human_aging
 task_alias: human_aging

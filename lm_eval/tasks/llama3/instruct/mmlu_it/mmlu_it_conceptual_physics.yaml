@@ -47,7 +47,7 @@ fewshot_config:
     - A
     input_question: Quale di questi tre elementi ha la massa maggiore per nucleone?
 include: _continuation_template_yaml
-process_docs: '!function utils.process_docs_conceptual_physics'
+process_docs: !function utils.process_docs_conceptual_physics
 tag: mmlu_it_llama_stem_tasks
 task: mmlu_it_llama_conceptual_physics
 task_alias: conceptual_physics

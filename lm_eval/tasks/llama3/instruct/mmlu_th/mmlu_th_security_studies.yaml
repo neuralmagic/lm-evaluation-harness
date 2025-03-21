@@ -370,7 +370,7 @@ fewshot_config:
       \u0E32\u0E23\u0E13\u0E32\u0E01\u0E32\u0E23\u0E01\u0E48\u0E2D\u0E01\u0E32\u0E23\
       \u0E23\u0E49\u0E32\u0E22 (\u0E13 \u0E1B\u0E35 2020)"
 include: _continuation_template_yaml
-process_docs: '!function utils.process_docs_security_studies'
+process_docs: !function utils.process_docs_security_studies
 tag: mmlu_th_llama_social_sciences_tasks
 task: mmlu_th_llama_security_studies
 task_alias: security_studies

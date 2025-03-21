@@ -59,7 +59,7 @@ fewshot_config:
     - A
     input_question: "Perch\xE9 Marte \xE8 rosso?"
 include: _continuation_template_yaml
-process_docs: '!function utils.process_docs_astronomy'
+process_docs: !function utils.process_docs_astronomy
 tag: mmlu_it_llama_stem_tasks
 task: mmlu_it_llama_astronomy
 task_alias: astronomy

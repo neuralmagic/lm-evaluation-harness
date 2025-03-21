@@ -66,7 +66,7 @@ fewshot_config:
     input_question: "Qual dos seguintes conjuntos tem o menor desvio padr\xE3o? Qual\
       \ tem o maior? I: {1,2,3} II: {-10,10} III: {100}"
 include: _continuation_template_yaml
-process_docs: '!function utils.process_docs_high_school_statistics'
+process_docs: !function utils.process_docs_high_school_statistics
 tag: mmlu_pt_llama_stem_tasks
 task: mmlu_pt_llama_high_school_statistics
 task_alias: high_school_statistics

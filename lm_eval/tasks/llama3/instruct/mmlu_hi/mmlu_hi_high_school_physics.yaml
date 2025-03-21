@@ -102,7 +102,7 @@ fewshot_config:
       \u0928\u0947 \u092E\u0947\u0902 \u0915\u093F\u0924\u0928\u093E \u0915\u093E\u0930\
       \u094D\u092F \u0906\u0935\u0936\u094D\u092F\u0915 \u0939\u0948?"
 include: _continuation_template_yaml
-process_docs: '!function utils.process_docs_high_school_physics'
+process_docs: !function utils.process_docs_high_school_physics
 tag: mmlu_hi_llama_stem_tasks
 task: mmlu_hi_llama_high_school_physics
 task_alias: high_school_physics

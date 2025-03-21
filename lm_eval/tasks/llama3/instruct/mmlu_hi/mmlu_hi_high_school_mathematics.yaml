@@ -90,7 +90,7 @@ fewshot_config:
       \ \u0905\u0902\u0915\u094B\u0902 \u0915\u093E \u092E\u093E\u0927\u094D\u092F\
       \ \u0915\u094D\u092F\u093E \u0939\u0948?"
 include: _continuation_template_yaml
-process_docs: '!function utils.process_docs_high_school_mathematics'
+process_docs: !function utils.process_docs_high_school_mathematics
 tag: mmlu_hi_llama_stem_tasks
 task: mmlu_hi_llama_high_school_mathematics
 task_alias: high_school_mathematics

@@ -56,7 +56,7 @@ fewshot_config:
       ncia do processo de sele\xE7\xE3o natural. Todas as alternativas a seguir s\xE3\
       o exemplos de estruturas hom\xF3logas, EXCETO"
 include: _continuation_template_yaml
-process_docs: '!function utils.process_docs_high_school_biology'
+process_docs: !function utils.process_docs_high_school_biology
 tag: mmlu_pt_llama_stem_tasks
 task: mmlu_pt_llama_high_school_biology
 task_alias: high_school_biology

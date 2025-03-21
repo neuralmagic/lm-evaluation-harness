@@ -47,7 +47,7 @@ fewshot_config:
     input_question: "Il disturbo pi\xF9 comune tra gli uomini che cercano una terapia\
       \ sessuale \xE8:"
 include: _continuation_template_yaml
-process_docs: '!function utils.process_docs_human_sexuality'
+process_docs: !function utils.process_docs_human_sexuality
 tag: mmlu_it_llama_social_sciences_tasks
 task: mmlu_it_llama_human_sexuality
 task_alias: human_sexuality

@@ -86,7 +86,7 @@ fewshot_config:
       \u0E15\u0E48\u0E32\u0E07\u0E46 \u0E43\u0E19\u0E19\u0E31\u0E49\u0E19\u0E40\u0E23\
       \u0E35\u0E22\u0E01\u0E27\u0E48\u0E32 _____"
 include: _continuation_template_yaml
-process_docs: '!function utils.process_docs_philosophy'
+process_docs: !function utils.process_docs_philosophy
 tag: mmlu_th_llama_humanities_tasks
 task: mmlu_th_llama_philosophy
 task_alias: philosophy

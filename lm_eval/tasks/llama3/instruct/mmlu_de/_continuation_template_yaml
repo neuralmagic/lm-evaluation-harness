@@ -16,6 +16,8 @@ metric_list:
       - "\\$"
       - "\\.$"
 generation_kwargs:
+  do_sample: false
+  temperature: 0
   until:
     - "."
   max_gen_toks: 10

@@ -54,7 +54,7 @@ fewshot_config:
     input_question: Quale delle seguenti affermazioni meglio afferma un&#39;argomentazione
       avanzata da James Madison in The Federalist numero 10?
 include: _continuation_template_yaml
-process_docs: '!function utils.process_docs_high_school_government_and_politics'
+process_docs: !function utils.process_docs_high_school_government_and_politics
 tag: mmlu_it_llama_social_sciences_tasks
 task: mmlu_it_llama_high_school_government_and_politics
 task_alias: high_school_government_and_politics

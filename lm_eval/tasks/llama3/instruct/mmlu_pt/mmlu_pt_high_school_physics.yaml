@@ -57,7 +57,7 @@ fewshot_config:
       \ trabalho \xE9 necess\xE1rio para mover uma carga, Q = +8 \xB5C, do ponto (0,4\
       \ metros) para o ponto (3 metros, 0)?"
 include: _continuation_template_yaml
-process_docs: '!function utils.process_docs_high_school_physics'
+process_docs: !function utils.process_docs_high_school_physics
 tag: mmlu_pt_llama_stem_tasks
 task: mmlu_pt_llama_high_school_physics
 task_alias: high_school_physics

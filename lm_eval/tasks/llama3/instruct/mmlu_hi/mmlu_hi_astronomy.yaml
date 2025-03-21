@@ -145,7 +145,7 @@ fewshot_config:
     input_question: "\u092E\u0902\u0917\u0932 \u0917\u094D\u0930\u0939 \u0932\u093E\
       \u0932 \u0915\u094D\u092F\u094B\u0902 \u0939\u0948?"
 include: _continuation_template_yaml
-process_docs: '!function utils.process_docs_astronomy'
+process_docs: !function utils.process_docs_astronomy
 tag: mmlu_hi_llama_stem_tasks
 task: mmlu_hi_llama_astronomy
 task_alias: astronomy

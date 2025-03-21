@@ -153,7 +153,7 @@ fewshot_config:
       \u0E48 2 \u0E41\u0E25\u0E30\u0E42\u0E23\u0E04\u0E2D\u0E49\u0E27\u0E19\u0E43\u0E19\
       \u0E1B\u0E35 2563 \u0E04\u0E37\u0E2D\u0E2D\u0E30\u0E44\u0E23?"
 include: _continuation_template_yaml
-process_docs: '!function utils.process_docs_nutrition'
+process_docs: !function utils.process_docs_nutrition
 tag: mmlu_th_llama_other_tasks
 task: mmlu_th_llama_nutrition
 task_alias: nutrition

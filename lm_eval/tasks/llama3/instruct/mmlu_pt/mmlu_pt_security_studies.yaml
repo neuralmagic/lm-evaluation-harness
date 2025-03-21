@@ -107,7 +107,7 @@ fewshot_config:
     input_question: "Quais s\xE3o os quadros de an\xE1lise dentro dos quais o terrorismo\
       \ foi considerado (a partir de 2020)?"
 include: _continuation_template_yaml
-process_docs: '!function utils.process_docs_security_studies'
+process_docs: !function utils.process_docs_security_studies
 tag: mmlu_pt_llama_social_sciences_tasks
 task: mmlu_pt_llama_security_studies
 task_alias: security_studies

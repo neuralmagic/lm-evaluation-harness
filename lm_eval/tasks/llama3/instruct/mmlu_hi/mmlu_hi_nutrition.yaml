@@ -150,7 +150,7 @@ fewshot_config:
       \ \u092A\u0939\u0932\u0940 \u092A\u0902\u0915\u094D\u0924\u093F \u0915\u0940\
       \ \u0926\u0935\u093E \u0915\u094D\u092F\u093E \u0939\u0948?"
 include: _continuation_template_yaml
-process_docs: '!function utils.process_docs_nutrition'
+process_docs: !function utils.process_docs_nutrition
 tag: mmlu_hi_llama_other_tasks
 task: mmlu_hi_llama_nutrition
 task_alias: nutrition

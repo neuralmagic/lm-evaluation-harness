@@ -91,7 +91,7 @@ fewshot_config:
       \u0E15\u0E16\u0E39\u0E01\u0E01\u0E33\u0E2B\u0E19\u0E14\u0E02\u0E36\u0E49\u0E19\
       \u0E42\u0E14\u0E22:"
 include: _continuation_template_yaml
-process_docs: '!function utils.process_docs_virology'
+process_docs: !function utils.process_docs_virology
 tag: mmlu_th_llama_other_tasks
 task: mmlu_th_llama_virology
 task_alias: virology

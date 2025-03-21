@@ -57,7 +57,7 @@ fewshot_config:
       \ bambini utilizzano per apprendere nuove informazioni. In che tipo di psicologo\
       \ sarebbe meglio classificare Pascale?"
 include: _continuation_template_yaml
-process_docs: '!function utils.process_docs_high_school_psychology'
+process_docs: !function utils.process_docs_high_school_psychology
 tag: mmlu_it_llama_social_sciences_tasks
 task: mmlu_it_llama_high_school_psychology
 task_alias: high_school_psychology

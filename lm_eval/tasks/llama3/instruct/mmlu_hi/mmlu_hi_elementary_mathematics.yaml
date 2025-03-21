@@ -104,7 +104,7 @@ fewshot_config:
       \u092F\u0915\u094D\u0924\u093F 5 x 9 \u0915\u0947 \u092C\u0930\u093E\u092C\u0930\
       \ \u0939\u0948?"
 include: _continuation_template_yaml
-process_docs: '!function utils.process_docs_elementary_mathematics'
+process_docs: !function utils.process_docs_elementary_mathematics
 tag: mmlu_hi_llama_stem_tasks
 task: mmlu_hi_llama_elementary_mathematics
 task_alias: elementary_mathematics

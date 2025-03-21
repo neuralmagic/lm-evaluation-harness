@@ -122,7 +122,7 @@ fewshot_config:
       \ \u0938\u092E\u091C\u093E\u0924 \u0938\u0902\u0930\u091A\u0928\u093E\u0913\u0902\
       \ \u0915\u0947 \u0909\u0926\u093E\u0939\u0930\u0923 \u0939\u0948\u0902"
 include: _continuation_template_yaml
-process_docs: '!function utils.process_docs_high_school_biology'
+process_docs: !function utils.process_docs_high_school_biology
 tag: mmlu_hi_llama_stem_tasks
 task: mmlu_hi_llama_high_school_biology
 task_alias: high_school_biology

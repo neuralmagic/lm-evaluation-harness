@@ -136,7 +136,7 @@ fewshot_config:
       \u0924 \u0915\u092A\u093E\u0932 \u0915\u094D\u0937\u092E\u0924\u093E \u0915\u094D\
       \u092F\u093E \u0939\u0948?"
 include: _continuation_template_yaml
-process_docs: '!function utils.process_docs_prehistory'
+process_docs: !function utils.process_docs_prehistory
 tag: mmlu_hi_llama_humanities_tasks
 task: mmlu_hi_llama_prehistory
 task_alias: prehistory

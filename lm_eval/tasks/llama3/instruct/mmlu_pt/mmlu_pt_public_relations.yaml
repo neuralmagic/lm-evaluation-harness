@@ -55,7 +55,7 @@ fewshot_config:
     input_question: "A Hora do Planeta foi uma campanha lan\xE7ada por qual organiza\xE7\
       \xE3o?"
 include: _continuation_template_yaml
-process_docs: '!function utils.process_docs_public_relations'
+process_docs: !function utils.process_docs_public_relations
 tag: mmlu_pt_llama_social_sciences_tasks
 task: mmlu_pt_llama_public_relations
 task_alias: public_relations

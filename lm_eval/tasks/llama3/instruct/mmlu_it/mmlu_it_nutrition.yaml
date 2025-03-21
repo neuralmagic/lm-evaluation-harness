@@ -61,7 +61,7 @@ fewshot_config:
     input_question: "Qual \xE8 il farmaco di prima linea per i pazienti con diabete\
       \ di tipo 2 e obesit\xE0, a partire dal 2020?\\n"
 include: _continuation_template_yaml
-process_docs: '!function utils.process_docs_nutrition'
+process_docs: !function utils.process_docs_nutrition
 tag: mmlu_it_llama_other_tasks
 task: mmlu_it_llama_nutrition
 task_alias: nutrition

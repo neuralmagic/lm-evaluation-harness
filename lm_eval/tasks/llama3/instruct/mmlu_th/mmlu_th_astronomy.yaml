@@ -158,7 +158,7 @@ fewshot_config:
       \u0E32\u0E23\u0E16\u0E36\u0E07\u0E40\u0E1B\u0E47\u0E19\u0E2A\u0E35\u0E41\u0E14\
       \u0E07?"
 include: _continuation_template_yaml
-process_docs: '!function utils.process_docs_astronomy'
+process_docs: !function utils.process_docs_astronomy
 tag: mmlu_th_llama_stem_tasks
 task: mmlu_th_llama_astronomy
 task_alias: astronomy

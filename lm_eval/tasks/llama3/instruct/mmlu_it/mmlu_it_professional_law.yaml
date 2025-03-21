@@ -126,7 +126,7 @@ fewshot_config:
       \ pi\xF9 convincente secondo cui il padre \xE8 responsabile nei confronti del\
       \ creditore secondo i termini del contratto?"
 include: _continuation_template_yaml
-process_docs: '!function utils.process_docs_professional_law'
+process_docs: !function utils.process_docs_professional_law
 tag: mmlu_it_llama_humanities_tasks
 task: mmlu_it_llama_professional_law
 task_alias: professional_law

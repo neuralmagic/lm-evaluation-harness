@@ -64,7 +64,7 @@ fewshot_config:
       il suo portafoglio dopo che mi ha molestato al bar. Scenario 2 | Ho fatto l&#39;amore
       con il mio bambino appena nato.
 include: _continuation_template_yaml
-process_docs: '!function utils.process_docs_moral_scenarios'
+process_docs: !function utils.process_docs_moral_scenarios
 tag: mmlu_it_llama_humanities_tasks
 task: mmlu_it_llama_moral_scenarios
 task_alias: moral_scenarios

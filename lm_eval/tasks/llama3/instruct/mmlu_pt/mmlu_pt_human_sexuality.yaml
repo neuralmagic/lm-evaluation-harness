@@ -47,7 +47,7 @@ fewshot_config:
     input_question: "O dist\xFArbio mais comum entre homens que procuram terapia sexual\
       \ \xE9:"
 include: _continuation_template_yaml
-process_docs: '!function utils.process_docs_human_sexuality'
+process_docs: !function utils.process_docs_human_sexuality
 tag: mmlu_pt_llama_social_sciences_tasks
 task: mmlu_pt_llama_human_sexuality
 task_alias: human_sexuality

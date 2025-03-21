@@ -85,7 +85,7 @@ fewshot_config:
       \u094B\u0938\u093F\u0938 \u0939\u094B\u0928\u0947 \u0915\u0940 \u0905\u0927\u093F\
       \u0915 \u0938\u0902\u092D\u093E\u0935\u0928\u093E \u0939\u0948?"
 include: _continuation_template_yaml
-process_docs: '!function utils.process_docs_human_aging'
+process_docs: !function utils.process_docs_human_aging
 tag: mmlu_hi_llama_other_tasks
 task: mmlu_hi_llama_human_aging
 task_alias: human_aging

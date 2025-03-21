@@ -48,7 +48,7 @@ fewshot_config:
     input_question: "La glicolisi \xE8 il nome dato al percorso che comporta la conversione\
       \ di:"
 include: _continuation_template_yaml
-process_docs: '!function utils.process_docs_clinical_knowledge'
+process_docs: !function utils.process_docs_clinical_knowledge
 tag: mmlu_it_llama_other_tasks
 task: mmlu_it_llama_clinical_knowledge
 task_alias: clinical_knowledge

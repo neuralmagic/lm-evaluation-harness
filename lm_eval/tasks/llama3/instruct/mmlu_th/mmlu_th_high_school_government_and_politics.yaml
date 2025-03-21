@@ -134,7 +134,7 @@ fewshot_config:
       \u0E19 The Federalist \u0E2B\u0E21\u0E32\u0E22\u0E40\u0E25\u0E02 10 \u0E44\u0E14\
       \u0E49\u0E14\u0E35\u0E17\u0E35\u0E48\u0E2A\u0E38\u0E14"
 include: _continuation_template_yaml
-process_docs: '!function utils.process_docs_high_school_government_and_politics'
+process_docs: !function utils.process_docs_high_school_government_and_politics
 tag: mmlu_th_llama_social_sciences_tasks
 task: mmlu_th_llama_high_school_government_and_politics
 task_alias: high_school_government_and_politics

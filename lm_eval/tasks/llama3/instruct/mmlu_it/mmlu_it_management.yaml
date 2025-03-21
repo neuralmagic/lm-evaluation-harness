@@ -45,7 +45,7 @@ fewshot_config:
     input_question: Come possono essere descritte strutture organizzative caratterizzate
       da stili di gestione democratici e inclusivi?
 include: _continuation_template_yaml
-process_docs: '!function utils.process_docs_management'
+process_docs: !function utils.process_docs_management
 tag: mmlu_it_llama_other_tasks
 task: mmlu_it_llama_management
 task_alias: management

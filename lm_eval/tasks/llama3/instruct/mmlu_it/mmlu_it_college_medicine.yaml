@@ -54,7 +54,7 @@ fewshot_config:
     input_question: "Un effetto collaterale atteso dell&#39;integrazione di creatina\
       \ \xE8:"
 include: _continuation_template_yaml
-process_docs: '!function utils.process_docs_college_medicine'
+process_docs: !function utils.process_docs_college_medicine
 tag: mmlu_it_llama_other_tasks
 task: mmlu_it_llama_college_medicine
 task_alias: college_medicine

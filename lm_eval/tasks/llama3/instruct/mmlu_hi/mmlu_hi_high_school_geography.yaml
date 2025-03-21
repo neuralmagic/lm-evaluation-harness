@@ -108,7 +108,7 @@ fewshot_config:
       \u0915\u0943\u0924\u093F \u0915\u093E \u0909\u0926\u093E\u0939\u0930\u0923 \u0939\
       \u0948?"
 include: _continuation_template_yaml
-process_docs: '!function utils.process_docs_high_school_geography'
+process_docs: !function utils.process_docs_high_school_geography
 tag: mmlu_hi_llama_social_sciences_tasks
 task: mmlu_hi_llama_high_school_geography
 task_alias: high_school_geography

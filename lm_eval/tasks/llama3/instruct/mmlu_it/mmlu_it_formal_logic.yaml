@@ -57,7 +57,7 @@ fewshot_config:
       \ della seguente frase? Le tartarughe vivono a lungo e sono creature felici,\
       \ a meno che non vengano ferite."
 include: _continuation_template_yaml
-process_docs: '!function utils.process_docs_formal_logic'
+process_docs: !function utils.process_docs_formal_logic
 tag: mmlu_it_llama_humanities_tasks
 task: mmlu_it_llama_formal_logic
 task_alias: formal_logic

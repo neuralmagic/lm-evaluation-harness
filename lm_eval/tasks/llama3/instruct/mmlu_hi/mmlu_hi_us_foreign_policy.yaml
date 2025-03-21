@@ -132,7 +132,7 @@ fewshot_config:
       \ \u092A\u0930 \u0915\u0948\u0938\u0947 \u0939\u092E\u0932\u093E \u0915\u093F\
       \u092F\u093E?"
 include: _continuation_template_yaml
-process_docs: '!function utils.process_docs_us_foreign_policy'
+process_docs: !function utils.process_docs_us_foreign_policy
 tag: mmlu_hi_llama_social_sciences_tasks
 task: mmlu_hi_llama_us_foreign_policy
 task_alias: us_foreign_policy

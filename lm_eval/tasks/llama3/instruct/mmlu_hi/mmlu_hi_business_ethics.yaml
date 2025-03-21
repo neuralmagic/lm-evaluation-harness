@@ -147,7 +147,7 @@ fewshot_config:
       \u0930\u0928\u0947 \u092E\u0947\u0902 \u0938\u0941\u0935\u093F\u0927\u093E \u092A\
       \u094D\u0930\u0926\u093E\u0928 \u0915\u0930\u0924\u0940 \u0939\u0948\u0964"
 include: _continuation_template_yaml
-process_docs: '!function utils.process_docs_business_ethics'
+process_docs: !function utils.process_docs_business_ethics
 tag: mmlu_hi_llama_other_tasks
 task: mmlu_hi_llama_business_ethics
 task_alias: business_ethics

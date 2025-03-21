@@ -55,7 +55,7 @@ fewshot_config:
       \ punteggi: 45, 55, 50, 70, 65, 80, 40, 90, 70, 85. Qual \xE8 la media dei punteggi\
       \ dei test degli studenti?"
 include: _continuation_template_yaml
-process_docs: '!function utils.process_docs_high_school_mathematics'
+process_docs: !function utils.process_docs_high_school_mathematics
 tag: mmlu_it_llama_stem_tasks
 task: mmlu_it_llama_high_school_mathematics
 task_alias: high_school_mathematics

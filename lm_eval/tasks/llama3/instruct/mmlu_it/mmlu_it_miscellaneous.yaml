@@ -45,7 +45,7 @@ fewshot_config:
     input_question: "Quale di queste canzoni \xE8 stata una delle prime 10 hit del\
       \ gruppo rock The Police?"
 include: _continuation_template_yaml
-process_docs: '!function utils.process_docs_miscellaneous'
+process_docs: !function utils.process_docs_miscellaneous
 tag: mmlu_it_llama_other_tasks
 task: mmlu_it_llama_miscellaneous
 task_alias: miscellaneous

@@ -88,7 +88,7 @@ fewshot_config:
       sculos ou grupos musculares ser\xE1 mais \xFAtil na corre\xE7\xE3o desta disfun\xE7\
       \xE3o utilizando um m\xE9todo direto?"
 include: _continuation_template_yaml
-process_docs: '!function utils.process_docs_professional_medicine'
+process_docs: !function utils.process_docs_professional_medicine
 tag: mmlu_pt_llama_other_tasks
 task: mmlu_pt_llama_professional_medicine
 task_alias: professional_medicine

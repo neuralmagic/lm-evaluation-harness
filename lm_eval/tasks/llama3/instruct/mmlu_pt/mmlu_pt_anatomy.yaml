@@ -44,7 +44,7 @@ fewshot_config:
     input_question: "Qual das alternativas a seguir \xE9 a cavidade corporal que cont\xE9\
       m a gl\xE2ndula pituit\xE1ria?"
 include: _continuation_template_yaml
-process_docs: '!function utils.process_docs_anatomy'
+process_docs: !function utils.process_docs_anatomy
 tag: mmlu_pt_llama_stem_tasks
 task: mmlu_pt_llama_anatomy
 task_alias: anatomy

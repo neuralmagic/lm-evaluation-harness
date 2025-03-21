@@ -52,7 +52,7 @@ fewshot_config:
     input_question: Quale dei seguenti contiene sequenze di DNA necessarie per la
       segregazione dei cromosomi nella mitosi e nella meiosi?
 include: _continuation_template_yaml
-process_docs: '!function utils.process_docs_college_biology'
+process_docs: !function utils.process_docs_college_biology
 tag: mmlu_it_llama_stem_tasks
 task: mmlu_it_llama_college_biology
 task_alias: college_biology

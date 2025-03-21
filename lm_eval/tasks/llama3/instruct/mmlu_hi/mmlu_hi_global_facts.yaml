@@ -94,7 +94,7 @@ fewshot_config:
       \u092B \u091F\u0940\u0915\u093E \u0932\u0917\u093E\u092F\u093E \u0917\u092F\u093E\
       \ \u0939\u0948? *"
 include: _continuation_template_yaml
-process_docs: '!function utils.process_docs_global_facts'
+process_docs: !function utils.process_docs_global_facts
 tag: mmlu_hi_llama_other_tasks
 task: mmlu_hi_llama_global_facts
 task_alias: global_facts

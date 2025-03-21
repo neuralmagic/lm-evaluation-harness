@@ -59,7 +59,7 @@ fewshot_config:
       ltipla para fins de previs\xE3o, a combina\xE7\xE3o \xF3tima de medidas \xE9\
       \ aquela em que os preditores"
 include: _continuation_template_yaml
-process_docs: '!function utils.process_docs_professional_psychology'
+process_docs: !function utils.process_docs_professional_psychology
 tag: mmlu_pt_llama_social_sciences_tasks
 task: mmlu_pt_llama_professional_psychology
 task_alias: professional_psychology

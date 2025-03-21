@@ -52,7 +52,7 @@ fewshot_config:
     input_question: "Qual das alternativas a seguir cont\xE9m sequ\xEAncias de DNA\
       \ necess\xE1rias para a segrega\xE7\xE3o dos cromossomos na mitose e na meiose?"
 include: _continuation_template_yaml
-process_docs: '!function utils.process_docs_college_biology'
+process_docs: !function utils.process_docs_college_biology
 tag: mmlu_pt_llama_stem_tasks
 task: mmlu_pt_llama_college_biology
 task_alias: college_biology

@@ -55,7 +55,7 @@ fewshot_config:
     input_question: "Qual \xE8 la capacit\xE0 cranica media approssimativa dell&#39;Homo\
       \ erectus?"
 include: _continuation_template_yaml
-process_docs: '!function utils.process_docs_prehistory'
+process_docs: !function utils.process_docs_prehistory
 tag: mmlu_it_llama_humanities_tasks
 task: mmlu_it_llama_prehistory
 task_alias: prehistory

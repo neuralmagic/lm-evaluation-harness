@@ -58,7 +58,7 @@ fewshot_config:
       \ attraverso l&#39;uso di ___________, che consente alle campagne di facilitare\
       \ l&#39;azienda nel raggiungimento di _________."
 include: _continuation_template_yaml
-process_docs: '!function utils.process_docs_business_ethics'
+process_docs: !function utils.process_docs_business_ethics
 tag: mmlu_it_llama_other_tasks
 task: mmlu_it_llama_business_ethics
 task_alias: business_ethics

@@ -58,7 +58,7 @@ fewshot_config:
       \ n) tali che 7m + 12n = 22. Qual \xE8 il numero negativo pi\xF9 grande nell&#39;insieme\
       \ B = {m + n : (m, n) \\in A}?"
 include: _continuation_template_yaml
-process_docs: '!function utils.process_docs_college_mathematics'
+process_docs: !function utils.process_docs_college_mathematics
 tag: mmlu_it_llama_stem_tasks
 task: mmlu_it_llama_college_mathematics
 task_alias: college_mathematics

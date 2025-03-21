@@ -83,7 +83,7 @@ fewshot_config:
       \u0E21\u0E08\u0E31\u0E1A\u0E04\u0E39\u0E48\u0E41\u0E25\u0E30\u0E44\u0E02\u0E27\
       \u0E49\u0E01\u0E31\u0E19\u0E04\u0E37\u0E2D:"
 include: _continuation_template_yaml
-process_docs: '!function utils.process_docs_medical_genetics'
+process_docs: !function utils.process_docs_medical_genetics
 tag: mmlu_th_llama_other_tasks
 task: mmlu_th_llama_medical_genetics
 task_alias: medical_genetics

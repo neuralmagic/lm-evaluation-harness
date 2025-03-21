@@ -65,7 +65,7 @@ fewshot_config:
     input_question: "Come pu\xF2 essere espresso il consenso di uno Stato ad essere\
       \ vincolato?"
 include: _continuation_template_yaml
-process_docs: '!function utils.process_docs_international_law'
+process_docs: !function utils.process_docs_international_law
 tag: mmlu_it_llama_humanities_tasks
 task: mmlu_it_llama_international_law
 task_alias: international_law

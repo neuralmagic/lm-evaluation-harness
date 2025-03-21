@@ -44,7 +44,7 @@ fewshot_config:
     input_question: "Lo stadio della meiosi in cui i cromosomi si accoppiano e si\
       \ incrociano \xE8:"
 include: _continuation_template_yaml
-process_docs: '!function utils.process_docs_medical_genetics'
+process_docs: !function utils.process_docs_medical_genetics
 tag: mmlu_it_llama_other_tasks
 task: mmlu_it_llama_medical_genetics
 task_alias: medical_genetics

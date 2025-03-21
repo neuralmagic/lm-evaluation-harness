@@ -54,7 +54,7 @@ fewshot_config:
       \xE3o devido \xE0 falta real ou fingida de capacidade de se envolver na refuta\xE7\
       \xE3o, esse argumentador pode ter cometido a fal\xE1cia de"
 include: _continuation_template_yaml
-process_docs: '!function utils.process_docs_logical_fallacies'
+process_docs: !function utils.process_docs_logical_fallacies
 tag: mmlu_pt_llama_humanities_tasks
 task: mmlu_pt_llama_logical_fallacies
 task_alias: logical_fallacies

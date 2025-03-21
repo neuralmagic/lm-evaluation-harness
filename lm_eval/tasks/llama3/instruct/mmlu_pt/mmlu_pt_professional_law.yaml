@@ -123,7 +123,7 @@ fewshot_config:
       vida. Qual das alternativas a seguir \xE9 o argumento mais persuasivo de que\
       \ o pai \xE9 respons\xE1vel perante o credor nos termos do acordo?"
 include: _continuation_template_yaml
-process_docs: '!function utils.process_docs_professional_law'
+process_docs: !function utils.process_docs_professional_law
 tag: mmlu_pt_llama_humanities_tasks
 task: mmlu_pt_llama_professional_law
 task_alias: professional_law

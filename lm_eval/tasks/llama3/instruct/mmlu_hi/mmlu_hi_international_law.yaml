@@ -175,7 +175,7 @@ fewshot_config:
       \u0939\u092E\u0924\u093F \u0915\u0948\u0938\u0947 \u0935\u094D\u092F\u0915\u094D\
       \u0924 \u0915\u0940 \u091C\u093E \u0938\u0915\u0924\u0940 \u0939\u0948?"
 include: _continuation_template_yaml
-process_docs: '!function utils.process_docs_international_law'
+process_docs: !function utils.process_docs_international_law
 tag: mmlu_hi_llama_humanities_tasks
 task: mmlu_hi_llama_international_law
 task_alias: international_law

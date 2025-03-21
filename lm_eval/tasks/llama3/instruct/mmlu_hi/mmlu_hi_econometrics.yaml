@@ -111,7 +111,7 @@ fewshot_config:
       \u0937\u094D\u091F\u0924\u092E \u092E\u0949\u0921\u0932 \u0915\u094D\u0930\u092E\
       \ \u0915\u094D\u092F\u093E \u0939\u0948?"
 include: _continuation_template_yaml
-process_docs: '!function utils.process_docs_econometrics'
+process_docs: !function utils.process_docs_econometrics
 tag: mmlu_hi_llama_social_sciences_tasks
 task: mmlu_hi_llama_econometrics
 task_alias: econometrics

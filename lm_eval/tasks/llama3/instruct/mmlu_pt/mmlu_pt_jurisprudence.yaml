@@ -49,7 +49,7 @@ fewshot_config:
       \ um rel\xF3gio Rolox de corda autom\xE1tica excepcionalmente fino que venderemos\
       \ a voc\xEA por um pre\xE7o muito favor\xE1vel.&#39;"
 include: _continuation_template_yaml
-process_docs: '!function utils.process_docs_jurisprudence'
+process_docs: !function utils.process_docs_jurisprudence
 tag: mmlu_pt_llama_humanities_tasks
 task: mmlu_pt_llama_jurisprudence
 task_alias: jurisprudence

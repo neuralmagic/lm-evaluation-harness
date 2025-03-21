@@ -47,7 +47,7 @@ fewshot_config:
       \xE3o sobre a natureza elementar do universo e das coisas nele contidas, \xE9\
       \ conhecido como _____."
 include: _continuation_template_yaml
-process_docs: '!function utils.process_docs_philosophy'
+process_docs: !function utils.process_docs_philosophy
 tag: mmlu_pt_llama_humanities_tasks
 task: mmlu_pt_llama_philosophy
 task_alias: philosophy

@@ -95,7 +95,7 @@ fewshot_config:
       , HNO3 \u092E\u093F\u0932\u093E\u092F\u093E \u091C\u093E \u0938\u0915\u0924\u093E\
       \ \u0939\u0948?"
 include: _continuation_template_yaml
-process_docs: '!function utils.process_docs_high_school_chemistry'
+process_docs: !function utils.process_docs_high_school_chemistry
 tag: mmlu_hi_llama_stem_tasks
 task: mmlu_hi_llama_high_school_chemistry
 task_alias: high_school_chemistry

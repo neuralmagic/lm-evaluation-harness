@@ -52,7 +52,7 @@ fewshot_config:
       \ forza in newton su un polo puntiforme di 4\u03C0 * 1.5 * 10^-4 weber posto\
       \ a una distanza di 10 cm da esso sar\xE0"
 include: _continuation_template_yaml
-process_docs: '!function utils.process_docs_electrical_engineering'
+process_docs: !function utils.process_docs_electrical_engineering
 tag: mmlu_it_llama_stem_tasks
 task: mmlu_it_llama_electrical_engineering
 task_alias: electrical_engineering

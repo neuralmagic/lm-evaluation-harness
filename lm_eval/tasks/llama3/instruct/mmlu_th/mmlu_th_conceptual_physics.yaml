@@ -77,7 +77,7 @@ fewshot_config:
       \u0E2D\u0E19\u0E34\u0E27\u0E04\u0E25\u0E35\u0E2D\u0E2D\u0E19\u0E21\u0E32\u0E01\
       \u0E17\u0E35\u0E48\u0E2A\u0E38\u0E14"
 include: _continuation_template_yaml
-process_docs: '!function utils.process_docs_conceptual_physics'
+process_docs: !function utils.process_docs_conceptual_physics
 tag: mmlu_th_llama_stem_tasks
 task: mmlu_th_llama_conceptual_physics
 task_alias: conceptual_physics

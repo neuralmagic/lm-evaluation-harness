@@ -1,3 +1,9 @@
+import datasets
+from functools import partial
+
+def process_docs(dataset: datasets.Dataset, subtask) -> datasets.Dataset:
+    return dataset.filter(lambda example: example["subtask_name"] == f"mmlu_pt_chat.{subtask}") 
+
 process_docs_formal_logic = partial(process_docs, subtask='formal_logic')
 process_docs_college_medicine = partial(process_docs, subtask='college_medicine')
 process_docs_nutrition = partial(process_docs, subtask='nutrition')

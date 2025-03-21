@@ -58,7 +58,7 @@ fewshot_config:
       \ e 0,0062 rispettivamente per 1, 2, 3 e 4 ritardi. Qual \xE8 l&#39;ordine ottimale\
       \ dei modelli secondo il criterio informativo di Akaike?"
 include: _continuation_template_yaml
-process_docs: '!function utils.process_docs_econometrics'
+process_docs: !function utils.process_docs_econometrics
 tag: mmlu_it_llama_social_sciences_tasks
 task: mmlu_it_llama_econometrics
 task_alias: econometrics

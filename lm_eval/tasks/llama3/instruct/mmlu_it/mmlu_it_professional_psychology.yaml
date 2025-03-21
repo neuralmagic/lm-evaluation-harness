@@ -56,7 +56,7 @@ fewshot_config:
       \ a fini di previsione, la combinazione ottimale di misure \xE8 quella in cui\
       \ i predittori"
 include: _continuation_template_yaml
-process_docs: '!function utils.process_docs_professional_psychology'
+process_docs: !function utils.process_docs_professional_psychology
 tag: mmlu_it_llama_social_sciences_tasks
 task: mmlu_it_llama_professional_psychology
 task_alias: professional_psychology

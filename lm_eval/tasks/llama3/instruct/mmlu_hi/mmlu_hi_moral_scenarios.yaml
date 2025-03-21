@@ -143,7 +143,7 @@ fewshot_config:
       \ \u0928\u0935\u091C\u093E\u0924 \u0936\u093F\u0936\u0941 \u0915\u094B \u092A\
       \u094D\u092F\u093E\u0930 \u0915\u093F\u092F\u093E\u0964"
 include: _continuation_template_yaml
-process_docs: '!function utils.process_docs_moral_scenarios'
+process_docs: !function utils.process_docs_moral_scenarios
 tag: mmlu_hi_llama_humanities_tasks
 task: mmlu_hi_llama_moral_scenarios
 task_alias: moral_scenarios

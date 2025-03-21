@@ -55,7 +55,7 @@ fewshot_config:
     input_question: "Qual das alternativas a seguir melhor expressa um argumento apresentado\
       \ por James Madison em The Federalist n\xFAmero 10?"
 include: _continuation_template_yaml
-process_docs: '!function utils.process_docs_high_school_government_and_politics'
+process_docs: !function utils.process_docs_high_school_government_and_politics
 tag: mmlu_pt_llama_social_sciences_tasks
 task: mmlu_pt_llama_high_school_government_and_politics
 task_alias: high_school_government_and_politics

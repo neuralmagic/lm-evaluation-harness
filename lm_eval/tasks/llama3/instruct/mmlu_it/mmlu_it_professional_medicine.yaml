@@ -84,7 +84,7 @@ fewshot_config:
       \ alle costole 4-5 a destra. Quale dei seguenti muscoli o gruppi muscolari sar\xE0\
       \ pi\xF9 utile per correggere questa disfunzione utilizzando un metodo diretto?"
 include: _continuation_template_yaml
-process_docs: '!function utils.process_docs_professional_medicine'
+process_docs: !function utils.process_docs_professional_medicine
 tag: mmlu_it_llama_other_tasks
 task: mmlu_it_llama_professional_medicine
 task_alias: professional_medicine
