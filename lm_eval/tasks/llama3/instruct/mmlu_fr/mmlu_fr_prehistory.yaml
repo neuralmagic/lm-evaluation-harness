@@ -60,7 +60,7 @@ fewshot_config:
     input_question: "Quelle est la capacit\xE9 cr\xE2nienne moyenne approximative\
       \ de l&#39;Homo erectus ?"
 include: _continuation_template_yaml
-process_docs: '!function utils.process_docs_prehistory'
+process_docs: !function utils.process_docs_prehistory
 tag: mmlu_fr_llama_humanities_tasks
 task: mmlu_fr_llama_prehistory
 task_alias: prehistory

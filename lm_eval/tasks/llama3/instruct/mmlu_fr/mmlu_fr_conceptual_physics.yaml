@@ -49,7 +49,7 @@ fewshot_config:
     input_question: "Lequel de ces trois \xE9l\xE9ments a le plus de masse par nucl\xE9\
       on ?"
 include: _continuation_template_yaml
-process_docs: '!function utils.process_docs_conceptual_physics'
+process_docs: !function utils.process_docs_conceptual_physics
 tag: mmlu_fr_llama_stem_tasks
 task: mmlu_fr_llama_conceptual_physics
 task_alias: conceptual_physics

@@ -55,7 +55,7 @@ fewshot_config:
       \ peuvent \xEAtre ajout\xE9es avant que le pH ne commence \xE0 changer de mani\xE8\
       re significative\_?"
 include: _continuation_template_yaml
-process_docs: '!function utils.process_docs_high_school_chemistry'
+process_docs: !function utils.process_docs_high_school_chemistry
 tag: mmlu_fr_llama_stem_tasks
 task: mmlu_fr_llama_high_school_chemistry
 task_alias: high_school_chemistry

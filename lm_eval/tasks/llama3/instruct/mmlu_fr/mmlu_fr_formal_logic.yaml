@@ -59,7 +59,7 @@ fewshot_config:
       \ de la phrase suivante\_? Les tortues vivent longtemps et sont des cr\xE9atures\
       \ heureuses, \xE0 moins qu&#39;elles ne soient bless\xE9es."
 include: _continuation_template_yaml
-process_docs: '!function utils.process_docs_formal_logic'
+process_docs: !function utils.process_docs_formal_logic
 tag: mmlu_fr_llama_humanities_tasks
 task: mmlu_fr_llama_formal_logic
 task_alias: formal_logic

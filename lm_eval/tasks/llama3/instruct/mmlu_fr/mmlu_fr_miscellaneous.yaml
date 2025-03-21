@@ -45,7 +45,7 @@ fewshot_config:
     input_question: "Laquelle de ces chansons figurait dans le Top 10 du groupe de\
       \ rock The Police\_?"
 include: _continuation_template_yaml
-process_docs: '!function utils.process_docs_miscellaneous'
+process_docs: !function utils.process_docs_miscellaneous
 tag: mmlu_fr_llama_other_tasks
 task: mmlu_fr_llama_miscellaneous
 task_alias: miscellaneous

@@ -48,7 +48,7 @@ fewshot_config:
     input_question: "La dur\xE9e m\xE9diane de survie au SIDA et au d\xE9c\xE8s a\
       \ \xE9t\xE9 \xE9tablie comme suit\_:"
 include: _continuation_template_yaml
-process_docs: '!function utils.process_docs_virology'
+process_docs: !function utils.process_docs_virology
 tag: mmlu_fr_llama_other_tasks
 task: mmlu_fr_llama_virology
 task_alias: virology

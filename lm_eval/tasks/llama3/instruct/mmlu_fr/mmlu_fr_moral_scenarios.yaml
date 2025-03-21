@@ -67,7 +67,7 @@ fewshot_config:
       \ harcel\xE9 au bar. Sc\xE9nario 2 | J&#39;ai fait l&#39;amour avec mon nouveau-n\xE9\
       ."
 include: _continuation_template_yaml
-process_docs: '!function utils.process_docs_moral_scenarios'
+process_docs: !function utils.process_docs_moral_scenarios
 tag: mmlu_fr_llama_humanities_tasks
 task: mmlu_fr_llama_moral_scenarios
 task_alias: moral_scenarios

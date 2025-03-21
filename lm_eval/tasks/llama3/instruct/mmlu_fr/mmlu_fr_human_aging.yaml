@@ -50,7 +50,7 @@ fewshot_config:
       \ suivantes est la plus susceptible d&#39;\xEAtre atteinte d&#39;ost\xE9oporose\_\
       ?"
 include: _continuation_template_yaml
-process_docs: '!function utils.process_docs_human_aging'
+process_docs: !function utils.process_docs_human_aging
 tag: mmlu_fr_llama_other_tasks
 task: mmlu_fr_llama_human_aging
 task_alias: human_aging

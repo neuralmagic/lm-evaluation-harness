@@ -51,7 +51,7 @@ fewshot_config:
     input_question: Le ____________ est tout ce que votre moteur de recherche ne peut
       pas rechercher.
 include: _continuation_template_yaml
-process_docs: '!function utils.process_docs_computer_security'
+process_docs: !function utils.process_docs_computer_security
 tag: mmlu_fr_llama_stem_tasks
 task: mmlu_fr_llama_computer_security
 task_alias: computer_security

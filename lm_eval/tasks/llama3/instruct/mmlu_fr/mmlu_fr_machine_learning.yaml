@@ -74,7 +74,7 @@ fewshot_config:
       \ pour chacune des valeurs distinctes de l&#39;attribut. Dans la liste ci-dessous,\
       \ choisissez le plus gros probl\xE8me avec la suggestion de Pat\_:"
 include: _continuation_template_yaml
-process_docs: '!function utils.process_docs_machine_learning'
+process_docs: !function utils.process_docs_machine_learning
 tag: mmlu_fr_llama_stem_tasks
 task: mmlu_fr_llama_machine_learning
 task_alias: machine_learning

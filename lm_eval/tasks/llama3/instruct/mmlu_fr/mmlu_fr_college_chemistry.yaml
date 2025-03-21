@@ -56,7 +56,7 @@ fewshot_config:
       \ des \xE9l\xE9ments du groupe 14 par ordre de stabilit\xE9 thermique, du plus\
       \ bas au plus \xE9lev\xE9\_?"
 include: _continuation_template_yaml
-process_docs: '!function utils.process_docs_college_chemistry'
+process_docs: !function utils.process_docs_college_chemistry
 tag: mmlu_fr_llama_stem_tasks
 task: mmlu_fr_llama_college_chemistry
 task_alias: college_chemistry

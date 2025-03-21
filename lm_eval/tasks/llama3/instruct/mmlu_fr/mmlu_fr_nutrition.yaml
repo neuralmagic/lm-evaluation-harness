@@ -65,7 +65,7 @@ fewshot_config:
       \ atteints de diab\xE8te de type 2 et d&#39;ob\xE9sit\xE9, \xE0 partir de 2020\_\
       ?"
 include: _continuation_template_yaml
-process_docs: '!function utils.process_docs_nutrition'
+process_docs: !function utils.process_docs_nutrition
 tag: mmlu_fr_llama_other_tasks
 task: mmlu_fr_llama_nutrition
 task_alias: nutrition

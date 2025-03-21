@@ -52,7 +52,7 @@ fewshot_config:
     input_question: "En 2017, combien d&#39;enfants d&#39;un an dans le monde ont\
       \ \xE9t\xE9 vaccin\xE9s contre une maladie\_? *"
 include: _continuation_template_yaml
-process_docs: '!function utils.process_docs_global_facts'
+process_docs: !function utils.process_docs_global_facts
 tag: mmlu_fr_llama_other_tasks
 task: mmlu_fr_llama_global_facts
 task_alias: global_facts

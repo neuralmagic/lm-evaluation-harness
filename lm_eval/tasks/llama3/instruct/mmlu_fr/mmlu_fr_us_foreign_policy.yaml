@@ -59,7 +59,7 @@ fewshot_config:
     input_question: "Comment Donald Trump a-t-il attaqu\xE9 la mondialisation lors\
       \ de la campagne de 2016 ?"
 include: _continuation_template_yaml
-process_docs: '!function utils.process_docs_us_foreign_policy'
+process_docs: !function utils.process_docs_us_foreign_policy
 tag: mmlu_fr_llama_social_sciences_tasks
 task: mmlu_fr_llama_us_foreign_policy
 task_alias: us_foreign_policy

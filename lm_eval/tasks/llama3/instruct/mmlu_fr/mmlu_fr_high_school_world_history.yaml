@@ -108,7 +108,7 @@ fewshot_config:
       \ contribu\xE9 \xE0 lequel des d\xE9veloppements suivants dans la p\xE9riode\
       \ 1450\u20131750 CE\_?"
 include: _continuation_template_yaml
-process_docs: '!function utils.process_docs_high_school_world_history'
+process_docs: !function utils.process_docs_high_school_world_history
 tag: mmlu_fr_llama_humanities_tasks
 task: mmlu_fr_llama_high_school_world_history
 task_alias: high_school_world_history

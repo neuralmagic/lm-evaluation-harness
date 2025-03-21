@@ -54,7 +54,7 @@ fewshot_config:
       \ d&#39;ADN n\xE9cessaires \xE0 la s\xE9gr\xE9gation des chromosomes lors de\
       \ la mitose et de la m\xE9iose\_?"
 include: _continuation_template_yaml
-process_docs: '!function utils.process_docs_college_biology'
+process_docs: !function utils.process_docs_college_biology
 tag: mmlu_fr_llama_stem_tasks
 task: mmlu_fr_llama_college_biology
 task_alias: college_biology

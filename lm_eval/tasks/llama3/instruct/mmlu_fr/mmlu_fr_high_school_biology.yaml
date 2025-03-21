@@ -58,7 +58,7 @@ fewshot_config:
       \ du processus de s\xE9lection naturelle. Tous les \xE9l\xE9ments suivants sont\
       \ des exemples de structures homologues SAUF"
 include: _continuation_template_yaml
-process_docs: '!function utils.process_docs_high_school_biology'
+process_docs: !function utils.process_docs_high_school_biology
 tag: mmlu_fr_llama_stem_tasks
 task: mmlu_fr_llama_high_school_biology
 task_alias: high_school_biology

@@ -56,7 +56,7 @@ fewshot_config:
       tique dont elle parle sont &quot;incroyablement stupides&quot;, mais elle affirme\
       \ que c&#39;est en fait la preuve de"
 include: _continuation_template_yaml
-process_docs: '!function utils.process_docs_moral_disputes'
+process_docs: !function utils.process_docs_moral_disputes
 tag: mmlu_fr_llama_humanities_tasks
 task: mmlu_fr_llama_moral_disputes
 task_alias: moral_disputes

@@ -57,7 +57,7 @@ fewshot_config:
       \ les notes suivantes\_: 45, 55, 50, 70, 65, 80, 40, 90, 70, 85. Quelle est\
       \ la moyenne des notes des tests des \xE9tudiants\_?"
 include: _continuation_template_yaml
-process_docs: '!function utils.process_docs_high_school_mathematics'
+process_docs: !function utils.process_docs_high_school_mathematics
 tag: mmlu_fr_llama_stem_tasks
 task: mmlu_fr_llama_high_school_mathematics
 task_alias: high_school_mathematics

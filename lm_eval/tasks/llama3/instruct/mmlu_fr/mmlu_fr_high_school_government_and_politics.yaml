@@ -60,7 +60,7 @@ fewshot_config:
     input_question: "Lequel des \xE9nonc\xE9s suivants \xE9nonce le mieux un argument\
       \ avanc\xE9 par James Madison dans The Federalist num\xE9ro 10\_?"
 include: _continuation_template_yaml
-process_docs: '!function utils.process_docs_high_school_government_and_politics'
+process_docs: !function utils.process_docs_high_school_government_and_politics
 tag: mmlu_fr_llama_social_sciences_tasks
 task: mmlu_fr_llama_high_school_government_and_politics
 task_alias: high_school_government_and_politics

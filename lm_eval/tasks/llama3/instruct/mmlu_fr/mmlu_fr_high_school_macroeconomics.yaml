@@ -52,7 +52,7 @@ fewshot_config:
     input_question: "Laquelle des politiques suivantes d\xE9crit le mieux la politique\
       \ budg\xE9taire de l&#39;offre\_?"
 include: _continuation_template_yaml
-process_docs: '!function utils.process_docs_high_school_macroeconomics'
+process_docs: !function utils.process_docs_high_school_macroeconomics
 tag: mmlu_fr_llama_social_sciences_tasks
 task: mmlu_fr_llama_high_school_macroeconomics
 task_alias: high_school_macroeconomics

@@ -58,7 +58,7 @@ fewshot_config:
       \ (m, n) tels que 7m + 12n = 22. Quel est le plus grand nombre n\xE9gatif de\
       \ l&#39;ensemble B = {m + n : (m, n) \\in A}\_?"
 include: _continuation_template_yaml
-process_docs: '!function utils.process_docs_college_mathematics'
+process_docs: !function utils.process_docs_college_mathematics
 tag: mmlu_fr_llama_stem_tasks
 task: mmlu_fr_llama_college_mathematics
 task_alias: college_mathematics

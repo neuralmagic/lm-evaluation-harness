@@ -66,7 +66,7 @@ fewshot_config:
     - A
     input_question: Pourquoi Mars est-elle rouge ?
 include: _continuation_template_yaml
-process_docs: '!function utils.process_docs_astronomy'
+process_docs: !function utils.process_docs_astronomy
 tag: mmlu_fr_llama_stem_tasks
 task: mmlu_fr_llama_astronomy
 task_alias: astronomy

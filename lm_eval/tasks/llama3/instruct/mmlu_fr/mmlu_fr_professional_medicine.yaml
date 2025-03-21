@@ -95,7 +95,7 @@ fewshot_config:
       \ sera le plus utile pour corriger ce dysfonctionnement en utilisant une m\xE9\
       thode directe\_?"
 include: _continuation_template_yaml
-process_docs: '!function utils.process_docs_professional_medicine'
+process_docs: !function utils.process_docs_professional_medicine
 tag: mmlu_fr_llama_other_tasks
 task: mmlu_fr_llama_professional_medicine
 task_alias: professional_medicine

@@ -71,7 +71,7 @@ fewshot_config:
       \ jusqu&#39;au registre auxiliaire d&#39;un non-\xE9metteur. Laquelle des assertions\
       \ de gestion suivantes est prise en charge par ce test\_?"
 include: _continuation_template_yaml
-process_docs: '!function utils.process_docs_professional_accounting'
+process_docs: !function utils.process_docs_professional_accounting
 tag: mmlu_fr_llama_other_tasks
 task: mmlu_fr_llama_professional_accounting
 task_alias: professional_accounting

@@ -55,7 +55,7 @@ fewshot_config:
       \ faibles en raison de l&#39;absence d&#39;un m\xE9canisme d&#39;adresse personnelle.\
       \ Ce format de m\xE9dia est connu sous le nom de\_:"
 include: _continuation_template_yaml
-process_docs: '!function utils.process_docs_marketing'
+process_docs: !function utils.process_docs_marketing
 tag: mmlu_fr_llama_other_tasks
 task: mmlu_fr_llama_marketing
 task_alias: marketing

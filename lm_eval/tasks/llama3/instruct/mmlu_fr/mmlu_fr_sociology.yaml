@@ -57,7 +57,7 @@ fewshot_config:
     input_question: "Lequel des \xE9l\xE9ments suivants n&#39;est pas un probl\xE8\
       me associ\xE9 aux statistiques officielles sur les gr\xE8ves\_?"
 include: _continuation_template_yaml
-process_docs: '!function utils.process_docs_sociology'
+process_docs: !function utils.process_docs_sociology
 tag: mmlu_fr_llama_social_sciences_tasks
 task: mmlu_fr_llama_sociology
 task_alias: sociology

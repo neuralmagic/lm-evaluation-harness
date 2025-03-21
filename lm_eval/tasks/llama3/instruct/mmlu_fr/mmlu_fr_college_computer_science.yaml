@@ -80,7 +80,7 @@ fewshot_config:
       \ sans tenir compte des retards dus \xE0 la concurrence des autres processeurs\_\
       ?"
 include: _continuation_template_yaml
-process_docs: '!function utils.process_docs_college_computer_science'
+process_docs: !function utils.process_docs_college_computer_science
 tag: mmlu_fr_llama_stem_tasks
 task: mmlu_fr_llama_college_computer_science
 task_alias: college_computer_science

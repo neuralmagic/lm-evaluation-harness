@@ -65,7 +65,7 @@ fewshot_config:
       \ \xE0 des fins de pr\xE9diction, la combinaison optimale de mesures est celle\
       \ dans laquelle les pr\xE9dicteurs"
 include: _continuation_template_yaml
-process_docs: '!function utils.process_docs_professional_psychology'
+process_docs: !function utils.process_docs_professional_psychology
 tag: mmlu_fr_llama_social_sciences_tasks
 task: mmlu_fr_llama_professional_psychology
 task_alias: professional_psychology

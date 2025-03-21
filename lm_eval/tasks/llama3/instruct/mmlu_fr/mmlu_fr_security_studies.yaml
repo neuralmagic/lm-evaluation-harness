@@ -117,7 +117,7 @@ fewshot_config:
     input_question: "Quels sont les cadres d&#39;analyse dans lesquels le terrorisme\
       \ a \xE9t\xE9 consid\xE9r\xE9 (\xE0 partir de 2020) ?"
 include: _continuation_template_yaml
-process_docs: '!function utils.process_docs_security_studies'
+process_docs: !function utils.process_docs_security_studies
 tag: mmlu_fr_llama_social_sciences_tasks
 task: mmlu_fr_llama_security_studies
 task_alias: security_studies

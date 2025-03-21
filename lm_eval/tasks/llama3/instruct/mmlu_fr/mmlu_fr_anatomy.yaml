@@ -45,7 +45,7 @@ fewshot_config:
     input_question: "Laquelle des cavit\xE9s suivantes est la cavit\xE9 corporelle\
       \ qui contient la glande pituitaire\_?"
 include: _continuation_template_yaml
-process_docs: '!function utils.process_docs_anatomy'
+process_docs: !function utils.process_docs_anatomy
 tag: mmlu_fr_llama_stem_tasks
 task: mmlu_fr_llama_anatomy
 task_alias: anatomy

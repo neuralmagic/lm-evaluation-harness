@@ -49,7 +49,7 @@ fewshot_config:
       \ avons re\xE7u une montre Rolox \xE0 remontage automatique d&#39;une qualit\xE9\
       \ exceptionnelle que nous vous vendrons \xE0 un prix tr\xE8s avantageux."
 include: _continuation_template_yaml
-process_docs: '!function utils.process_docs_jurisprudence'
+process_docs: !function utils.process_docs_jurisprudence
 tag: mmlu_fr_llama_humanities_tasks
 task: mmlu_fr_llama_jurisprudence
 task_alias: jurisprudence

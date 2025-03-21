@@ -52,7 +52,7 @@ fewshot_config:
       \ force en newtons sur un p\xF4le ponctuel de 4\u03C0 * 1,5 * 10^-4 weber plac\xE9\
       \ \xE0 une distance de 10 cm de celui-ci sera"
 include: _continuation_template_yaml
-process_docs: '!function utils.process_docs_electrical_engineering'
+process_docs: !function utils.process_docs_electrical_engineering
 tag: mmlu_fr_llama_stem_tasks
 task: mmlu_fr_llama_electrical_engineering
 task_alias: electrical_engineering

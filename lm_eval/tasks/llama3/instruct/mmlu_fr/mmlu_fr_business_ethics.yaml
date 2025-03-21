@@ -59,7 +59,7 @@ fewshot_config:
       \ a \xE9t\xE9 renforc\xE9 par l&#39;utilisation de ___________, qui permet aux\
       \ campagnes d&#39;aider l&#39;entreprise \xE0 atteindre _________ ."
 include: _continuation_template_yaml
-process_docs: '!function utils.process_docs_business_ethics'
+process_docs: !function utils.process_docs_business_ethics
 tag: mmlu_fr_llama_other_tasks
 task: mmlu_fr_llama_business_ethics
 task_alias: business_ethics

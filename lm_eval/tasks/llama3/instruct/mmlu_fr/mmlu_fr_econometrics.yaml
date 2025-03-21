@@ -59,7 +59,7 @@ fewshot_config:
       \ Quel est l&#39;ordre optimal du mod\xE8le selon le crit\xE8re d&#39;information\
       \ d&#39;Akaike ?"
 include: _continuation_template_yaml
-process_docs: '!function utils.process_docs_econometrics'
+process_docs: !function utils.process_docs_econometrics
 tag: mmlu_fr_llama_social_sciences_tasks
 task: mmlu_fr_llama_econometrics
 task_alias: econometrics

@@ -49,7 +49,7 @@ fewshot_config:
     input_question: "Le trouble le plus courant chez les hommes qui consultent une\
       \ th\xE9rapie sexuelle est\_:"
 include: _continuation_template_yaml
-process_docs: '!function utils.process_docs_human_sexuality'
+process_docs: !function utils.process_docs_human_sexuality
 tag: mmlu_fr_llama_social_sciences_tasks
 task: mmlu_fr_llama_human_sexuality
 task_alias: human_sexuality

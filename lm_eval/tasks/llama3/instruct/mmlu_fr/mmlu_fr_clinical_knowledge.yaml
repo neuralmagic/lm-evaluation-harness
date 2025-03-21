@@ -49,7 +49,7 @@ fewshot_config:
     input_question: "La glycolyse est le nom donn\xE9 \xE0 la voie de conversion de\
       \ :"
 include: _continuation_template_yaml
-process_docs: '!function utils.process_docs_clinical_knowledge'
+process_docs: !function utils.process_docs_clinical_knowledge
 tag: mmlu_fr_llama_other_tasks
 task: mmlu_fr_llama_clinical_knowledge
 task_alias: clinical_knowledge

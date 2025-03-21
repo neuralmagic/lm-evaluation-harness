@@ -59,7 +59,7 @@ fewshot_config:
       \ Combien de travail faut-il pour d\xE9placer une charge, Q = +8 \xB5C, du point\
       \ (0, 4 m\xE8tres) au point (3 m\xE8tres, 0)\_?"
 include: _continuation_template_yaml
-process_docs: '!function utils.process_docs_high_school_physics'
+process_docs: !function utils.process_docs_high_school_physics
 tag: mmlu_fr_llama_stem_tasks
 task: mmlu_fr_llama_high_school_physics
 task_alias: high_school_physics

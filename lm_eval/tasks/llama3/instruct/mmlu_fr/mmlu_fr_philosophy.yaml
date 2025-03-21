@@ -48,7 +48,7 @@ fewshot_config:
       \ enqu\xEAte sur la nature \xE9l\xE9mentaire de l&#39;univers et des choses\
       \ qu&#39;il contient, est connue sous le nom de _____."
 include: _continuation_template_yaml
-process_docs: '!function utils.process_docs_philosophy'
+process_docs: !function utils.process_docs_philosophy
 tag: mmlu_fr_llama_humanities_tasks
 task: mmlu_fr_llama_philosophy
 task_alias: philosophy
