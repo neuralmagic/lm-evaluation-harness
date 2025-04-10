@@ -28,6 +28,7 @@ try:
     from vllm import LLM, SamplingParams
     from vllm.lora.request import LoRARequest
     from vllm.transformers_utils.tokenizer import get_tokenizer
+    from vllm.entrypoints.chat_utils import resolve_hf_chat_template
 except ModuleNotFoundError:
     pass
 
@@ -133,6 +134,8 @@ class VLLM(TemplateLM):
                 "Found 'gemma' in model name, a BOS token will be used as Gemma series models underperform without it."
             )
 
+        self.chat_template = resolve_hf_chat_template(tokenizer)
+
         self.custom_prefix_token_id = prefix_token_id
         if prefix_token_id is not None:
             eval_logger.info(
@@ -190,11 +193,12 @@ class VLLM(TemplateLM):
         """
         Method to apply a chat template to a list of chat history between user and model.
         """
-        chat_templated = self.tokenizer.apply_chat_template(
+        chat_templated = self.apply_chat_template(
             chat_history,
             tokenize=False,
             add_generation_prompt=add_generation_prompt,
             continue_final_message=not add_generation_prompt,
+            chat_template=self.chat_template,
         )
 
         return chat_templated
