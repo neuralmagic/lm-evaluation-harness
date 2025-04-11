@@ -134,7 +134,12 @@ class VLLM(TemplateLM):
                 "Found 'gemma' in model name, a BOS token will be used as Gemma series models underperform without it."
             )
 
-        self.chat_template = resolve_hf_chat_template(tokenizer, chat_template=None, tools=None)
+        self.chat_template = resolve_hf_chat_template(
+            tokenizer=self.tokenizer, 
+            chat_template=None, 
+            tools=None,
+            trust_remote_code=trust_remote_code,
+        )
 
         self.custom_prefix_token_id = prefix_token_id
         if prefix_token_id is not None:
@@ -193,7 +198,7 @@ class VLLM(TemplateLM):
         """
         Method to apply a chat template to a list of chat history between user and model.
         """
-        chat_templated = self.apply_chat_template(
+        chat_templated = self.tokenizer.apply_chat_template(
             chat_history,
             tokenize=False,
             add_generation_prompt=add_generation_prompt,
