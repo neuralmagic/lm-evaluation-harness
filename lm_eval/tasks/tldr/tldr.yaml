@@ -1,0 +1,42 @@
+task: tldr
+
+dataset_path: trl-lib/tldr
+
+training_split: train
+validation_split: validation
+test_split: test
+
+output_type: generate_until
+doc_to_text: "Give a TL;DR of the following Reddit post.\n{{prompt}}"
+doc_to_target: completion
+process_results: !function utils.process_results
+
+
+generation_kwargs:
+  until: []
+  do_sample: false
+  temperature: 0.0
+  max_gen_toks: 1024
+
+metric_list:
+  - metric: bleu
+    aggregation: bleu
+    higher_is_better: true
+  - metric: meteor
+    aggregation: mean
+    higher_is_better: true
+  - metric: rouge1
+    aggregation: mean
+    higher_is_better: true
+  - metric: rouge2
+    aggregation: mean
+    higher_is_better: true
+  - metric: rougeLsum
+    aggregation: mean
+    higher_is_better: true
+  - metric: bert_score
+    aggregation: !function utils.bert_score
+    higher_is_better: true
+
+metadata:
+  version: 1.0
