@@ -258,7 +258,8 @@ class VLLM_VLM(VLLM):
             visuals = [
                 [
                     resize_image(
-                        img, self.image_width, self.image_height, self.image_max_side
+                        img.convert("RGB") if hasattr(img, "mode") and img.mode != "RGB" else img,
+                        self.image_width, self.image_height, self.image_max_side
                     )
                     for img in arg["visual"]
                 ]
