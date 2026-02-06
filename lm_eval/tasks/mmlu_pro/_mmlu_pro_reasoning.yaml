@@ -1,0 +1,23 @@
+group: mmlu_pro_reasoning
+task:
+  - mmlu_pro_reasoning_biology
+  - mmlu_pro_reasoning_business
+  - mmlu_pro_reasoning_chemistry
+  - mmlu_pro_reasoning_computer_science
+  - mmlu_pro_reasoning_economics
+  - mmlu_pro_reasoning_engineering
+  - mmlu_pro_reasoning_health
+  - mmlu_pro_reasoning_history
+  - mmlu_pro_reasoning_law
+  - mmlu_pro_reasoning_math
+  - mmlu_pro_reasoning_other
+  - mmlu_pro_reasoning_philosophy
+  - mmlu_pro_reasoning_physics
+  - mmlu_pro_reasoning_psychology
+aggregate_metric_list:
+  - aggregation: mean
+    metric: exact_match
+    weight_by_size: true
+    filter_list: custom-extract
+metadata:
+  version: 1.0
