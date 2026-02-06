@@ -151,7 +151,8 @@ class VLLM(TemplateLM):
         # VLLM: enable thinking tags in the prompt.
         enable_thinking: bool = True,
         chat_template_args: dict | None = None,
-        # End marker for thinking tags - splits to get response after this token (if provided).
+        # Start/end markers for thinking tags. think_end_token also splits to get response after it (if provided).
+        think_start_token: str | None = None,
         think_end_token: str | None = None,
         max_lora_rank: int = 16,
         truncation_side: Literal["left", "right", "middle"] = "left",
@@ -169,6 +170,7 @@ class VLLM(TemplateLM):
             "Either max_length or max_model_len may be provided, but not both"
         )
         kwargs.pop("device", None)
+        self.think_start_token = think_start_token
         self.think_end_token = think_end_token
         self.V1 = os.environ.get("VLLM_USE_V1", "1") != "0"
         self._max_length = max_model_len if max_model_len is not None else max_length

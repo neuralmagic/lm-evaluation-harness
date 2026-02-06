@@ -531,6 +531,7 @@ def evaluate(
 
         limit = get_sample_size(task, limit_arg)
         limits.append(limit)
+        # Thinking tokens for fewshot formatting come from the model only
         task.build_all_requests(
             limit=limit,
             samples=samples.get(task_output.task_name, None)
@@ -543,6 +544,8 @@ def evaluate(
             system_instruction=system_instruction,
             apply_chat_template=bool(apply_chat_template),
             fewshot_as_multiturn=fewshot_as_multiturn,
+            think_start_token=getattr(lm, "think_start_token", None),
+            think_end_token=getattr(lm, "think_end_token", None),
             chat_template=getattr(lm, "apply_chat_template", None)
             if apply_chat_template
             else None,

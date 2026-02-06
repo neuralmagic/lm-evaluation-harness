@@ -139,6 +139,9 @@ class TemplateAPI(TemplateLM):
         timeout: int = 300,
         header: Optional[Dict[str, str]] = None,
         max_images: int = 1,
+        # Start/end markers for thinking (e.g. for fewshot formatting); passed through to task.
+        think_start_token: Optional[str] = None,
+        think_end_token: Optional[str] = None,
         **kwargs,
     ) -> None:
         super().__init__()
@@ -189,6 +192,8 @@ class TemplateAPI(TemplateLM):
         self._eos_string = eos_string
         self.timeout = int(timeout)
         self.max_images = int(max_images)
+        self.think_start_token = think_start_token
+        self.think_end_token = think_end_token
 
         eval_logger.info(f"Using tokenizer {self.tokenizer_backend}")
         if self.tokenizer_backend is None:

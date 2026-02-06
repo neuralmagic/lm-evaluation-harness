@@ -276,6 +276,8 @@ class Task(abc.ABC):
         system_instruction: str | None = None,
         apply_chat_template: bool = False,
         fewshot_as_multiturn: bool = False,
+        think_start_token: str | None = None,
+        think_end_token: str | None = None,
         chat_template: Callable | None = None,
         tokenizer_name: str = "",
     ) -> None:
@@ -293,6 +295,10 @@ class Task(abc.ABC):
             else ""
         )
         cache_key += f"-tokenizer{tokenizer_name}"
+        if think_start_token is not None:
+            cache_key += f"-think_start{utils.hash_string(think_start_token)}"
+        if think_end_token is not None:
+            cache_key += f"-think_end{utils.hash_string(think_end_token)}"
 
         cached_instances = load_from_cache(file_name=cache_key, cache=cache_requests)
 
@@ -341,6 +347,8 @@ class Task(abc.ABC):
                 system_instruction=system_instruction,
                 apply_chat_template=apply_chat_template,
                 fewshot_as_multiturn=fewshot_as_multiturn,
+                think_start_token=think_start_token,
+                think_end_token=think_end_token,
                 chat_template=chat_template,
                 gen_prefix=self.doc_to_prefix(doc),
             )
@@ -932,6 +940,8 @@ class ConfigurableTask(Task):
         system_instruction: str | None = None,
         apply_chat_template: bool = False,
         fewshot_as_multiturn: bool = False,
+        think_start_token: str | None = None,
+        think_end_token: str | None = None,
         chat_template: Callable[..., str] | None = None,
         gen_prefix: str | None = None,
     ) -> str | list[str]:
@@ -985,7 +995,12 @@ class ConfigurableTask(Task):
                     self.doc_to_choice(fs_doc, self.fewshot_cfg.doc_to_choice)
                     if self.fewshot_cfg.doc_to_choice
                     else None,
-                    self.doc_to_target(fs_doc, self.fewshot_cfg.doc_to_target),
+                    self.doc_to_target(
+                        fs_doc,
+                        self.fewshot_cfg.doc_to_target,
+                        think_start_token=think_start_token,
+                        think_end_token=think_end_token,
+                    ),
                 )
                 _gen_prefix = self.resolve_field(doc, self.fewshot_cfg.gen_prefix)
                 # for multiple inputs, q: int, c: list[str], target: str
@@ -1228,7 +1243,9 @@ class ConfigurableTask(Task):
             print(type(doc_to_text))
             raise TypeError
 
-    def doc_to_target(self, doc: Mapping, doc_to_target=None) -> int | str | list:
+    def doc_to_target(
+        self, doc: Mapping, doc_to_target=None, **kwargs: Any
+    ) -> int | str | list:
         if self.prompt is not None:
             doc_to_target = self.prompt
         elif doc_to_target is not None:
@@ -1262,7 +1279,7 @@ class ConfigurableTask(Task):
         elif isinstance(doc_to_target, list):
             return doc_to_target
         elif callable(doc_to_target):
-            return doc_to_target(doc)
+            return doc_to_target(doc, **kwargs)
         # Used when applying a Promptsource template
         elif hasattr(doc_to_target, "apply"):
             applied_prompt = doc_to_target.apply(doc)

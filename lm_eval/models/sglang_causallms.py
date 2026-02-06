@@ -60,7 +60,8 @@ class SGLangLM(TemplateLM):
         dp_size: int = 1,
         tp_size: int = 1,
         prefix_token_id: Optional[int] = None,
-        # End marker for thinking tags - splits to get response after this token (if provided).
+        # Start/end markers for thinking tags. think_end_token also splits to get response after it (if provided).
+        think_start_token: Optional[str] = None,
         think_end_token: Optional[str] = None,
         **kwargs,
     ):
@@ -77,6 +78,7 @@ class SGLangLM(TemplateLM):
             "Either context_length or max_model_len may be provided, but not both"
         )
         # Initialize your sglang model here
+        self.think_start_token = think_start_token
         self.think_end_token = think_end_token
         self._max_length = (
             max_model_len if max_model_len is not None else context_length

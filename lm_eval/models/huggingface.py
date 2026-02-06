@@ -103,8 +103,9 @@ class HFLM(TemplateLM):
         autogptq: bool | str | None = False,
         gptqmodel: bool | None = False,
         gguf_file: str | None = None,
-        # end token for thinking, either the string or int token id.
-        # splits to get response after this token (if provided).
+        # start/end tokens for thinking block (e.g. for fewshot formatting and post-processing).
+        # think_end_token: splits to get response after this token (if provided).
+        think_start_token: str | None = None,
         think_end_token: str | int | None = None,
         enable_thinking: bool | None = None,
         chat_template_args: dict[str, Any] | None = None,
@@ -246,6 +247,7 @@ class HFLM(TemplateLM):
             self.model.eval()
             self.model.tie_weights()
 
+        self.think_start_token = think_start_token
         self.think_end_token = (
             int(think_end_token)
             if (isinstance(think_end_token, str) and think_end_token.isdigit())
