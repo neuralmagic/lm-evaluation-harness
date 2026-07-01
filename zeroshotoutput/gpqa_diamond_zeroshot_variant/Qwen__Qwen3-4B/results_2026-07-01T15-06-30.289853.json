@@ -1,0 +1,159 @@
+{
+  "results": {
+    "gpqa_diamond_zeroshot_variant": {
+      "name": "gpqa_diamond_zeroshot_variant",
+      "alias": "gpqa_diamond_zeroshot_variant",
+      "sample_len": 10,
+      "exact_match,custom-extract": 0.4,
+      "exact_match_stderr,custom-extract": 0.16329931618554522
+    }
+  },
+  "group_subtasks": {},
+  "configs": {
+    "gpqa_diamond_zeroshot_variant": {
+      "task": "gpqa_diamond_zeroshot_variant",
+      "dataset_path": "Idavidrein/gpqa",
+      "dataset_name": "gpqa_diamond",
+      "training_split": "train",
+      "validation_split": "train",
+      "process_docs": "def process_docs(dataset: datasets.Dataset) -> datasets.Dataset:\n    \"\"\"\n    Process documents by shuffling answer choices and tracking correct answer.\n\n    This maintains the same shuffling logic as the original to ensure fairness.\n    \"\"\"\n    def _process_doc(doc):\n        choices = [\n            preprocess(doc[\"Incorrect Answer 1\"]),\n            preprocess(doc[\"Incorrect Answer 2\"]),\n            preprocess(doc[\"Incorrect Answer 3\"]),\n            preprocess(doc[\"Correct Answer\"]),\n        ]\n\n        random.shuffle(choices)\n        correct_answer_index = choices.index(preprocess(doc[\"Correct Answer\"]))\n\n        out_doc = {\n            \"Question\": doc[\"Question\"],\n            \"choice1\": choices[0],\n            \"choice2\": choices[1],\n            \"choice3\": choices[2],\n            \"choice4\": choices[3],\n            \"answer\": chr(65 + correct_answer_index),  # Store as letter: A, B, C, or D\n        }\n        return out_doc\n\n    return dataset.map(_process_doc)\n",
+      "doc_to_text": "def doc_to_text(doc):\n    \"\"\"\n    Format the question with options for the user message.\n\n    Returns a prompt that includes:\n    - Question text\n    - Options labeled A-D\n    - Explicit instruction to think step by step and reply with \"the final answer is (X)\"\n    \"\"\"\n    question = doc[\"Question\"]\n\n    prompt = f\"Question:\\n{question}\\n\"\n    prompt += \"Options:\\n\"\n    prompt += f\"(A) {doc['choice1']}\\n\"\n    prompt += f\"(B) {doc['choice2']}\\n\"\n    prompt += f\"(C) {doc['choice3']}\\n\"\n    prompt += f\"(D) {doc['choice4']}\\n\"\n\n    # Use the standardized instruction\n    prompt += '\\n\\nThink step by step and then finish your answer with \"the final answer is (X)\" where X is the correct letter choice.'\n\n    return prompt\n",
+      "doc_to_target": "def doc_to_target(doc):\n    \"\"\"\n    Extract the correct answer letter.\n\n    Returns the letter (A, B, C, or D) of the correct answer.\n    \"\"\"\n    return doc[\"answer\"]\n",
+      "unsafe_code": false,
+      "description": "",
+      "target_delimiter": " ",
+      "fewshot_delimiter": "\n\n",
+      "fewshot_config": {
+        "sampler": "default",
+        "split": null,
+        "process_docs": "<function process_docs at 0x11f7845e0>",
+        "fewshot_indices": null,
+        "samples": null,
+        "doc_to_text": "<function doc_to_text at 0x11f7842c0>",
+        "doc_to_choice": null,
+        "doc_to_target": "<function doc_to_target at 0x11f784360>",
+        "gen_prefix": null,
+        "fewshot_delimiter": "\n\n",
+        "target_delimiter": " "
+      },
+      "num_fewshot": 0,
+      "metric_list": [
+        {
+          "metric": "exact_match",
+          "aggregation": "mean",
+          "higher_is_better": true,
+          "ignore_case": true,
+          "ignore_punctuation": true
+        }
+      ],
+      "output_type": "generate_until",
+      "generation_kwargs": {
+        "until": [],
+        "max_gen_toks": 24000,
+        "do_sample": true,
+        "temperature": 1.0,
+        "top_p": 0.95,
+        "top_k": 20,
+        "min_p": 0.0,
+        "seed": 42
+      },
+      "repeats": 1,
+      "filter_list": [
+        {
+          "name": "custom-extract",
+          "filter": [
+            {
+              "function": "regex",
+              "regex_pattern": "the final answer is \\*{0,2}\\(?([ABCD])\\)?\\*{0,2}",
+              "group_select": -1
+            },
+            {
+              "function": "take_first"
+            }
+          ]
+        }
+      ],
+      "should_decontaminate": false,
+      "metadata": {
+        "version": 1.0,
+        "description": "Standardized variant with generate_until and 'the final answer is (X)' pattern",
+        "model": "Qwen/Qwen3-4B",
+        "max_length": 40960,
+        "base_url": "http://52.117.122.58:8000/v1/chat/completions",
+        "num_concurrent": 64,
+        "max_retries": 3,
+        "tokenized_requests": false,
+        "tokenizer_backend": null,
+        "timeout": 1200,
+        "config_source": "/Users/chibuezeukachi/main-lmeval-harness/lm_eval/tasks/gpqa/zeroshot/gpqa_diamond_zeroshot_variant.yaml"
+      }
+    }
+  },
+  "versions": {
+    "gpqa_diamond_zeroshot_variant": 1.0
+  },
+  "n-shot": {
+    "gpqa_diamond_zeroshot_variant": 0
+  },
+  "higher_is_better": {
+    "gpqa_diamond_zeroshot_variant": {
+      "exact_match": true
+    }
+  },
+  "n-samples": {
+    "gpqa_diamond_zeroshot_variant": {
+      "original": 198,
+      "effective": 10
+    }
+  },
+  "config": {
+    "model": "local-chat-completions",
+    "model_args": {
+      "model": "Qwen/Qwen3-4B",
+      "max_length": 40960,
+      "base_url": "http://52.117.122.58:8000/v1/chat/completions",
+      "num_concurrent": 64,
+      "max_retries": 3,
+      "tokenized_requests": false,
+      "tokenizer_backend": null,
+      "timeout": 1200
+    },
+    "batch_size": 1,
+    "batch_sizes": [],
+    "device": "cuda:0",
+    "use_cache": null,
+    "limit": 10.0,
+    "bootstrap_iters": 100000,
+    "gen_kwargs": {
+      "do_sample": true,
+      "temperature": 1.0,
+      "top_p": 0.95,
+      "top_k": 20,
+      "min_p": 0.0,
+      "max_gen_toks": 24000,
+      "seed": 42
+    },
+    "random_seed": 42,
+    "numpy_seed": 42,
+    "torch_seed": 42,
+    "fewshot_seed": 42
+  },
+  "git_hash": "v0.4.10-112-g99a1a8306",
+  "date": 1782932613.208761,
+  "pretty_env_info": "N/A (torch not installed)",
+  "transformers_version": "N/A",
+  "lm_eval_version": "0.4.13.dev0",
+  "upper_git_hash": null,
+  "task_hashes": {
+    "gpqa_diamond_zeroshot_variant": "1f6b992316abd70fd3036662aa52bde347e6832facc0ba3a356ae8e4162813d1"
+  },
+  "model_source": "local-chat-completions",
+  "model_name": "Qwen/Qwen3-4B",
+  "model_name_sanitized": "Qwen__Qwen3-4B",
+  "system_instruction": null,
+  "system_instruction_sha": null,
+  "fewshot_as_multiturn": true,
+  "chat_template": "",
+  "chat_template_sha": null,
+  "total_evaluation_time_seconds": "181.56636649998836"
+}

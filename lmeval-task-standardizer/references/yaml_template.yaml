@@ -1,0 +1,65 @@
+# Standard YAML template for lmeval tasks using generate_until
+# Replace [PLACEHOLDERS] with actual values
+
+# Dataset configuration
+dataset_path: [DATASET_NAME]  # e.g., TIGER-Lab/MMLU-Pro, bigbench/task_name
+test_split: test
+fewshot_split: validation  # or train, dev - use if few-shot is supported
+
+# Few-shot configuration (remove this section if num_fewshot: 0)
+fewshot_config:
+  sampler: first_n  # or random_sampling, balanced_sampling
+  doc_to_text: !function utils_chat.doc_to_text
+  doc_to_target: !function utils_chat.fewshot_doc_to_target
+
+# Core task configuration
+output_type: generate_until  # ALWAYS generate_until, never multiple_choice
+doc_to_text: !function utils_chat.doc_to_text
+doc_to_target: [ANSWER_FIELD]  # Common values: answer, target, label
+
+# Answer extraction - standardized regex for "the final answer is (X)"
+filter_list:
+  - name: "custom-extract"
+    filter:
+      - function: "regex"
+        # For letter choices (A-J):
+        regex_pattern: 'the final answer is \*{0,2}\(?([A-J])\)?\*{0,2}'
+        # For letter choices (A-Z):
+        # regex_pattern: 'the final answer is \*{0,2}\(?([A-Z])\)?\*{0,2}'
+        # For numeric answers:
+        # regex_pattern: 'the final answer is \*{0,2}([0-9]+\.?[0-9]*)\*{0,2}'
+        # For word answers:
+        # regex_pattern: 'the final answer is \*{0,2}([A-Za-z\s]+)\*{0,2}'
+        group_select: -1
+      - function: "take_first"
+
+# Generation parameters
+generation_kwargs:
+  until: []  # Empty for open-ended generation
+  max_gen_toks: 4096  # Allow sufficient tokens for chain-of-thought
+  do_sample: true  # or false for greedy decoding
+  # Optional: add temperature, top_p, etc. if needed
+  # temperature: 0.0
+  # top_p: 1.0
+
+# Few-shot configuration
+num_fewshot: 5  # Number of few-shot examples; set to 0 for zero-shot
+
+# Metrics
+metric_list:
+  - metric: exact_match
+    aggregation: mean
+    higher_is_better: true
+    ignore_case: true
+    ignore_punctuation: true
+  # Optional: add additional metrics
+  # - metric: f1
+  #   aggregation: mean
+  #   higher_is_better: true
+
+# Metadata
+metadata:
+  version: 1.0
+  # Optional: add task-specific metadata
+  # description: "Task description"
+  # reference: "https://paper-url.com"

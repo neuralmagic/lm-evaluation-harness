@@ -1,0 +1,18 @@
+group: mmlu_pro_variant
+task:
+  - mmlu_pro_variant_biology
+  - mmlu_pro_variant_business
+  - mmlu_pro_variant_chemistry
+  - mmlu_pro_variant_computer_science
+  - mmlu_pro_variant_economics
+  - mmlu_pro_variant_engineering
+  - mmlu_pro_variant_health
+  - mmlu_pro_variant_history
+  - mmlu_pro_variant_law
+  - mmlu_pro_variant_math
+  - mmlu_pro_variant_other
+  - mmlu_pro_variant_philosophy
+  - mmlu_pro_variant_physics
+  - mmlu_pro_variant_psychology
+metadata:
+  version: 1.0

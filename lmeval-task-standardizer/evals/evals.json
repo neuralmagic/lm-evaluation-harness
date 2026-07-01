@@ -1,0 +1,40 @@
+{
+  "skill_name": "lmeval-task-standardizer",
+  "evals": [
+    {
+      "id": 0,
+      "eval_name": "zero-shot-with-options",
+      "prompt": "hey can you help me refactor this lmeval task? it's in lm_eval/tasks/arc/arc_easy and i need it to use the standard generate_until format with the 'final answer is (X)' pattern. the task has multiple choice options (A-D) and i want to keep zero-shot evaluation",
+      "expected_output": "Both utils_chat.py and YAML config files created with zero-shot prompting format including options and standardized regex pattern 'the final answer is'",
+      "files": []
+    },
+    {
+      "id": 1,
+      "eval_name": "few-shot-with-options",
+      "prompt": "i need to standardize the mmlu task at lm_eval/tasks/mmlu - it should use 5-shot prompting with the chain of thought examples separated into individual user/assistant pairs. keep the options (A-D format) and make sure it uses generate_until with the standard answer extraction",
+      "expected_output": "Both files created with proper few-shot configuration, separated user/assistant pairs, and fewshot_doc_to_target function",
+      "files": []
+    },
+    {
+      "id": 2,
+      "eval_name": "zero-shot-no-options",
+      "prompt": "refactor this evaluation task for me: lm_eval/tasks/gsm8k - it's a math task with numeric answers (no multiple choice options). needs to be zero-shot and use the 'final answer is (X)' format where X is a number",
+      "expected_output": "Both files created with zero-shot prompting without options, regex pattern adjusted for numeric answers",
+      "files": []
+    },
+    {
+      "id": 3,
+      "eval_name": "few-shot-no-options",
+      "prompt": "can you standardize lm_eval/tasks/hellaswag to use generate_until? it should be 3-shot with proper separation of examples. there are no letter options - answers are free-form completions. make sure the answer extraction works for text responses",
+      "expected_output": "Both files created with 3-shot configuration, no options in prompts, regex pattern for text answers",
+      "files": []
+    },
+    {
+      "id": 4,
+      "eval_name": "multiple-choice-to-generate",
+      "prompt": "this task at lm_eval/tasks/winogrande is currently using output_type: multiple_choice and i need to convert it to generate_until. it has 2 options per question and should be 5-shot. preserve all the original metadata and metrics",
+      "expected_output": "Conversion from multiple_choice to generate_until, preservation of metadata, proper few-shot config with 2-option format",
+      "files": []
+    }
+  ]
+}

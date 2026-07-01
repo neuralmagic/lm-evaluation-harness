@@ -1,0 +1,31 @@
+dataset_path: Idavidrein/gpqa
+tag: gpqa
+output_type: generate_until
+process_docs: !function utils_variant.process_docs
+training_split: train
+validation_split: train
+test_split: null
+num_fewshot: 0
+doc_to_text: !function utils_variant.doc_to_text
+doc_to_target: !function utils_variant.doc_to_target
+filter_list:
+  - name: "custom-extract"
+    filter:
+      - function: "regex"
+        regex_pattern: 'the final answer is \*{0,2}\(?([ABCD])\)?\*{0,2}'
+        group_select: -1
+      - function: "take_first"
+generation_kwargs:
+  until: []
+  max_gen_toks: 2048
+  do_sample: false
+  temperature: 0.0
+metric_list:
+  - metric: exact_match
+    aggregation: mean
+    higher_is_better: true
+    ignore_case: true
+    ignore_punctuation: true
+metadata:
+  version: 1.0
+  description: "Standardized variant with generate_until and 'the final answer is (X)' pattern"

@@ -1,0 +1,4 @@
+include: _mmlu_pro_variant_template.yaml
+task: mmlu_pro_variant_business
+task_alias: business
+process_docs: !function utils_variant.process_business

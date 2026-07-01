@@ -1,0 +1,4 @@
+# Standardized variant of gpqa_diamond_zeroshot
+dataset_name: gpqa_diamond
+include: _gpqa_zeroshot_variant_template.yaml
+task: gpqa_diamond_zeroshot_variant

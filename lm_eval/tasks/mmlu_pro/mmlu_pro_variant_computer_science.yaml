@@ -1,0 +1,4 @@
+include: _mmlu_pro_variant_template.yaml
+task: mmlu_pro_variant_computer_science
+task_alias: computer_science
+process_docs: !function utils_variant.process_computer_science
