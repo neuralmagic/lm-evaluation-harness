@@ -1,0 +1,26 @@
+tag:
+  - math_word_problems
+task: hendrycks_math_algebra_variant
+dataset_path: EleutherAI/hendrycks_math
+process_docs: !function utils_variant.process_docs
+dataset_name: algebra
+output_type: generate_until
+training_split: train
+test_split: test
+doc_to_text: !function utils_variant.doc_to_text
+process_results: !function utils_variant.process_results
+doc_to_target: !function utils_variant.doc_to_target
+generation_kwargs:
+  until:
+    - "Question:"
+    - "Problem:"
+  do_sample: false
+  temperature: 0
+  max_gen_toks: 4096
+metric_list:
+  - metric: exact_match
+    aggregation: mean
+    higher_is_better: true
+metadata:
+  version: 1.0
+  description: "Standardized variant with 'the final answer is (X)' pattern and Question: structure"

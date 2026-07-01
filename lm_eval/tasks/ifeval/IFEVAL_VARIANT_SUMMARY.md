@@ -1,13 +1,13 @@
-# IFEval Chat Variant - Summary
+# IFEval Variant - Summary
 
 ## Overview
 
-Created `ifeval_chat` variant that adds standardized prompt formatting to the IFEval instruction-following evaluation task.
+Created `ifeval_variant` variant that adds standardized prompt formatting to the IFEval instruction-following evaluation task.
 
 ## Files Created
 
-1. **`utils_chat.py`** - Chat formatting utilities
-2. **`ifeval_chat.yaml`** - Chat variant configuration
+1. **`utils_variant.py`** - Chat formatting utilities
+2. **`ifeval_variant.yaml`** - Variant configuration
 
 ## Key Changes
 
@@ -19,13 +19,13 @@ metadata:
   version: 4.0
 ```
 
-### To Chat Variant (ifeval_chat.yaml)
+### To Chat Variant (ifeval_variant.yaml)
 ```yaml
-task: ifeval_chat
-doc_to_text: !function utils_chat.doc_to_text  # Formatted with thinking instruction
+task: ifeval_variant
+doc_to_text: !function utils_variant.doc_to_text  # Formatted with thinking instruction
 metadata:
   version: 1.0
-  description: "Chat variant of IFEval with standardized 'Think step by step' instruction"
+  description: "Variant of IFEval with standardized 'Think step by step' instruction"
 ```
 
 ## What Was Preserved
@@ -39,7 +39,7 @@ metadata:
 
 ## What Was Added
 
-➕ **Standardized prompt formatting**: `utils_chat.doc_to_text()` appends "Think step by step." to each prompt  
+➕ **Standardized prompt formatting**: `utils_variant.doc_to_text()` appends "Think step by step." to each prompt  
 ➕ **Chat-friendly structure**: Uses function reference for doc_to_text instead of direct field access  
 
 ## What Was NOT Added (Intentionally)
@@ -82,7 +82,7 @@ Run the chat variant:
 ```bash
 lm_eval --model hf \
     --model_args pretrained=meta-llama/Llama-3.1-8B-Instruct \
-    --tasks ifeval_chat \
+    --tasks ifeval_variant \
     --device cuda:0 \
     --batch_size auto
 ```
@@ -91,7 +91,7 @@ Compare with original:
 ```bash
 lm_eval --model hf \
     --model_args pretrained=meta-llama/Llama-3.1-8B-Instruct \
-    --tasks ifeval,ifeval_chat \
+    --tasks ifeval,ifeval_variant \
     --device cuda:0 \
     --batch_size auto
 ```
@@ -108,7 +108,7 @@ To verify the variant works correctly:
 # Quick test with 10 examples
 lm_eval --model hf \
     --model_args pretrained=gpt2 \
-    --tasks ifeval_chat \
+    --tasks ifeval_variant \
     --limit 10 \
     --log_samples
 ```
@@ -123,4 +123,4 @@ Check that:
 - **Version reset to 1.0**: This is a new variant, not an update to the original task
 - **Backward compatible**: Original `ifeval` task remains unchanged
 - **Minimal intervention**: Only adds thinking instruction, preserves all evaluation logic
-- **No answer extraction**: Unlike standard Q&A tasks, ifeval_chat doesn't need filter_list
+- **No answer extraction**: Unlike standard Q&A tasks, ifeval_variant doesn't need filter_list

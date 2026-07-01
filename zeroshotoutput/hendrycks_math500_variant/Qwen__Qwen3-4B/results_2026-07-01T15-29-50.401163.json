@@ -1,0 +1,145 @@
+{
+  "results": {
+    "hendrycks_math500_variant": {
+      "name": "hendrycks_math500_variant",
+      "alias": "hendrycks_math500_variant",
+      "sample_len": 10,
+      "exact_match,none": 0.4,
+      "exact_match_stderr,none": 0.16329931618554522
+    }
+  },
+  "group_subtasks": {},
+  "configs": {
+    "hendrycks_math500_variant": {
+      "task": "hendrycks_math500_variant",
+      "dataset_path": "HuggingFaceH4/MATH-500",
+      "dataset_name": "default",
+      "test_split": "test",
+      "process_docs": "def process_docs(dataset: datasets.Dataset) -> datasets.Dataset:\n    \"\"\"\n    Process documents by extracting problem, solution, and boxed answer.\n    Same as original to maintain compatibility.\n    \"\"\"\n    def _process_doc(doc: dict) -> dict:\n        out_doc = {\n            \"problem\": doc[\"problem\"],\n            \"solution\": doc[\"solution\"],\n            \"answer\": remove_boxed(last_boxed_only_string(doc[\"solution\"])),\n        }\n        return out_doc\n\n    return dataset.map(_process_doc)\n",
+      "doc_to_text": "def doc_to_text(doc):\n    \"\"\"\n    Format the math problem for the user message.\n\n    Returns a prompt that includes:\n    - Question text\n    - Explicit instruction to think step by step and reply with \"the final answer is (X)\"\n    \"\"\"\n    problem = doc[\"problem\"]\n\n    # Use the standardized instruction\n    prompt = f\"Question:\\n{problem}\\n\\n\"\n    prompt += 'Think step by step and then finish your answer with \"the final answer is (X)\" where X is your answer. '\n    prompt += 'You may use LaTeX formatting and \\\\boxed{{}} notation if needed.'\n\n    return prompt\n",
+      "doc_to_target": "def doc_to_target(doc):\n    \"\"\"\n    Extract the target answer from the solution.\n    Same as original processing.\n    \"\"\"\n    return doc[\"answer\"]\n",
+      "unsafe_code": false,
+      "process_results": "def process_results(doc: dict, results: List[str]) -> Dict[str, int]:\n    \"\"\"\n    Process results with custom extraction for \"the final answer is\" format.\n\n    First tries to extract from \"the final answer is ...\" pattern,\n    then falls back to the original extraction logic (boxed, $...$, etc.)\n    \"\"\"\n    retval = 0\n    response = results[0]\n\n    # Try to extract from \"the final answer is ...\" first\n    answer = None\n\n    # Look for \"the final answer is\" pattern (case insensitive)\n    final_answer_pattern = re.compile(r'the final answer is[:\\s]+(.+?)(?:\\.|$|\\n)', re.IGNORECASE | re.DOTALL)\n    match = final_answer_pattern.search(response)\n\n    if match:\n        answer = match.group(1).strip()\n        # Remove trailing punctuation\n        answer = answer.rstrip('.')\n\n        # If the answer contains \\boxed{}, extract from that\n        if '\\\\boxed{' in answer:\n            boxed_answer = last_boxed_only_string(answer)\n            if boxed_answer is not None:\n                try:\n                    boxed_content = remove_boxed(boxed_answer)\n                    if boxed_content is not None:\n                        answer = boxed_content\n                except (AssertionError, IndexError):\n                    pass\n\n    # If we didn't find \"the final answer is\", fall back to original extraction\n    if answer is None:\n        # Try to extract answer from $...$ format first\n        indices = [pos for pos, char in enumerate(response) if char == \"$\"]\n        if len(indices) <= 1:\n            answer = response\n        else:\n            answer = response[indices[0] + 1 : indices[-1]]\n\n    # Check if answer matches target\n    if is_equiv(answer, remove_boxed(last_boxed_only_string(doc[\"solution\"]))):\n        retval = 1\n\n    results = {\n        \"exact_match\": retval,\n    }\n    return results\n",
+      "description": "",
+      "target_delimiter": " ",
+      "fewshot_delimiter": "\n\n",
+      "fewshot_config": {
+        "sampler": "default",
+        "split": null,
+        "process_docs": "<function process_docs at 0x139b84360>",
+        "fewshot_indices": null,
+        "samples": null,
+        "doc_to_text": "<function doc_to_text at 0x139b84900>",
+        "doc_to_choice": null,
+        "doc_to_target": "<function doc_to_target at 0x139b84f40>",
+        "gen_prefix": null,
+        "fewshot_delimiter": "\n\n",
+        "target_delimiter": " "
+      },
+      "num_fewshot": 0,
+      "metric_list": [
+        {
+          "metric": "exact_match",
+          "aggregation": "mean",
+          "higher_is_better": true
+        }
+      ],
+      "output_type": "generate_until",
+      "generation_kwargs": {
+        "until": [
+          "Question:",
+          "Problem:"
+        ],
+        "do_sample": true,
+        "temperature": 1.0,
+        "max_gen_toks": 24000,
+        "top_p": 0.95,
+        "top_k": 20,
+        "min_p": 0.0,
+        "seed": 42
+      },
+      "repeats": 1,
+      "should_decontaminate": false,
+      "metadata": {
+        "version": 1.0,
+        "description": "Standardized variant with 'the final answer is (X)' pattern and Question: structure",
+        "model": "Qwen/Qwen3-4B",
+        "max_length": 40960,
+        "base_url": "http://52.117.122.58:8000/v1/chat/completions",
+        "num_concurrent": 64,
+        "max_retries": 3,
+        "tokenized_requests": false,
+        "tokenizer_backend": null,
+        "timeout": 1200,
+        "config_source": "/Users/chibuezeukachi/main-lmeval-harness/lm_eval/tasks/hendrycks_math/hendrycks_math500_variant.yaml"
+      }
+    }
+  },
+  "versions": {
+    "hendrycks_math500_variant": 1.0
+  },
+  "n-shot": {
+    "hendrycks_math500_variant": 0
+  },
+  "higher_is_better": {
+    "hendrycks_math500_variant": {
+      "exact_match": true
+    }
+  },
+  "n-samples": {
+    "hendrycks_math500_variant": {
+      "original": 500,
+      "effective": 10
+    }
+  },
+  "config": {
+    "model": "local-chat-completions",
+    "model_args": {
+      "model": "Qwen/Qwen3-4B",
+      "max_length": 40960,
+      "base_url": "http://52.117.122.58:8000/v1/chat/completions",
+      "num_concurrent": 64,
+      "max_retries": 3,
+      "tokenized_requests": false,
+      "tokenizer_backend": null,
+      "timeout": 1200
+    },
+    "batch_size": 1,
+    "batch_sizes": [],
+    "device": "cuda:0",
+    "use_cache": null,
+    "limit": 10.0,
+    "bootstrap_iters": 100000,
+    "gen_kwargs": {
+      "do_sample": true,
+      "temperature": 1.0,
+      "top_p": 0.95,
+      "top_k": 20,
+      "min_p": 0.0,
+      "max_gen_toks": 24000,
+      "seed": 42
+    },
+    "random_seed": 42,
+    "numpy_seed": 42,
+    "torch_seed": 42,
+    "fewshot_seed": 42
+  },
+  "git_hash": "v0.4.10-113-gdd3bba182",
+  "date": 1782933989.442539,
+  "pretty_env_info": "N/A (torch not installed)",
+  "transformers_version": "N/A",
+  "lm_eval_version": "0.4.13.dev0",
+  "upper_git_hash": null,
+  "task_hashes": {
+    "hendrycks_math500_variant": "d222a8a38aa5f958dd7f4f13e3ab97bed3c0280212d96104022ed48e68b44199"
+  },
+  "model_source": "local-chat-completions",
+  "model_name": "Qwen/Qwen3-4B",
+  "model_name_sanitized": "Qwen__Qwen3-4B",
+  "system_instruction": null,
+  "system_instruction_sha": null,
+  "fewshot_as_multiturn": true,
+  "chat_template": "",
+  "chat_template_sha": null,
+  "total_evaluation_time_seconds": "205.954934499925"
+}

@@ -1,10 +1,10 @@
-task: ifeval_chat
+task: ifeval_variant
 dataset_path: google/IFEval
 dataset_name: null
 output_type: generate_until
 test_split: train
 num_fewshot: 0
-doc_to_text: !function utils_chat.doc_to_text
+doc_to_text: !function utils_variant.doc_to_text
 doc_to_target: 0
 generation_kwargs:
   until: []
@@ -27,4 +27,4 @@ metric_list:
     higher_is_better: true
 metadata:
   version: 1.0
-  description: "Chat variant of IFEval with standardized 'Think step by step' instruction"
+  description: "Standardized variant of IFEval with 'Think step by step' instruction"
