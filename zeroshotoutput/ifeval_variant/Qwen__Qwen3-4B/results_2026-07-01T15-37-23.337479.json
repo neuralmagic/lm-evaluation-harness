@@ -1,0 +1,164 @@
+{
+  "results": {
+    "ifeval_variant": {
+      "name": "ifeval_variant",
+      "alias": "ifeval_variant",
+      "sample_len": 10,
+      "prompt_level_strict_acc,none": 0.2,
+      "prompt_level_strict_acc_stderr,none": 0.13333333333333333,
+      "inst_level_strict_acc,none": 0.5,
+      "inst_level_strict_acc_stderr,none": "N/A",
+      "prompt_level_loose_acc,none": 0.2,
+      "prompt_level_loose_acc_stderr,none": 0.13333333333333333,
+      "inst_level_loose_acc,none": 0.5,
+      "inst_level_loose_acc_stderr,none": "N/A"
+    }
+  },
+  "group_subtasks": {},
+  "configs": {
+    "ifeval_variant": {
+      "task": "ifeval_variant",
+      "dataset_path": "google/IFEval",
+      "test_split": "train",
+      "doc_to_text": "def doc_to_text(doc):\n    \"\"\"\n    Format the IFEval prompt with standard instruction to think step by step.\n\n    Args:\n        doc: Document containing the 'prompt' field with the instruction-following task\n\n    Returns:\n        Formatted prompt string with thinking instruction appended\n    \"\"\"\n    # Get the original prompt from the document\n    original_prompt = doc[\"prompt\"]\n\n    # Add the standard thinking instruction\n    # Note: We don't add \"Reply with 'the final answer is (X)'\" because\n    # IFEval doesn't extract answers - it evaluates if instructions were followed\n    formatted_prompt = original_prompt + \"\\n\\nThink step by step.\"\n\n    return formatted_prompt\n",
+      "doc_to_target": 0,
+      "unsafe_code": false,
+      "process_results": "def process_results(doc, results):\n    inp = InputExample(\n        key=doc[\"key\"],\n        instruction_id_list=doc[\"instruction_id_list\"],\n        prompt=doc[\"prompt\"],\n        kwargs=doc[\"kwargs\"],\n    )\n    response = results[0]\n\n    out_strict = test_instruction_following_strict(inp, response)\n    out_loose = test_instruction_following_loose(inp, response)\n\n    return {\n        \"prompt_level_strict_acc\": out_strict.follow_all_instructions,\n        \"inst_level_strict_acc\": out_strict.follow_instruction_list,\n        \"prompt_level_loose_acc\": out_loose.follow_all_instructions,\n        \"inst_level_loose_acc\": out_loose.follow_instruction_list,\n    }\n",
+      "description": "",
+      "target_delimiter": " ",
+      "fewshot_delimiter": "\n\n",
+      "fewshot_config": {
+        "sampler": "default",
+        "split": null,
+        "process_docs": null,
+        "fewshot_indices": null,
+        "samples": null,
+        "doc_to_text": "<function doc_to_text at 0x128484040>",
+        "doc_to_choice": null,
+        "doc_to_target": 0,
+        "gen_prefix": null,
+        "fewshot_delimiter": "\n\n",
+        "target_delimiter": " "
+      },
+      "num_fewshot": 0,
+      "metric_list": [
+        {
+          "metric": "prompt_level_strict_acc",
+          "aggregation": "mean",
+          "higher_is_better": true
+        },
+        {
+          "metric": "inst_level_strict_acc",
+          "aggregation": "def agg_inst_level_acc(items):\n    flat_items = [item for sublist in items for item in sublist]\n    inst_level_acc = sum(flat_items) / len(flat_items)\n    return inst_level_acc\n",
+          "higher_is_better": true
+        },
+        {
+          "metric": "prompt_level_loose_acc",
+          "aggregation": "mean",
+          "higher_is_better": true
+        },
+        {
+          "metric": "inst_level_loose_acc",
+          "aggregation": "def agg_inst_level_acc(items):\n    flat_items = [item for sublist in items for item in sublist]\n    inst_level_acc = sum(flat_items) / len(flat_items)\n    return inst_level_acc\n",
+          "higher_is_better": true
+        }
+      ],
+      "output_type": "generate_until",
+      "generation_kwargs": {
+        "until": [],
+        "do_sample": true,
+        "temperature": 1.0,
+        "max_gen_toks": 24000,
+        "top_p": 0.95,
+        "top_k": 20,
+        "min_p": 0.0,
+        "seed": 42
+      },
+      "repeats": 1,
+      "should_decontaminate": false,
+      "metadata": {
+        "version": 1.0,
+        "description": "Standardized variant of IFEval with 'Think step by step' instruction",
+        "model": "Qwen/Qwen3-4B",
+        "max_length": 40960,
+        "base_url": "http://52.117.122.58:8000/v1/chat/completions",
+        "num_concurrent": 64,
+        "max_retries": 3,
+        "tokenized_requests": false,
+        "tokenizer_backend": null,
+        "timeout": 1200,
+        "config_source": "/Users/chibuezeukachi/main-lmeval-harness/lm_eval/tasks/ifeval/ifeval_variant.yaml"
+      }
+    }
+  },
+  "versions": {
+    "ifeval_variant": 1.0
+  },
+  "n-shot": {
+    "ifeval_variant": 0
+  },
+  "higher_is_better": {
+    "ifeval_variant": {
+      "prompt_level_strict_acc": true,
+      "inst_level_strict_acc": true,
+      "prompt_level_loose_acc": true,
+      "inst_level_loose_acc": true
+    }
+  },
+  "n-samples": {
+    "ifeval_variant": {
+      "original": 541,
+      "effective": 10
+    }
+  },
+  "config": {
+    "model": "local-chat-completions",
+    "model_args": {
+      "model": "Qwen/Qwen3-4B",
+      "max_length": 40960,
+      "base_url": "http://52.117.122.58:8000/v1/chat/completions",
+      "num_concurrent": 64,
+      "max_retries": 3,
+      "tokenized_requests": false,
+      "tokenizer_backend": null,
+      "timeout": 1200
+    },
+    "batch_size": 1,
+    "batch_sizes": [],
+    "device": "cuda:0",
+    "use_cache": null,
+    "limit": 10.0,
+    "bootstrap_iters": 100000,
+    "gen_kwargs": {
+      "do_sample": true,
+      "temperature": 1.0,
+      "top_p": 0.95,
+      "top_k": 20,
+      "min_p": 0.0,
+      "max_gen_toks": 24000,
+      "seed": 42
+    },
+    "random_seed": 42,
+    "numpy_seed": 42,
+    "torch_seed": 42,
+    "fewshot_seed": 42
+  },
+  "git_hash": "v0.4.10-113-gdd3bba182",
+  "date": 1782934621.753744,
+  "pretty_env_info": "N/A (torch not installed)",
+  "transformers_version": "N/A",
+  "lm_eval_version": "0.4.13.dev0",
+  "upper_git_hash": null,
+  "task_hashes": {
+    "ifeval_variant": "6ac017af9526642e57efc1c0e872c3e1c8bfbf2bbbc0bb62c37cb5b71bba50ce"
+  },
+  "model_source": "local-chat-completions",
+  "model_name": "Qwen/Qwen3-4B",
+  "model_name_sanitized": "Qwen__Qwen3-4B",
+  "system_instruction": null,
+  "system_instruction_sha": null,
+  "fewshot_as_multiturn": true,
+  "chat_template": "",
+  "chat_template_sha": null,
+  "total_evaluation_time_seconds": "26.257294832961634"
+}

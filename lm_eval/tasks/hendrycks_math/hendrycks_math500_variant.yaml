@@ -1,0 +1,6 @@
+include: hendrycks_math_algebra_variant.yaml
+task: hendrycks_math500_variant
+dataset_name: default
+dataset_path: HuggingFaceH4/MATH-500
+training_split: null
+test_split: test

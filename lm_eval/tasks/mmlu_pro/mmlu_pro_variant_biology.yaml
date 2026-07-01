@@ -1,0 +1,4 @@
+include: _mmlu_pro_variant_template.yaml
+task: mmlu_pro_variant_biology
+task_alias: biology
+process_docs: !function utils_variant.process_biology

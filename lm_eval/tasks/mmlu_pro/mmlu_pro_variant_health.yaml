@@ -1,0 +1,4 @@
+include: _mmlu_pro_variant_template.yaml
+task: mmlu_pro_variant_health
+task_alias: health
+process_docs: !function utils_variant.process_health

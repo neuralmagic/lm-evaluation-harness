@@ -1,0 +1,29 @@
+tag:
+  - math_word_problems
+task: aime25_variant
+dataset_path: math-ai/aime25
+output_type: generate_until
+training_split: test
+fewshot_split: test
+test_split: test
+num_fewshot: 0
+doc_to_text: !function utils_variant.doc_to_text
+doc_to_target: "{{answer}}"
+process_results: !function utils_variant.process_results
+metric_list:
+  - metric: exact_match
+    aggregation: mean
+    higher_is_better: true
+generation_kwargs:
+  until:
+    - "Question:"
+    - "</s>"
+    - "<|im_end|>"
+    - "<|eot_id|>"
+  do_sample: false
+  temperature: 0.0
+  max_gen_toks: 32768
+repeats: 1
+metadata:
+  version: 1.0
+  description: "Standardized variant with 'the final answer is (X)' pattern and Question: structure"

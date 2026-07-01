@@ -1,0 +1,147 @@
+{
+  "results": {
+    "aime25_variant": {
+      "name": "aime25_variant",
+      "alias": "aime25_variant",
+      "sample_len": 10,
+      "exact_match,none": 0.8,
+      "exact_match_stderr,none": 0.13333333333333333
+    }
+  },
+  "group_subtasks": {},
+  "configs": {
+    "aime25_variant": {
+      "task": "aime25_variant",
+      "dataset_path": "math-ai/aime25",
+      "training_split": "test",
+      "test_split": "test",
+      "fewshot_split": "test",
+      "doc_to_text": "def doc_to_text(doc):\n    \"\"\"\n    Format the math problem for the user message.\n\n    Returns a prompt that includes:\n    - Question text\n    - Explicit instruction to think step by step and reply with \"the final answer is (X)\"\n    \"\"\"\n    problem = doc[\"problem\"]\n\n    # Use the standardized instruction\n    prompt = f\"Question:\\n{problem}\\n\\n\"\n    prompt += 'Think step by step and then finish your answer with \"the final answer is (X)\" where X is your answer. '\n    prompt += 'You may use LaTeX formatting and \\\\boxed{{}} notation if needed.'\n\n    return prompt\n",
+      "doc_to_target": "{{answer}}",
+      "unsafe_code": false,
+      "process_results": "def process_results(doc: dict, results: List[str]) -> Dict[str, int]:\n    \"\"\"\n    Process results with custom extraction for \"the final answer is\" format.\n\n    First tries to extract from \"the final answer is ...\" pattern,\n    then falls back to the original extraction logic (boxed, $...$, etc.)\n    \"\"\"\n    retval = 0\n    response = results[0]\n\n    # Try to extract from \"the final answer is ...\" first\n    answer = None\n\n    # Look for \"the final answer is\" pattern (case insensitive)\n    import re\n    final_answer_pattern = re.compile(r'the final answer is[:\\s]+(.+?)(?:\\.|$|\\n)', re.IGNORECASE | re.DOTALL)\n    match = final_answer_pattern.search(response)\n\n    if match:\n        answer = match.group(1).strip()\n        # Remove trailing punctuation\n        answer = answer.rstrip('.')\n\n        # If the answer contains \\boxed{}, extract from that\n        if '\\\\boxed{' in answer:\n            boxed_answer = last_boxed_only_string(answer)\n            if boxed_answer is not None:\n                try:\n                    boxed_content = remove_boxed(boxed_answer)\n                    if boxed_content is not None:\n                        answer = boxed_content\n                except (AssertionError, IndexError):\n                    pass\n\n    # If we didn't find \"the final answer is\", fall back to original extraction\n    if answer is None:\n        # Try to extract answer from $...$ format first\n        indices = [pos for pos, char in enumerate(response) if char == \"$\"]\n        if len(indices) <= 1:\n            answer = response\n        else:\n            answer = response[indices[0] + 1 : indices[-1]]\n\n        # Extract from \\\\boxed{} if present\n        boxed_answer = last_boxed_only_string(response)\n        if boxed_answer is not None:\n            try:\n                boxed_content = remove_boxed(boxed_answer)\n                if boxed_content is not None:\n                    answer = boxed_content\n            except (AssertionError, IndexError):\n                pass\n\n    # Check if answer matches target\n    answer_key = next(k for k in doc.keys() if k.lower() == \"answer\")\n    target = str(doc[answer_key])\n    if is_equiv(answer, target):\n        retval = 1\n\n    return {\"exact_match\": retval}\n",
+      "description": "",
+      "target_delimiter": " ",
+      "fewshot_delimiter": "\n\n",
+      "fewshot_config": {
+        "sampler": "default",
+        "split": "test",
+        "process_docs": null,
+        "fewshot_indices": null,
+        "samples": null,
+        "doc_to_text": "<function doc_to_text at 0x128877ec0>",
+        "doc_to_choice": null,
+        "doc_to_target": "{{answer}}",
+        "gen_prefix": null,
+        "fewshot_delimiter": "\n\n",
+        "target_delimiter": " "
+      },
+      "num_fewshot": 0,
+      "metric_list": [
+        {
+          "metric": "exact_match",
+          "aggregation": "mean",
+          "higher_is_better": true
+        }
+      ],
+      "output_type": "generate_until",
+      "generation_kwargs": {
+        "until": [
+          "Question:",
+          "</s>",
+          "<|im_end|>",
+          "<|eot_id|>"
+        ],
+        "do_sample": true,
+        "temperature": 1.0,
+        "max_gen_toks": 24000,
+        "top_p": 0.95,
+        "top_k": 20,
+        "min_p": 0.0,
+        "seed": 42
+      },
+      "repeats": 1,
+      "should_decontaminate": false,
+      "metadata": {
+        "version": 1.0,
+        "description": "Standardized variant with 'the final answer is (X)' pattern and Question: structure",
+        "model": "Qwen/Qwen3-4B",
+        "max_length": 40960,
+        "base_url": "http://52.117.122.58:8000/v1/chat/completions",
+        "num_concurrent": 64,
+        "max_retries": 3,
+        "tokenized_requests": false,
+        "tokenizer_backend": null,
+        "timeout": 1200,
+        "config_source": "/Users/chibuezeukachi/main-lmeval-harness/lm_eval/tasks/aime/aime25_variant.yaml"
+      }
+    }
+  },
+  "versions": {
+    "aime25_variant": 1.0
+  },
+  "n-shot": {
+    "aime25_variant": 0
+  },
+  "higher_is_better": {
+    "aime25_variant": {
+      "exact_match": true
+    }
+  },
+  "n-samples": {
+    "aime25_variant": {
+      "original": 30,
+      "effective": 10
+    }
+  },
+  "config": {
+    "model": "local-chat-completions",
+    "model_args": {
+      "model": "Qwen/Qwen3-4B",
+      "max_length": 40960,
+      "base_url": "http://52.117.122.58:8000/v1/chat/completions",
+      "num_concurrent": 64,
+      "max_retries": 3,
+      "tokenized_requests": false,
+      "tokenizer_backend": null,
+      "timeout": 1200
+    },
+    "batch_size": 1,
+    "batch_sizes": [],
+    "device": "cuda:0",
+    "use_cache": null,
+    "limit": 10.0,
+    "bootstrap_iters": 100000,
+    "gen_kwargs": {
+      "do_sample": true,
+      "temperature": 1.0,
+      "top_p": 0.95,
+      "top_k": 20,
+      "min_p": 0.0,
+      "max_gen_toks": 24000,
+      "seed": 42
+    },
+    "random_seed": 42,
+    "numpy_seed": 42,
+    "torch_seed": 42,
+    "fewshot_seed": 42
+  },
+  "git_hash": "v0.4.10-112-g99a1a8306",
+  "date": 1782932796.304937,
+  "pretty_env_info": "N/A (torch not installed)",
+  "transformers_version": "N/A",
+  "lm_eval_version": "0.4.13.dev0",
+  "upper_git_hash": null,
+  "task_hashes": {
+    "aime25_variant": "5ec5184817f00af93b0751fa042afad6f84125da353f825e8e306923406a7ac2"
+  },
+  "model_source": "local-chat-completions",
+  "model_name": "Qwen/Qwen3-4B",
+  "model_name_sanitized": "Qwen__Qwen3-4B",
+  "system_instruction": null,
+  "system_instruction_sha": null,
+  "fewshot_as_multiturn": true,
+  "chat_template": "",
+  "chat_template_sha": null,
+  "total_evaluation_time_seconds": "306.0915044581052"
+}
