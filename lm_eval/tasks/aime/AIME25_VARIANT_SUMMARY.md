@@ -134,31 +134,38 @@ The variant maintains all these conventions while adding standardized prompting.
 
 Run the variant:
 ```bash
-lm_eval --model hf \
-    --model_args pretrained=meta-llama/Llama-3.1-8B-Instruct \
-    --tasks aime25_variant \
-    --device cuda:0 \
-    --batch_size auto
+lm_eval --model local-chat-completions \
+  --tasks aime25_variant \
+  --model_args "model=Qwen/Qwen3-4B,max_length=40960,base_url=http://0.0.0.0:8000/v1/chat/completions,num_concurrent=64,max_retries=3,tokenized_requests=False,tokenizer_backend=None,timeout=1200" \
+  --num_fewshot 0 \
+  --apply_chat_template \
+  --gen_kwargs "do_sample=True,temperature=1.0,top_p=0.95,top_k=20,min_p=0.0,max_gen_toks=32768" \
+  --output_path ./results_aime25_variant
 ```
 
 Compare with original:
 ```bash
-lm_eval --model hf \
-    --model_args pretrained=meta-llama/Llama-3.1-8B-Instruct \
-    --tasks aime25,aime25_variant \
-    --device cuda:0 \
-    --batch_size auto
+lm_eval --model local-chat-completions \
+  --tasks aime25,aime25_variant \
+  --model_args "model=Qwen/Qwen3-4B,max_length=40960,base_url=http://0.0.0.0:8000/v1/chat/completions,num_concurrent=64,max_retries=3,tokenized_requests=False,tokenizer_backend=None,timeout=1200" \
+  --num_fewshot 0 \
+  --apply_chat_template \
+  --gen_kwargs "do_sample=True,temperature=1.0,top_p=0.95,top_k=20,min_p=0.0,max_gen_toks=32768" \
+  --output_path ./results_aime25_comparison
 ```
 
 ## Testing
 
 Quick validation:
 ```bash
-lm_eval --model hf \
-    --model_args pretrained=gpt2 \
-    --tasks aime25_variant \
-    --limit 2 \
-    --log_samples
+lm_eval --model local-chat-completions \
+  --tasks aime25_variant \
+  --model_args "model=Qwen/Qwen3-4B,max_length=40960,base_url=http://0.0.0.0:8000/v1/chat/completions,num_concurrent=64,max_retries=3,tokenized_requests=False,tokenizer_backend=None,timeout=1200" \
+  --num_fewshot 0 \
+  --apply_chat_template \
+  --gen_kwargs "do_sample=True,temperature=1.0,top_p=0.95,top_k=20,min_p=0.0,max_gen_toks=32768" \
+  --limit 2 \
+  --log_samples
 ```
 
 Verify:

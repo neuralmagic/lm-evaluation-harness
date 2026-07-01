@@ -78,22 +78,27 @@ The chat variant adds minimal formatting ("Think step by step.") to encourage re
 
 ## Usage
 
-Run the chat variant:
+Run the variant:
 ```bash
-lm_eval --model hf \
-    --model_args pretrained=meta-llama/Llama-3.1-8B-Instruct \
-    --tasks ifeval_variant \
-    --device cuda:0 \
-    --batch_size auto
+lm_eval --model local-chat-completions \
+  --tasks ifeval_variant \
+  --model_args "model=Qwen/Qwen3-4B,max_length=40960,base_url=http://0.0.0.0:8000/v1/chat/completions,num_concurrent=64,max_retries=3,tokenized_requests=False,tokenizer_backend=None,timeout=1200" \
+  --num_fewshot 0 \
+  --apply_chat_template \
+  --gen_kwargs "do_sample=True,temperature=1.0,top_p=0.95,top_k=20,min_p=0.0,max_gen_toks=24000" \
+  --log_samples \
+  --output_path ./results_ifeval_variant
 ```
 
 Compare with original:
 ```bash
-lm_eval --model hf \
-    --model_args pretrained=meta-llama/Llama-3.1-8B-Instruct \
-    --tasks ifeval,ifeval_variant \
-    --device cuda:0 \
-    --batch_size auto
+lm_eval --model local-chat-completions \
+  --tasks ifeval,ifeval_variant \
+  --model_args "model=Qwen/Qwen3-4B,max_length=40960,base_url=http://0.0.0.0:8000/v1/chat/completions,num_concurrent=64,max_retries=3,tokenized_requests=False,tokenizer_backend=None,timeout=1200" \
+  --num_fewshot 0 \
+  --apply_chat_template \
+  --gen_kwargs "do_sample=True,temperature=1.0,top_p=0.95,top_k=20,min_p=0.0,max_gen_toks=24000" \
+  --output_path ./results_ifeval_comparison
 ```
 
 ## Expected Behavior
@@ -106,11 +111,14 @@ To verify the variant works correctly:
 
 ```bash
 # Quick test with 10 examples
-lm_eval --model hf \
-    --model_args pretrained=gpt2 \
-    --tasks ifeval_variant \
-    --limit 10 \
-    --log_samples
+lm_eval --model local-chat-completions \
+  --tasks ifeval_variant \
+  --model_args "model=Qwen/Qwen3-4B,max_length=40960,base_url=http://0.0.0.0:8000/v1/chat/completions,num_concurrent=64,max_retries=3,tokenized_requests=False,tokenizer_backend=None,timeout=1200" \
+  --num_fewshot 0 \
+  --apply_chat_template \
+  --gen_kwargs "do_sample=True,temperature=1.0,top_p=0.95,top_k=20,min_p=0.0,max_gen_toks=24000" \
+  --limit 10 \
+  --log_samples
 ```
 
 Check that:
